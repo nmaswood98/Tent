@@ -11,12 +11,13 @@ import UIKit
 import AVFoundation
 
 struct CameraView: UIViewRepresentable {
-    let previewLayer: AVCaptureVideoPreviewLayer
     let color: UIColor
+    let camera = Camera()
     func makeUIView(context: Context) -> UIView {
-        var nativeView = UIView(frame: .zero)
+        let previewLayer = camera.previewLayer
+        let nativeView = UIView(frame: .zero)
         DispatchQueue.main.async {
-            self.previewLayer.frame = nativeView.bounds
+            previewLayer.frame = nativeView.bounds
         }
         nativeView.layer.insertSublayer(previewLayer, at: 0)
         nativeView.backgroundColor = color

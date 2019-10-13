@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4CAC58E02353AD2100184DEE /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC58DF2353AD2100184DEE /* Camera.swift */; };
 		4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0870C2352D5070086A5B0 /* AppDelegate.swift */; };
 		4CC0870F2352D5070086A5B0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0870E2352D5070086A5B0 /* SceneDelegate.swift */; };
 		4CC087112352D5070086A5B0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC087102352D5070086A5B0 /* ContentView.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4CAC58DF2353AD2100184DEE /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		4CC087092352D5070086A5B0 /* tent_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tent_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CC0870C2352D5070086A5B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4CC0870E2352D5070086A5B0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 				4CC0870E2352D5070086A5B0 /* SceneDelegate.swift */,
 				4CC087102352D5070086A5B0 /* ContentView.swift */,
 				4CC087202352DE860086A5B0 /* CameraView.swift */,
+				4CAC58DF2353AD2100184DEE /* Camera.swift */,
 				4CC087122352D5090086A5B0 /* Assets.xcassets */,
 				4CC087172352D5090086A5B0 /* LaunchScreen.storyboard */,
 				4CC0871A2352D5090086A5B0 /* Info.plist */,
@@ -150,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
+				4CAC58E02353AD2100184DEE /* Camera.swift in Sources */,
 				4CC0870F2352D5070086A5B0 /* SceneDelegate.swift in Sources */,
 				4CC087112352D5070086A5B0 /* ContentView.swift in Sources */,
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,
