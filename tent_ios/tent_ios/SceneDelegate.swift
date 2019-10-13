@@ -8,10 +8,14 @@
 
 import UIKit
 import SwiftUI
+import AVFoundation
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var captureSession: AVCaptureSession?
+    var imageOutput: AVCapturePhotoOutput?
+    var previewLayer: AVCaptureVideoPreviewLayer?
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -20,7 +24,52 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ContentView()
+        
+        
+        
+        
+        
+        
+        
+        //// TEMPORARY TO TEST OUT CAMERA NEED TO MOVE INTO SEPERATE CLASS
+        
+        
+        
+        
+        
+        
+         captureSession = AVCaptureSession()
+        captureSession!.beginConfiguration()
+        var preset = AVCaptureSession.Preset.hd1920x1080
+        captureSession!.sessionPreset = preset
+       guard let backCamera = AVCaptureDevice.default(for: AVMediaType.video)
+            else {
+                print("Unable To Accesses camera")
+                return
+        }
+        
+        do {
+            let input = try AVCaptureDeviceInput(device: backCamera)
+            //Step 9
+      
+        imageOutput = AVCapturePhotoOutput()
+        
+        if captureSession!.canAddInput(input) && captureSession!.canAddOutput(imageOutput!) {
+            captureSession!.addInput(input)
+            captureSession!.addOutput(imageOutput!)
+            
+            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+            previewLayer!.connection?.videoOrientation = .portrait
+            previewLayer!.videoGravity = .resizeAspectFill
+            }
+            captureSession!.commitConfiguration()
+            
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.captureSession!.startRunning()
+            }
+        
+        
+                let contentView = ContentView(previewLayer: previewLayer!)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
@@ -29,6 +78,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             self.window = window
             window.makeKeyAndVisible()
         }
+            }
+                  catch let error  {
+                      print("ERROR:  \(error.localizedDescription)")
+                  }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -58,6 +111,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to save data, release shared resources, and store enough scene-specific state information
         // to restore the scene back to its current state.
     }
+    
 
 
 }
