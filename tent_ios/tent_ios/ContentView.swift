@@ -11,18 +11,15 @@ import UIKit
 import AVFoundation
 
 struct ContentView: View {
-    let previewLayer: AVCaptureVideoPreviewLayer
-    var body: some View {
+        var body: some View {
         ZStack(alignment: .center){
-            CameraView(previewLayer:previewLayer, color: UIColor.red)
+            CameraView(color: UIColor.red)
                 .edgesIgnoringSafeArea(.all)
             VStack{
-                Text("Welcome to")
-                    .font(.title)
-                    .foregroundColor(.green)
                 Text("Tent")
                     .font(.largeTitle)
                     .foregroundColor(.green)
+                Spacer()
             }
         }
     }
