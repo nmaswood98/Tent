@@ -11,8 +11,8 @@ import UIKit
 import AVFoundation
 
 struct CameraView: UIViewRepresentable {
+    let camera: Camera
     let color: UIColor
-    let camera = Camera()
     func makeUIView(context: Context) -> UIView {
         let previewLayer = camera.previewLayer
         let nativeView = UIView(frame: .zero)

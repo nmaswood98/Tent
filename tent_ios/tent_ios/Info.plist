@@ -51,6 +51,10 @@
 	</array>
 	<key>NSCameraUsageDescription</key>
 	<string>CAMERA USUAGE</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Accesses teh camera.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to save photo in your photo library</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
