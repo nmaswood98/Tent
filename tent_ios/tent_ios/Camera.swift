@@ -79,7 +79,7 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
         
         let image = UIImage(data: imageData)
         
-        uploadManager.uploadImage(storagePath: "DefaultTent/\(UUID().uuidString)", image: rotateImage(image: image!)!)
+        uploadManager.uploadImage(name: UUID().uuidString, image: rotateImage(image: image!)!)
         
         UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         print("Captured Image")

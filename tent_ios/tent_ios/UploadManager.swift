@@ -8,13 +8,20 @@
 
 import Foundation
 import FirebaseStorage
+import FirebaseFirestore
+import FirebaseAuth
 
 class UploadManager {
     static let shared = UploadManager()
     let storage = Storage.storage()
-    private init(){}
+    let db = Firestore.firestore()
+    let tentName = "DefaultTent"
+    let userID: String
+    private init(){
+        userID = Auth.auth().currentUser!.uid
+    }
     
-    func uploadImage(storagePath:String, image: UIImage){
+    func uploadImage(name:String, image: UIImage){
         
         let dataOptional = image.pngData()
         guard let data = dataOptional else
@@ -23,15 +30,21 @@ class UploadManager {
             return
         }
         
-        let imagePath = storage.reference().child(storagePath + ".png")
+        let imagePath = storage.reference().child("\(tentName)/" + name + ".png")
 
-        let uploadTask = imagePath.putData(data, metadata: nil) { (metadata, error) in
-          guard let metadata = metadata else {
-            // Uh-oh, an error occurred!
-            return
-          }
-            print("Successfully saved file")
+        _ = imagePath.putData(data, metadata: nil) { (metadata, error) in
+            guard metadata != nil else { return }
+            
+            imagePath.downloadURL { (url, error) in
+                guard let downloadURL = url else { return }
+                self.addImageToTent(name: name, data: ["URL":downloadURL.absoluteString,"userID":self.userID])
+            }
         }
-          
     }
+    
+    func addImageToTent(name:String, data:[String:String]){
+        db.collection("Tents").document(tentName).collection("Images").document(name).setData(data)
+    }
+    
+
 }
