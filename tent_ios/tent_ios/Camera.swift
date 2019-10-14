@@ -18,6 +18,8 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
     let backCamera: AVCaptureDevice?
     let deviceInput: AVCaptureDeviceInput?
     
+    let uploadManager = UploadManager.shared
+    
     override init(){
         
         captureSession = AVCaptureSession()
@@ -30,7 +32,7 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
         deviceInput = try? AVCaptureDeviceInput(device: backCamera!)
         
         cameraOutput = AVCapturePhotoOutput()
-        
+                
         super.init()
 
         guard deviceInput != nil else { return }
@@ -59,12 +61,26 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
         }
     }
     
+    func rotateImage(image: UIImage) -> UIImage? {
+        if (image.imageOrientation == UIImage.Orientation.up ) {
+            return image
+        }
+        UIGraphicsBeginImageContext(image.size)
+        image.draw(in: CGRect(origin: CGPoint.zero, size: image.size))
+        let copy = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return copy
+    }
+    
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         
        guard let imageData = photo.fileDataRepresentation()
             else { return }
         
         let image = UIImage(data: imageData)
+        
+        uploadManager.uploadImage(storagePath: "DefaultTent/\(UUID().uuidString)", image: rotateImage(image: image!)!)
+        
         UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         print("Captured Image")
         
@@ -80,6 +96,7 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
            print("We got an error")
         } else {
            print("Saved to the library successfully")
+
         }
     }
 

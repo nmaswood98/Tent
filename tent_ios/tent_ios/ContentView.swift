@@ -20,8 +20,13 @@ struct ContentView: View {
                 Text("Tent")
                     .font(.largeTitle)
                     .foregroundColor(.green)
+                    .padding(.top,50)
                 Spacer()
-                Button(action:takePicture){Text("Take Picture")}
+                Button(action:takePicture){
+                    Text("Take Picture")
+                        .font(.title)
+                        .foregroundColor(.green)
+                }.padding(.bottom, 100)
             }
         }
     }
