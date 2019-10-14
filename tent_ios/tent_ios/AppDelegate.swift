@@ -26,6 +26,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           let isAnonymous = user.isAnonymous
           let uid = user.uid
          print("Authenticated \(uid) isAnonymous \(isAnonymous)")
+            //should only do this once
+        Firestore.firestore().collection("Users").document(uid).setData(["ID":uid,"blocked":false])
         }
         
         
