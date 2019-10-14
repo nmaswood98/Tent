@@ -1,0 +1,6 @@
+framework module Pods_tent_ios {
+  umbrella header "Pods-tent_ios-umbrella.h"
+
+  export *
+  module * { export * }
+}
