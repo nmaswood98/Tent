@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2E28A2B129AE26A921DC557D /* Pods_tent_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */; };
 		4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F619E2353EF1D00A56D14 /* UploadManager.swift */; };
+		4C92D77A2355860A00646CFB /* TentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D7792355860A00646CFB /* TentView.swift */; };
+		4C92D78C23558BFF00646CFB /* Tent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D78B23558BFF00646CFB /* Tent.swift */; };
 		4CAC58E02353AD2100184DEE /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC58DF2353AD2100184DEE /* Camera.swift */; };
 		4CAC58E22353DE4700184DEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC58E12353DE4700184DEE /* GoogleService-Info.plist */; };
 		4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0870C2352D5070086A5B0 /* AppDelegate.swift */; };
@@ -139,6 +141,8 @@
 		12D1BD8F9D8E7FE8B830FE56 /* Pods-tent_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios.debug.xcconfig"; sourceTree = "<group>"; };
 		4C0F619E2353EF1D00A56D14 /* UploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadManager.swift; sourceTree = "<group>"; };
 		4C0F61A023543DE100A56D14 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
+		4C92D7792355860A00646CFB /* TentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentView.swift; sourceTree = "<group>"; };
+		4C92D78B23558BFF00646CFB /* Tent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tent.swift; sourceTree = "<group>"; };
 		4CAC58DF2353AD2100184DEE /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		4CAC58E12353DE4700184DEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4CC087092352D5070086A5B0 /* tent_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tent_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,6 +218,8 @@
 				4CC0870E2352D5070086A5B0 /* SceneDelegate.swift */,
 				4CC087102352D5070086A5B0 /* ContentView.swift */,
 				4CC087202352DE860086A5B0 /* CameraView.swift */,
+				4C92D7792355860A00646CFB /* TentView.swift */,
+				4C92D78B23558BFF00646CFB /* Tent.swift */,
 				4CAC58DF2353AD2100184DEE /* Camera.swift */,
 				4C0F619E2353EF1D00A56D14 /* UploadManager.swift */,
 				4CC087122352D5090086A5B0 /* Assets.xcassets */,
@@ -507,12 +513,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C92D78C23558BFF00646CFB /* Tent.swift in Sources */,
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
 				4CAC58E02353AD2100184DEE /* Camera.swift in Sources */,
 				4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */,
 				4CC0870F2352D5070086A5B0 /* SceneDelegate.swift in Sources */,
 				4CC087112352D5070086A5B0 /* ContentView.swift in Sources */,
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,
+				4C92D77A2355860A00646CFB /* TentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

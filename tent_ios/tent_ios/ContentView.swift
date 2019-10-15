@@ -13,22 +13,30 @@ import AVFoundation
 struct ContentView: View {
     let camera = Camera()
         var body: some View {
-        ZStack(alignment: .center){
-            CameraView(camera: camera, color: UIColor.red)
-                .edgesIgnoringSafeArea(.all)
-            VStack{
-                Text("Tent")
-                    .font(.largeTitle)
-                    .foregroundColor(.green)
-                    .padding(.top,50)
-                Spacer()
-                Button(action:takePicture){
-                    Text("Take Picture")
-                        .font(.title)
-                        .foregroundColor(.green)
-                }.padding(.bottom, 100)
-            }
-        }
+            NavigationView{
+                ZStack(alignment: .center){
+                    CameraView(camera: camera, color: UIColor.red)
+                        .edgesIgnoringSafeArea(.all)
+                    VStack{
+                        Text("Tent")
+                            .font(.largeTitle)
+                            .foregroundColor(.green)
+                        Spacer()
+                        Button(action:takePicture){
+                            Text("Take Picture")
+                                .font(.title)
+                                .foregroundColor(.green)
+                        }.padding(.bottom, 50)
+                        
+                        NavigationLink(destination: TentView()){
+                                Text("View Tent")
+                                    .font(.caption)
+                                    .foregroundColor(.green)
+                        }.padding(.bottom,50)
+                        
+                    }
+                }
+            }.navigationBarHidden(true)
     }
     
     func takePicture(){
