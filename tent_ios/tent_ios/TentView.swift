@@ -8,6 +8,7 @@
 //
 
 import SwiftUI
+import KingfisherSwiftUI
 
 struct TentView: View {
     let tent = Tent()
@@ -17,10 +18,10 @@ struct TentView: View {
             ForEach(tent.rows) { row in
                 HStack(alignment: .center) {
                     ForEach(row.cells) { cell in
-                        Image(cell.imageURL)
+                            KFImage(URL(string: cell.imageURL)!)
                             .resizable()
                             .scaledToFit()
-                        
+        
                     }
                 }
             }
