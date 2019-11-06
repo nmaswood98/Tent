@@ -9,14 +9,15 @@
 import Foundation
 import SwiftUI
 import FirebaseFirestore
+import Kingfisher
 
 struct Row: Identifiable {
     let id = UUID()
     var cells: [Cell]
 }
 
-class Tent{
-    var rows:[Row] = []
+class Tent: ObservableObject{
+    @Published var rows:[Row] = []
     let db = Firestore.firestore()
     let tentName = "DefaultTent"
 
@@ -70,6 +71,32 @@ class Tent{
     }
     
     func addEntry(entry:String){
+        
+        let isCached = ImageCache.default.isCached(forKey: entry)
+        if (isCached) {
+            self.addImageToRow(entry:entry)
+            return
+        }
+        
+        guard let url = URL.init(string: entry) else {
+            return
+        }
+        
+        let resource = ImageResource(downloadURL: url)
+        
+        KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
+            switch result {
+            case .success(_):
+                print("Got Image Downloaded")
+                self.addImageToRow(entry:entry)
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
+        
+    }
+    
+    func addImageToRow(entry:String){
         if rows.count >= 1 {
             if rows[0].cells.count == 1{
                 rows[0].cells.insert(Cell(imageURL: entry), at:0 )

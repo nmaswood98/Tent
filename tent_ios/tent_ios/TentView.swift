@@ -11,17 +11,18 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct TentView: View {
-    let tent = Tent()
+    @ObservedObject var tent = Tent()
     var body: some View {
         List {
-        
             ForEach(tent.rows) { row in
                 HStack(alignment: .center) {
                     ForEach(row.cells) { cell in
                             KFImage(URL(string: cell.imageURL)!)
+                              .placeholder {
+                                EmptyView()
+                                }
                             .resizable()
                             .scaledToFit()
-        
                     }
                 }
             }
