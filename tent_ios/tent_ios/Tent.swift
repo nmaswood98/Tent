@@ -24,20 +24,6 @@ class Tent: ObservableObject{
     init(){
         
         
-        db.collection("Tents").document(tentName).collection("Images").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents: \(err)")
-            } else {
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                    if let url = document.data()["URL"] {
-                        self.addEntry(entry: url as! String)
-                    }                }
-            }
-        }
-        
-        
-        
         db.collection("Tents").document(tentName).collection("Images").addSnapshotListener { querySnapshot, err in
             guard let snapshot = querySnapshot else {
                 print("Error fetching snapshots: \(err!)")
@@ -45,6 +31,7 @@ class Tent: ObservableObject{
             }
             
             snapshot.documentChanges.forEach { diff in
+                print("changes")
                     if (diff.type == .added) {
                         print("\(diff.document.documentID) => \(diff.document.data())")
                         if let url = diff.document.data()["URL"] {
