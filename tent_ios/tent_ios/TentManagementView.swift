@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct TentManagementView: View {
+    var tentManagement = TentManagement()
+
     @State private var code: String = ""
     var body: some View {
              VStack(alignment: .center) {
@@ -24,7 +26,7 @@ struct TentManagementView: View {
                     .keyboardType(.numberPad)
             
                 
-                Button(action:{}){
+                Button(action:{self.tentManagement.submitCode(value: self.code)}){
                     Text("Enter")
                         .font(.body)
                         .foregroundColor(.green)

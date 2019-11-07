@@ -23,6 +23,7 @@
 		4CC087192352D5090086A5B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC087172352D5090086A5B0 /* LaunchScreen.storyboard */; };
 		4CC087212352DE860086A5B0 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC087202352DE860086A5B0 /* CameraView.swift */; };
 		4CFA82FF2373CF5A005348A3 /* TentManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */; };
+		4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA83112373DA63005348A3 /* TentManagement.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +139,27 @@
 			remoteGlobalIDString = 71D4DFA6514C7326E5BFAA3F98E85ACB;
 			remoteInfo = Protobuf;
 		};
+		4CFA83262373DA63005348A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 312E2B3345BBE59AF90180E3376F7A17;
+			remoteInfo = FirebaseCoreDiagnostics;
+		};
+		4CFA83282373DA63005348A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 054B63379A8AAF494FEC445E04F54291;
+			remoteInfo = FirebaseFunctions;
+		};
+		4CFA832A2373DA63005348A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3096971131C78B2D3F13DD28399BCA73;
+			remoteInfo = GoogleDataTransportCCTSupport;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -158,6 +180,7 @@
 		4CC0871A2352D5090086A5B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CC087202352DE860086A5B0 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentManagementView.swift; sourceTree = "<group>"; };
+		4CFA83112373DA63005348A3 /* TentManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentManagement.swift; sourceTree = "<group>"; };
 		51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2A77E255123014A3875B7C /* Pods-tent_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -182,10 +205,13 @@
 				4C0F61B423543DE100A56D14 /* openssl_grpc.framework */,
 				4C0F61B623543DE100A56D14 /* FirebaseAuth.framework */,
 				4C0F61B823543DE100A56D14 /* FirebaseCore.framework */,
+				4CFA83272373DA63005348A3 /* FirebaseCoreDiagnostics.framework */,
 				4C0F61BA23543DE100A56D14 /* FirebaseFirestore.framework */,
+				4CFA83292373DA63005348A3 /* FirebaseFunctions.framework */,
 				4C0F61BC23543DE100A56D14 /* FirebaseInstanceID.framework */,
 				4C0F61BE23543DE100A56D14 /* FirebaseStorage.framework */,
 				4C0F61C023543DE100A56D14 /* GoogleDataTransport.framework */,
+				4CFA832B2373DA63005348A3 /* GoogleDataTransportCCTSupport.framework */,
 				4C0F61C223543DE100A56D14 /* GoogleUtilities.framework */,
 				4C0F61C423543DE100A56D14 /* grpcpp.framework */,
 				4C0F61C623543DE100A56D14 /* gRPCCertificates-Cpp.bundle */,
@@ -226,6 +252,7 @@
 				4CC087202352DE860086A5B0 /* CameraView.swift */,
 				4C92D7792355860A00646CFB /* TentView.swift */,
 				4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */,
+				4CFA83112373DA63005348A3 /* TentManagement.swift */,
 				4C92D78B23558BFF00646CFB /* Tent.swift */,
 				4CAC58DF2353AD2100184DEE /* Camera.swift */,
 				4C0F619E2353EF1D00A56D14 /* UploadManager.swift */,
@@ -445,6 +472,27 @@
 			remoteRef = 4C0F61D123543DE100A56D14 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		4CFA83272373DA63005348A3 /* FirebaseCoreDiagnostics.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FirebaseCoreDiagnostics.framework;
+			remoteRef = 4CFA83262373DA63005348A3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CFA83292373DA63005348A3 /* FirebaseFunctions.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FirebaseFunctions.framework;
+			remoteRef = 4CFA83282373DA63005348A3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		4CFA832B2373DA63005348A3 /* GoogleDataTransportCCTSupport.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GoogleDataTransportCCTSupport.framework;
+			remoteRef = 4CFA832A2373DA63005348A3 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -536,6 +584,7 @@
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,
 				4C92D77A2355860A00646CFB /* TentView.swift in Sources */,
 				4CFA82FF2373CF5A005348A3 /* TentManagementView.swift in Sources */,
+				4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
