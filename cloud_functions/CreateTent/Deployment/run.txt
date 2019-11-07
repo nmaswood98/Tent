@@ -1,0 +1,1 @@
+curl -X POST "https://us-central1-tent-cfd6c.cloudfunctions.net/CreateTent" -H "Content-Type:application/json" --data '{"lat":-1,"long":0,"radius":5}'
