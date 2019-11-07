@@ -12,6 +12,7 @@ import AVFoundation
 
 struct ContentView: View {
     let camera = Camera()
+    @State var showModal = false
         var body: some View {
             NavigationView{
                 ZStack(alignment: .center){
@@ -34,6 +35,13 @@ struct ContentView: View {
                                     .foregroundColor(.green)
                         }.padding(.bottom,50)
                         
+                        Button(action:{self.showModal = true}){
+                            Text("Enter a Tent")
+                                .font(.title)
+                                .foregroundColor(.green)
+                        }.sheet(isPresented: $showModal, content: { TentManagementView() })
+                        
+                    
                     }
                 }
             }.navigationBarHidden(true)
