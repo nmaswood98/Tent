@@ -11,15 +11,18 @@ import UIKit
 import AVFoundation
 
 struct ContentView: View {
-    let camera = Camera()
     @State var showModal = false
+    @EnvironmentObject var tentConfig: TentConfig
+    
+    let camera = Camera()
         var body: some View {
             NavigationView{
                 ZStack(alignment: .center){
                     CameraView(camera: camera, color: UIColor.red)
                         .edgesIgnoringSafeArea(.all)
+                        .environmentObject(tentConfig)
                     VStack{
-                        Text("Tent")
+                        Text((tentConfig.code == "") ? "Tent" : "Tent: \(tentConfig.code)")
                             .font(.largeTitle)
                             .foregroundColor(.green)
                         Spacer()
@@ -39,7 +42,10 @@ struct ContentView: View {
                             Text("Enter a Tent")
                                 .font(.title)
                                 .foregroundColor(.green)
-                        }.sheet(isPresented: $showModal, content: { TentManagementView() })
+                        }.sheet(isPresented: $showModal, content: {
+                            TentManagementView()
+                                .environmentObject(self.tentConfig)
+                        })
                         
                     
                     }

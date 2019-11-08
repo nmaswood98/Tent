@@ -15,13 +15,18 @@ class UploadManager {
     static let shared = UploadManager()
     let storage = Storage.storage()
     let db = Firestore.firestore()
-    let tentName = "DefaultTent"
+    var tentName = "DefaultTent"
     let userID: String
+    var tentConfig: TentConfig?
     private init(){
         userID = Auth.auth().currentUser!.uid
     }
     
     func uploadImage(name:String, image: UIImage){
+        
+        guard let tConfig = tentConfig else {
+            return
+        }
         
         let dataOptional = image.pngData()
         guard let data = dataOptional else
@@ -30,7 +35,7 @@ class UploadManager {
             return
         }
         
-        let imagePath = storage.reference().child("\(tentName)/" + name + ".png")
+        let imagePath = storage.reference().child("\(tConfig.name)/" + name + ".png")
 
         _ = imagePath.putData(data, metadata: nil) { (metadata, error) in
             guard metadata != nil else { return }
@@ -43,7 +48,14 @@ class UploadManager {
     }
     
     func addImageToTent(name:String, data:[String:String]){
-        db.collection("Tents").document(tentName).collection("Images").document(name).setData(data)
+        guard let tConfig = tentConfig else {
+            return
+        }
+        db.collection("Tents").document(tConfig.name).collection("Images").document(name).setData(data)
+    }
+    
+    func addTentConfig(config: TentConfig){
+        tentConfig = config
     }
     
 

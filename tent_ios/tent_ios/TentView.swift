@@ -11,6 +11,7 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct TentView: View {
+    @EnvironmentObject var tentConfig: TentConfig
     @ObservedObject var tent = Tent()
     var body: some View {
         List {

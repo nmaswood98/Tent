@@ -19,12 +19,13 @@ struct Row: Identifiable {
 class Tent: ObservableObject{
     @Published var rows:[Row] = []
     let db = Firestore.firestore()
-    let tentName = "DefaultTent"
+    var tentName = "DefaultTent"
+    var tentConfig: TentConfig 
+    var listner: ListenerRegistration?
 
     init(){
-        
-        
-        db.collection("Tents").document(tentName).collection("Images").addSnapshotListener { querySnapshot, err in
+       tentConfig = UploadManager.shared.tentConfig!
+        self.listner = db.collection("Tents").document(tentConfig.name).collection("Images").addSnapshotListener { querySnapshot, err in
             guard let snapshot = querySnapshot else {
                 print("Error fetching snapshots: \(err!)")
                 return
@@ -94,6 +95,41 @@ class Tent: ObservableObject{
         }
         else{
             rows.insert(Row(cells: [Cell(imageURL: entry)]), at: 0)
+        }
+        
+    }
+    
+    func changeTent(){
+        rows = []
+        guard let l = listner else {
+            return
+        }
+        
+        listner!.remove()
+        
+        self.listner = db.collection("Tents").document(tentConfig.name).collection("Images").addSnapshotListener { querySnapshot, err in
+            guard let snapshot = querySnapshot else {
+                print("Error fetching snapshots: \(err!)")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { diff in
+                print("changes")
+                    if (diff.type == .added) {
+                        print("\(diff.document.documentID) => \(diff.document.data())")
+                        if let url = diff.document.data()["URL"] {
+                            self.addEntry(entry: url as! String)
+                        }
+                        
+                    }
+                    if (diff.type == .modified) {
+                        print("Modified city: \(diff.document.data())")
+                    }
+                    if (diff.type == .removed) {
+                        print("Removed city: \(diff.document.data())")
+                    }
+                }
+            
         }
         
     }
