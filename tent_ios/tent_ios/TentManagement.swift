@@ -34,8 +34,9 @@ class TentManagement : ObservableObject {
                     config.name = "DefaultTent"
                 }
                 else {
-                    config.code =  text
-                    config.name = config.code
+                    print(text)
+                    config.code =  value
+                    config.name = text
                 }
                 
           }
