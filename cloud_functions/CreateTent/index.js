@@ -11,6 +11,15 @@ admin.initializeApp({
 });
 
 const db = admin.firestore()
+const ky = 40000 / 360;
+
+function checkTentOverlap(checkPoint, centerPoint, distance) {
+  
+  var kx = Math.cos(Math.PI * centerPoint.lat / 180.0) * ky;
+  var dx = Math.abs(centerPoint.long - checkPoint.long) * kx;
+  var dy = Math.abs(centerPoint.lat - checkPoint.lat) * ky;
+  return Math.sqrt(dx * dx + dy * dy) <= distance;
+}
 
 
 exports.createTent = async (req, res) => {
@@ -18,28 +27,32 @@ exports.createTent = async (req, res) => {
     const {lat, long, radius} = req.body;
     let code = Math.floor(1000 + Math.random() * 9000) + "";
     let canCreateTent = false;
-    //.doc(code).collection('Tents')
-    let tentLoginRef = db.collection('TentLogins');
+
+    let tentLoginRef = db.collection('TentLogins').doc(code).collection("Tents");
     await tentLoginRef.get().then(snapshot => {
-      if (snapshot.exists) {
+      if(snapshot.exists){
         let codeExists = false;
         let codeDict = {};
         snapshot.forEach(function(doc) {
           codeDict[doc.id] = 1;
+          let tentData = doc.data();
+          let 
           if (doc.id === code) {
             codeExists = true;
           }
         });
+      }
+
+
 
         if (codeExists) {
           do {
             code = Math.floor(1000 + Math.random() * 9000) + "";
           } while (codeDict.hasOwnProperty(code));
         }
+
         canCreateTent = true;
-      } else {
-        canCreateTent = true;
-      }
+
     });
 
     if(canCreateTent){
