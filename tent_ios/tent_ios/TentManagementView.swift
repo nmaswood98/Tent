@@ -9,31 +9,50 @@
 import SwiftUI
 
 struct TentManagementView: View {
-    var tentManagement = TentManagement()
-
     @State private var code: String = ""
+    @State  var showAlert: Bool = false
+    @EnvironmentObject var tentConfig: TentConfig
+    @ObservedObject var tentManagement = TentManagement()
     var body: some View {
-             VStack(alignment: .center) {
+        
+        VStack(alignment: .center) {
                 
-               Text("Join a Tent")
-                   .font(.title)
-                   .foregroundColor(.green)
-                
+                if(tentConfig.code == ""){
+                    Text("Current Tent: None")
+                          .font(.title)
+                          .foregroundColor(.green)
+                          .padding(.bottom,30)
+                }
+                else{
+                    Text("Current Tent: \(tentConfig.code)")
+                          .font(.title)
+                          .foregroundColor(.green)
+                          .padding(.bottom,30)
+                }
+
+                                
                 
                 TextField("Code", text:$code)
                     .multilineTextAlignment(.center)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .keyboardType(.numberPad)
             
-                
-                Button(action:{self.tentManagement.submitCode(value: self.code)}){
+                            
+            Button(action:{self.tentManagement.submitCode(value: self.code, config:self.tentConfig, displayAlert:self.$showAlert)}){
                     Text("Enter")
                         .font(.body)
                         .foregroundColor(.green)
                         .padding(.top,30)
-                }
-           }
-           .padding(15)
+                }.alert(isPresented: $showAlert, content: {
+                    Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
+                })
+            
+
+            
+
+            
+        }.padding(15)
+
     
     }
 }

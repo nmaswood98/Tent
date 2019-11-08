@@ -11,6 +11,8 @@ import UIKit
 import AVFoundation
 
 struct CameraView: UIViewRepresentable {
+    @EnvironmentObject var tentConfig: TentConfig
+    
     let camera: Camera
     let color: UIColor
     func makeUIView(context: Context) -> UIView {

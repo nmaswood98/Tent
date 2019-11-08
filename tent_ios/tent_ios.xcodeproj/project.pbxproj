@@ -13,6 +13,7 @@
 		4C92D78C23558BFF00646CFB /* Tent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D78B23558BFF00646CFB /* Tent.swift */; };
 		4C92D790235596A400646CFB /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D78F235596A400646CFB /* KingfisherSwiftUI */; };
 		4C92D792235596A400646CFB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D791235596A400646CFB /* Kingfisher */; };
+		4C9C5B24237513C300B0C315 /* TentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C5B23237513C300B0C315 /* TentConfig.swift */; };
 		4CAC58E02353AD2100184DEE /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC58DF2353AD2100184DEE /* Camera.swift */; };
 		4CAC58E22353DE4700184DEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC58E12353DE4700184DEE /* GoogleService-Info.plist */; };
 		4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC0870C2352D5070086A5B0 /* AppDelegate.swift */; };
@@ -168,6 +169,7 @@
 		4C0F61A023543DE100A56D14 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		4C92D7792355860A00646CFB /* TentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentView.swift; sourceTree = "<group>"; };
 		4C92D78B23558BFF00646CFB /* Tent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tent.swift; sourceTree = "<group>"; };
+		4C9C5B23237513C300B0C315 /* TentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentConfig.swift; sourceTree = "<group>"; };
 		4CAC58DF2353AD2100184DEE /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		4CAC58E12353DE4700184DEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4CC087092352D5070086A5B0 /* tent_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = tent_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -252,6 +254,7 @@
 				4CC087202352DE860086A5B0 /* CameraView.swift */,
 				4C92D7792355860A00646CFB /* TentView.swift */,
 				4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */,
+				4C9C5B23237513C300B0C315 /* TentConfig.swift */,
 				4CFA83112373DA63005348A3 /* TentManagement.swift */,
 				4C92D78B23558BFF00646CFB /* Tent.swift */,
 				4CAC58DF2353AD2100184DEE /* Camera.swift */,
@@ -579,6 +582,7 @@
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
 				4CAC58E02353AD2100184DEE /* Camera.swift in Sources */,
 				4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */,
+				4C9C5B24237513C300B0C315 /* TentConfig.swift in Sources */,
 				4CC0870F2352D5070086A5B0 /* SceneDelegate.swift in Sources */,
 				4CC087112352D5070086A5B0 /* ContentView.swift in Sources */,
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,

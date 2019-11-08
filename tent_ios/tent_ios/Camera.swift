@@ -20,6 +20,7 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
     
     let uploadManager = UploadManager.shared
     
+    
     override init(){
         
         captureSession = AVCaptureSession()
