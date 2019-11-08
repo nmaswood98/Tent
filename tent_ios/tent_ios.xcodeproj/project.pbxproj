@@ -227,6 +227,25 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		4C28D213237549FE00C1B8BF /* EnvironmentObjects */ = {
+			isa = PBXGroup;
+			children = (
+				4C9C5B23237513C300B0C315 /* TentConfig.swift */,
+			);
+			path = EnvironmentObjects;
+			sourceTree = "<group>";
+		};
+		4C28D22723754A3F00C1B8BF /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CC087102352D5070086A5B0 /* ContentView.swift */,
+				4CC087202352DE860086A5B0 /* CameraView.swift */,
+				4C92D7792355860A00646CFB /* TentView.swift */,
+				4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4CC087002352D5070086A5B0 = {
 			isa = PBXGroup;
 			children = (
@@ -248,13 +267,10 @@
 		4CC0870B2352D5070086A5B0 /* tent_ios */ = {
 			isa = PBXGroup;
 			children = (
+				4C28D213237549FE00C1B8BF /* EnvironmentObjects */,
 				4CC0870C2352D5070086A5B0 /* AppDelegate.swift */,
 				4CC0870E2352D5070086A5B0 /* SceneDelegate.swift */,
-				4CC087102352D5070086A5B0 /* ContentView.swift */,
-				4CC087202352DE860086A5B0 /* CameraView.swift */,
-				4C92D7792355860A00646CFB /* TentView.swift */,
-				4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */,
-				4C9C5B23237513C300B0C315 /* TentConfig.swift */,
+				4C28D22723754A3F00C1B8BF /* Views */,
 				4CFA83112373DA63005348A3 /* TentManagement.swift */,
 				4C92D78B23558BFF00646CFB /* Tent.swift */,
 				4CAC58DF2353AD2100184DEE /* Camera.swift */,
