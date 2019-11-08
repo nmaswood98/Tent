@@ -13,19 +13,18 @@ exports.enterTent = functions.https.onCall((data, context) => {
     
   
     let code = data.code;
-    let enteredTent = false;
-    let tentLoginRef = db.collection('TentLogins').doc(code);
+    let tentName = "False";
+    let tentLoginRef = db.collection('TentLogins').doc(code).collection('Tents');
     await tentLoginRef.get().then(snapshot =>{
-      if (snapshot.exists) {
-        enteredTent = true;
-        // Need to check location also
-      } else {
-        enteredTent = false;
-      }
+        	snapshot.forEach(doc => {
+             	let docName = doc.data().name;
+              	if(docName){
+                	tentName = docName;
+                }
+   	 		});
     });
   
-	
-    resolve(enteredTent ? code : "False")
-    });
+    resolve(tentName)
+    })
 
 });
