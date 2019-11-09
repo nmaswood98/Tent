@@ -11,16 +11,23 @@ admin.initializeApp({
 });
 
 const db = admin.firestore()
-const ky = 40000 / 360;
 
-function checkTentOverlap(checkPoint, centerPoint, distance) {
-  
-  var kx = Math.cos(Math.PI * centerPoint.lat / 180.0) * ky;
-  var dx = Math.abs(centerPoint.long - checkPoint.long) * kx;
-  var dy = Math.abs(centerPoint.lat - checkPoint.lat) * ky;
-  return Math.sqrt(dx * dx + dy * dy) <= distance;
+function doTentsOverlap(tent1, tent2){
+  let deltaLat = tent2.lat - tent1.lat;
+  let deltaLong = tent2.long - tent1.long;
+
+  let a = Math.sin(deltaLat/2) * Math.sin(deltaLat/2) +
+      Math.cos(tent1.lat) * Math.cos(tent2.lat) *
+      Math.sin(deltaLong/2) * Math.sin(deltaLong/2);
+
+  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+  let tentDist = (6371 * c);
+  let maxDist = (tent1.radius + tent2.radius); 
+
+  return (tentDist <= maxDist);
+
 }
-
 
 exports.createTent = async (req, res) => {
 
