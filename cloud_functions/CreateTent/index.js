@@ -29,61 +29,47 @@ function doTentsOverlap(tent1, tent2){
 
 }
 
-exports.createTent = async (req, res) => {
+exports.createTent = functions.https.onCall((newTentLoc, context) => {
+  return new Promise(async (resolve, reject) => {
+    let tentName = uuid();
+    let code = ""; let needNewCode = true; let tentReference = null;
 
-    const {lat, long, radius} = req.body;
-    let code = Math.floor(1000 + Math.random() * 9000) + "";
-    let canCreateTent = false;
+    let tentLoginRef = db.collection("TentLogins");
 
-    let tentLoginRef = db.collection('TentLogins').doc(code).collection("Tents");
-    await tentLoginRef.get().then(snapshot => {
-      if(snapshot.exists){
-        let codeExists = false;
-        let codeDict = {};
+    while (needNewCode) {
+      code = Math.floor(1000 + Math.random() * 9000) + "";
+
+      tentReference = tentLoginRef.doc(code).collection("Tents");
+
+      needNewCode = false;
+
+      await tentReference.get().then(snapshot => {
         snapshot.forEach(function(doc) {
-          codeDict[doc.id] = 1;
-          let tentData = doc.data();
-          let 
-          if (doc.id === code) {
-            codeExists = true;
+          let tent = doc.data().Location;
+          console.log(tent);
+          if (tent && !needNewCode && doTentsOverlap(tent, newTentLoc)) {
+            needNewCode = true;
           }
         });
-      }
-
-
-
-        if (codeExists) {
-          do {
-            code = Math.floor(1000 + Math.random() * 9000) + "";
-          } while (codeDict.hasOwnProperty(code));
-        }
-
-        canCreateTent = true;
-
-    });
-
-    if(canCreateTent){
-
-        let tentName = uuid();
-        await tentLoginRef.doc(code).set({"exists":true})
-        await tentLoginRef.doc(code).collection('Tents')
-          .add({
-            name: tentName,
-            lat: lat,
-            long: long
-          })
-          .then(function(docRef) {
-            res.status(200).send(code);
-          })
-          .catch(function(error) {
-            res.status(200).send("False");
-          });
-
+      });
     }
-    else{
-        res.status(200).send("False");
-    }
-  
-	
 
-};
+    await tentLoginRef.doc(code).set({ exists: true });
+
+    await tentReference
+      .add({
+        Location: {
+          lat: newTentLoc.lat,
+          long: newTentLoc.long,
+          radius: newTentLoc.radius
+        },
+        name: tentName
+      })
+      .then(function(docRef) {
+        resolve({code:code, name: tentName});
+      })
+      .catch(function(error) {
+        reject("Could not create the tent");
+      });
+  });
+});
