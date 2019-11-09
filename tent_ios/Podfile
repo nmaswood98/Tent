@@ -13,4 +13,7 @@ target 'tent_ios' do
   pod 'Firebase/Storage'
   pod 'Firebase/Functions'
 
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
+
 end

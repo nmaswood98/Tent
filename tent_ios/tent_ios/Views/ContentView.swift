@@ -11,7 +11,8 @@ import UIKit
 import AVFoundation
 
 struct ContentView: View {
-    @State var showModal = false
+    @State var showTentEnterModal = false
+    @State var showTentCreationModal = false
     @EnvironmentObject var tentConfig: TentConfig
     
     let camera = Camera()
@@ -30,19 +31,26 @@ struct ContentView: View {
                             Text("Take Picture")
                                 .font(.title)
                                 .foregroundColor(.green)
-                        }.padding(.bottom, 50)
-                        
+                        }
                         NavigationLink(destination: TentView()){
                                 Text("View Tent")
-                                    .font(.caption)
+                                    .font(.title)
                                     .foregroundColor(.green)
-                        }.padding(.bottom,50)
+                        }
+                        Button(action:{self.showTentCreationModal = true}){
+                            Text("Create a Tent")
+                                .font(.title)
+                                .foregroundColor(.green)
+                        }.sheet(isPresented: $showTentCreationModal, content: {
+                            TentCreationView()
+                                .environmentObject(self.tentConfig)
+                        })
                         
-                        Button(action:{self.showModal = true}){
+                        Button(action:{self.showTentEnterModal = true}){
                             Text("Enter a Tent")
                                 .font(.title)
                                 .foregroundColor(.green)
-                        }.sheet(isPresented: $showModal, content: {
+                        }.sheet(isPresented: $showTentEnterModal, content: {
                             TentManagementView()
                                 .environmentObject(self.tentConfig)
                         })
