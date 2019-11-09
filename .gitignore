@@ -90,3 +90,8 @@ fastlane/test_output
 iOSInjectionProject/
 
 GoogleService-info.plist
+
+tentFirebaseAdmin.json
+
+node_modules/
+package-lock.json
