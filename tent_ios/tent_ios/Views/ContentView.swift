@@ -11,6 +11,8 @@ import UIKit
 import AVFoundation
 
 struct ContentView: View {
+    let locationManager: LocationManager
+    
     @State var showTentEnterModal = false
     @State var showTentCreationModal = false
     @EnvironmentObject var tentConfig: TentConfig
@@ -42,7 +44,7 @@ struct ContentView: View {
                                 .font(.title)
                                 .foregroundColor(.green)
                         }.sheet(isPresented: $showTentCreationModal, content: {
-                            TentCreationView()
+                            TentCreationView(locationManager: self.locationManager)
                                 .environmentObject(self.tentConfig)
                         })
                         

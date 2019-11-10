@@ -16,7 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var captureSession: AVCaptureSession?
     var imageOutput: AVCapturePhotoOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
+    
     var tentConfig = TentConfig()
+    var locationManager = LocationManager()
+    
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -28,12 +31,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         UploadManager.shared.addTentConfig(config: tentConfig)
         
-        let contentView = ContentView()
+        let contentView = ContentView(locationManager: locationManager).environmentObject(tentConfig)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(tentConfig))
+            window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }
