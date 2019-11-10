@@ -10,12 +10,12 @@ import SwiftUI
 import CoreLocation
 
 struct TentCreationView: View {
+    @ObservedObject var locationManager: LocationManager
     @EnvironmentObject var tentConfig: TentConfig
     @State  var showAlert: Bool = false
     @State private var radius: Double = 0
     
-    var locationManager = CLLocationManager()
-
+    
     var body: some View {
         VStack(alignment: .center) {
             
@@ -32,7 +32,7 @@ struct TentCreationView: View {
                       .padding(.bottom,30)
             }
 
-            MapView()
+            MapView(currentPosition: locationManager.currentLocation, circleRadius: radius + 3)
                 .frame(height:300)
                 .padding(.bottom, 50)
             
@@ -40,7 +40,7 @@ struct TentCreationView: View {
                 .font(.body)
                 .foregroundColor(.green)
             
-            Slider(value: $radius, in: -100...100, step: 0.1)
+            Slider(value: $radius, in: -2...3, step: 0.01)
                 .frame(width: 300)
                 .padding(.bottom,50)
             
@@ -57,8 +57,4 @@ struct TentCreationView: View {
     }
 }
 
-struct TentCreationView_Previews: PreviewProvider {
-    static var previews: some View {
-        TentCreationView()
-    }
-}
+
