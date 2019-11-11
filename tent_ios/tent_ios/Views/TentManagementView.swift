@@ -12,7 +12,7 @@ struct TentManagementView: View {
     @State private var code: String = ""
     @State  var showAlert: Bool = false
     @EnvironmentObject var tentConfig: TentConfig
-    @ObservedObject var tentManagement = TentManagement()
+     var tentManagement: TentManagement = TentManagement()
     var body: some View {
         
         VStack(alignment: .center) {

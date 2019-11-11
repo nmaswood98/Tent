@@ -17,11 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var imageOutput: AVCapturePhotoOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
     
-    var tentConfig = TentConfig()
-    var locationManager = LocationManager()
     
-
-
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
@@ -29,9 +26,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         
-        UploadManager.shared.addTentConfig(config: tentConfig)
+        let tentConfig = TentConfig()
         
-        let contentView = ContentView(locationManager: locationManager).environmentObject(tentConfig)
+        let tentContent = TentContent(tentConfig: tentConfig)
+        tentConfig.tentContent = tentContent
+        
+        let locationManager = LocationManager()
+        let uploadManager = UploadManager(tentConfig: tentConfig)
+        
+        let camera = Camera(uploadManager: uploadManager)
+
+        let contentView = ContentView(locationManager: locationManager, camera: camera)
+            .environmentObject(tentConfig)
+            .environmentObject(tentContent)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

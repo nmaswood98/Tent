@@ -12,13 +12,13 @@ import FirebaseFirestore
 import FirebaseAuth
 
 class UploadManager {
-    static let shared = UploadManager()
     let storage = Storage.storage()
     let db = Firestore.firestore()
     var tentName = "DefaultTent"
     let userID: String
     var tentConfig: TentConfig?
-    private init(){
+    init(tentConfig: TentConfig){
+        self.tentConfig = tentConfig
         userID = Auth.auth().currentUser!.uid
     }
     
@@ -53,10 +53,5 @@ class UploadManager {
         }
         db.collection("Tents").document(tConfig.name).collection("Images").document(name).setData(data)
     }
-    
-    func addTentConfig(config: TentConfig){
-        tentConfig = config
-    }
-    
-
+        
 }
