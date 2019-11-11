@@ -14,6 +14,7 @@ class TentManagement : ObservableObject {
     @Published var showAlert: Bool = false
     
     lazy var functions = Functions.functions()
+    
 
     init(){
     }

@@ -18,10 +18,11 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
     let backCamera: AVCaptureDevice?
     let deviceInput: AVCaptureDeviceInput?
     
-    let uploadManager = UploadManager.shared
+    let uploadManager: UploadManager
     
-    
-    override init(){
+    init(uploadManager: UploadManager){
+        
+        self.uploadManager = uploadManager
         
         captureSession = AVCaptureSession()
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)

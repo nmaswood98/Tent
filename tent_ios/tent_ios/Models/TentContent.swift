@@ -16,16 +16,20 @@ struct Row: Identifiable {
     var cells: [Cell]
 }
 
-class Tent: ObservableObject{
+class TentContent: ObservableObject{
     @Published var rows:[Row] = []
     let db = Firestore.firestore()
-    var tentName = "DefaultTent"
+    var tentName: String
     var tentConfig: TentConfig 
     var listner: ListenerRegistration?
 
-    init(){
-       tentConfig = UploadManager.shared.tentConfig!
-        self.listner = db.collection("Tents").document(tentConfig.name).collection("Images").addSnapshotListener { querySnapshot, err in
+    init(tentConfig: TentConfig){
+        self.tentConfig = tentConfig
+        tentName = tentConfig.name
+        
+        
+        
+        self.listner = db.collection("Tents").document(tentName).collection("Images").addSnapshotListener { querySnapshot, err in
             guard let snapshot = querySnapshot else {
                 print("Error fetching snapshots: \(err!)")
                 return
@@ -99,15 +103,22 @@ class Tent: ObservableObject{
         
     }
     
-    func changeTent(){
-        rows = []
-        guard let l = listner else {
+    func updateTent(){
+        print("Updating Tent")
+        guard listner != nil else {
             return
         }
         
+        if(tentConfig.name == tentName){
+            return
+        }
+        
+        rows = []
+        tentName = tentConfig.name
+        
         listner!.remove()
         
-        self.listner = db.collection("Tents").document(tentConfig.name).collection("Images").addSnapshotListener { querySnapshot, err in
+        self.listner = db.collection("Tents").document(tentName).collection("Images").addSnapshotListener { querySnapshot, err in
             guard let snapshot = querySnapshot else {
                 print("Error fetching snapshots: \(err!)")
                 return
@@ -130,9 +141,11 @@ class Tent: ObservableObject{
                     }
                 }
             
-        }
+            }
         
     }
+    
+    
 }
 
 struct Cell: Identifiable {

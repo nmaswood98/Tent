@@ -10,12 +10,12 @@
 import SwiftUI
 import KingfisherSwiftUI
 
-struct TentView: View {
-    @EnvironmentObject var tentConfig: TentConfig
-    @ObservedObject var tent = Tent()
+struct TentContentView: View {
+    @EnvironmentObject var tentContent: TentContent
+    
     var body: some View {
         List {
-            ForEach(tent.rows) { row in
+            ForEach(tentContent.rows) { row in
                 HStack(alignment: .center) {
                     ForEach(row.cells) { cell in
                             KFImage(URL(string: cell.imageURL)!)
@@ -30,10 +30,7 @@ struct TentView: View {
         
         }
     }
+    
 }
 
-struct TentView_Previews: PreviewProvider {
-    static var previews: some View {
-        TentView()
-    }
-}
+

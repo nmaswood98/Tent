@@ -11,16 +11,21 @@ import UIKit
 import AVFoundation
 
 struct ContentView: View {
+    
     let locationManager: LocationManager
+    let camera : Camera
+    
+    @EnvironmentObject var tentConfig: TentConfig
+    @EnvironmentObject var tentContent: TentContent
     
     @State var showTentEnterModal = false
     @State var showTentCreationModal = false
-    @EnvironmentObject var tentConfig: TentConfig
     
-    let camera = Camera()
         var body: some View {
+            
             NavigationView{
                 ZStack(alignment: .center){
+ 
                     CameraView(camera: camera, color: UIColor.red)
                         .edgesIgnoringSafeArea(.all)
                         .environmentObject(tentConfig)
@@ -34,7 +39,7 @@ struct ContentView: View {
                                 .font(.title)
                                 .foregroundColor(.green)
                         }
-                        NavigationLink(destination: TentView()){
+                        NavigationLink(destination: TentContentView().environmentObject(tentContent)){
                                 Text("View Tent")
                                     .font(.title)
                                     .foregroundColor(.green)

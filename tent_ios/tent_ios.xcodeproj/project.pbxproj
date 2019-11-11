@@ -11,10 +11,9 @@
 		4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F619E2353EF1D00A56D14 /* UploadManager.swift */; };
 		4C28D22A23776B9A00C1B8BF /* TentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D22923776B9A00C1B8BF /* TentCreationView.swift */; };
 		4C28D24023776E6800C1B8BF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D23F23776E6800C1B8BF /* MapView.swift */; };
-		4C28D25623777B8300C1B8BF /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D25523777B8300C1B8BF /* Map.swift */; };
 		4C28D26C2377E89D00C1B8BF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D26B2377E89D00C1B8BF /* LocationManager.swift */; };
-		4C92D77A2355860A00646CFB /* TentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D7792355860A00646CFB /* TentView.swift */; };
-		4C92D78C23558BFF00646CFB /* Tent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D78B23558BFF00646CFB /* Tent.swift */; };
+		4C92D77A2355860A00646CFB /* TentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D7792355860A00646CFB /* TentContentView.swift */; };
+		4C92D78C23558BFF00646CFB /* TentContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D78B23558BFF00646CFB /* TentContent.swift */; };
 		4C92D790235596A400646CFB /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D78F235596A400646CFB /* KingfisherSwiftUI */; };
 		4C92D792235596A400646CFB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D791235596A400646CFB /* Kingfisher */; };
 		4C9C5B24237513C300B0C315 /* TentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C5B23237513C300B0C315 /* TentConfig.swift */; };
@@ -173,10 +172,9 @@
 		4C0F61A023543DE100A56D14 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		4C28D22923776B9A00C1B8BF /* TentCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentCreationView.swift; sourceTree = "<group>"; };
 		4C28D23F23776E6800C1B8BF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		4C28D25523777B8300C1B8BF /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		4C28D26B2377E89D00C1B8BF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		4C92D7792355860A00646CFB /* TentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentView.swift; sourceTree = "<group>"; };
-		4C92D78B23558BFF00646CFB /* Tent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tent.swift; sourceTree = "<group>"; };
+		4C92D7792355860A00646CFB /* TentContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentContentView.swift; sourceTree = "<group>"; };
+		4C92D78B23558BFF00646CFB /* TentContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentContent.swift; sourceTree = "<group>"; };
 		4C9C5B23237513C300B0C315 /* TentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentConfig.swift; sourceTree = "<group>"; };
 		4CAC58DF2353AD2100184DEE /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
 		4CAC58E12353DE4700184DEE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -235,25 +233,36 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4C28D213237549FE00C1B8BF /* EnvironmentObjects */ = {
+		4C28D213237549FE00C1B8BF /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				4CAC58DF2353AD2100184DEE /* Camera.swift */,
+				4CFA83112373DA63005348A3 /* TentManagement.swift */,
+				4C92D78B23558BFF00646CFB /* TentContent.swift */,
 				4C9C5B23237513C300B0C315 /* TentConfig.swift */,
 			);
-			path = EnvironmentObjects;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		4C28D22723754A3F00C1B8BF /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				4CC087102352D5070086A5B0 /* ContentView.swift */,
 				4CC087202352DE860086A5B0 /* CameraView.swift */,
-				4C92D7792355860A00646CFB /* TentView.swift */,
+				4C92D7792355860A00646CFB /* TentContentView.swift */,
 				4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */,
 				4C28D22923776B9A00C1B8BF /* TentCreationView.swift */,
 				4C28D23F23776E6800C1B8BF /* MapView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4C28D2AC2379279D00C1B8BF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				4C28D26B2377E89D00C1B8BF /* LocationManager.swift */,
+				4C0F619E2353EF1D00A56D14 /* UploadManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		4CC087002352D5070086A5B0 = {
@@ -277,16 +286,12 @@
 		4CC0870B2352D5070086A5B0 /* tent_ios */ = {
 			isa = PBXGroup;
 			children = (
-				4C28D213237549FE00C1B8BF /* EnvironmentObjects */,
 				4CC0870C2352D5070086A5B0 /* AppDelegate.swift */,
 				4CC0870E2352D5070086A5B0 /* SceneDelegate.swift */,
+				4CC087102352D5070086A5B0 /* ContentView.swift */,
 				4C28D22723754A3F00C1B8BF /* Views */,
-				4CFA83112373DA63005348A3 /* TentManagement.swift */,
-				4C92D78B23558BFF00646CFB /* Tent.swift */,
-				4C28D25523777B8300C1B8BF /* Map.swift */,
-				4CAC58DF2353AD2100184DEE /* Camera.swift */,
-				4C28D26B2377E89D00C1B8BF /* LocationManager.swift */,
-				4C0F619E2353EF1D00A56D14 /* UploadManager.swift */,
+				4C28D213237549FE00C1B8BF /* Models */,
+				4C28D2AC2379279D00C1B8BF /* Managers */,
 				4CC087122352D5090086A5B0 /* Assets.xcassets */,
 				4CC087172352D5090086A5B0 /* LaunchScreen.storyboard */,
 				4CC0871A2352D5090086A5B0 /* Info.plist */,
@@ -632,7 +637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4C28D22A23776B9A00C1B8BF /* TentCreationView.swift in Sources */,
-				4C92D78C23558BFF00646CFB /* Tent.swift in Sources */,
+				4C92D78C23558BFF00646CFB /* TentContent.swift in Sources */,
 				4C28D26C2377E89D00C1B8BF /* LocationManager.swift in Sources */,
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
 				4CAC58E02353AD2100184DEE /* Camera.swift in Sources */,
@@ -642,8 +647,7 @@
 				4CC0870F2352D5070086A5B0 /* SceneDelegate.swift in Sources */,
 				4CC087112352D5070086A5B0 /* ContentView.swift in Sources */,
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,
-				4C28D25623777B8300C1B8BF /* Map.swift in Sources */,
-				4C92D77A2355860A00646CFB /* TentView.swift in Sources */,
+				4C92D77A2355860A00646CFB /* TentContentView.swift in Sources */,
 				4CFA82FF2373CF5A005348A3 /* TentManagementView.swift in Sources */,
 				4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */,
 			);
