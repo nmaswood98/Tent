@@ -20,7 +20,16 @@ class TentConfig: ObservableObject{
     
     @Published var code: String = ""
     
+    init(){
+        self.code = UserDefaults.standard.string(forKey: "tentCode") ?? ""
+        self.name = UserDefaults.standard.string(forKey: "tentName") ?? "DefaultTent"
+    }
     
     var tentContent: TentContent? = nil
+    
+    func persistData(){
+        UserDefaults.standard.set(self.code, forKey: "tentCode")
+        UserDefaults.standard.set(self.name, forKey: "tentName")
+    }
     
 }

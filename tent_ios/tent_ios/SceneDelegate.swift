@@ -16,7 +16,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var captureSession: AVCaptureSession?
     var imageOutput: AVCapturePhotoOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
-    
+    let tentConfig = TentConfig()
+
     
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -26,8 +27,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         
-        let tentConfig = TentConfig()
-        
+                
         let tentContent = TentContent(tentConfig: tentConfig)
         tentConfig.tentContent = tentContent
         
@@ -55,6 +55,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This occurs shortly after the scene enters the background, or when its session is discarded.
         // Release any resources associated with this scene that can be re-created the next time the scene connects.
         // The scene may re-connect later, as its session was not neccessarily discarded (see `application:didDiscardSceneSessions` instead).
+        
+        tentConfig.persistData()
     }
 
     func sceneDidBecomeActive(_ scene: UIScene) {

@@ -10,6 +10,10 @@ import Foundation
 import CoreLocation
 import SwiftUI
 
+extension Double {
+    var radian: Double { return Double(self) * .pi / 180 }
+}
+
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
 
