@@ -12,10 +12,11 @@ import CoreLocation
 struct TentCreationView: View {
     @ObservedObject var locationManager: LocationManager
     @EnvironmentObject var tentConfig: TentConfig
-    @State  var showAlert: Bool = false
+    @State var showAlert: Bool = false
     @State private var radius: Double = 0
     
-    
+    var tentManagement: TentManagement = TentManagement()
+
     var body: some View {
         VStack(alignment: .center) {
             
@@ -44,7 +45,7 @@ struct TentCreationView: View {
                 .frame(width: 300)
                 .padding(.bottom,50)
             
-            Button(action:{}){
+            Button(action:{self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig)}){
                     Text("Build a new Tent")
                         .font(.body)
                         .foregroundColor(.green)

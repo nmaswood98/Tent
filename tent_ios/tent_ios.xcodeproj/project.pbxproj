@@ -26,7 +26,7 @@
 		4CC087162352D5090086A5B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC087152352D5090086A5B0 /* Preview Assets.xcassets */; };
 		4CC087192352D5090086A5B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC087172352D5090086A5B0 /* LaunchScreen.storyboard */; };
 		4CC087212352DE860086A5B0 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC087202352DE860086A5B0 /* CameraView.swift */; };
-		4CFA82FF2373CF5A005348A3 /* TentManagementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */; };
+		4CFA82FF2373CF5A005348A3 /* TentJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA82FE2373CF5A005348A3 /* TentJoinView.swift */; };
 		4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA83112373DA63005348A3 /* TentManagement.swift */; };
 /* End PBXBuildFile section */
 
@@ -187,7 +187,7 @@
 		4CC087182352D5090086A5B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CC0871A2352D5090086A5B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CC087202352DE860086A5B0 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentManagementView.swift; sourceTree = "<group>"; };
+		4CFA82FE2373CF5A005348A3 /* TentJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentJoinView.swift; sourceTree = "<group>"; };
 		4CFA83112373DA63005348A3 /* TentManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentManagement.swift; sourceTree = "<group>"; };
 		51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9C2A77E255123014A3875B7C /* Pods-tent_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -249,7 +249,7 @@
 			children = (
 				4CC087202352DE860086A5B0 /* CameraView.swift */,
 				4C92D7792355860A00646CFB /* TentContentView.swift */,
-				4CFA82FE2373CF5A005348A3 /* TentManagementView.swift */,
+				4CFA82FE2373CF5A005348A3 /* TentJoinView.swift */,
 				4C28D22923776B9A00C1B8BF /* TentCreationView.swift */,
 				4C28D23F23776E6800C1B8BF /* MapView.swift */,
 			);
@@ -648,7 +648,7 @@
 				4CC087112352D5070086A5B0 /* ContentView.swift in Sources */,
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,
 				4C92D77A2355860A00646CFB /* TentContentView.swift in Sources */,
-				4CFA82FF2373CF5A005348A3 /* TentManagementView.swift in Sources */,
+				4CFA82FF2373CF5A005348A3 /* TentJoinView.swift in Sources */,
 				4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

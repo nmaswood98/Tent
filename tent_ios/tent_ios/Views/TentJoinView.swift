@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TentManagementView: View {
+struct TentJoinView: View {
     @State private var code: String = ""
     @State  var showAlert: Bool = false
     @EnvironmentObject var tentConfig: TentConfig
@@ -31,7 +31,6 @@ struct TentManagementView: View {
                 }
 
                                 
-                
                 TextField("Code", text:$code)
                     .multilineTextAlignment(.center)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -46,10 +45,6 @@ struct TentManagementView: View {
                 }.alert(isPresented: $showAlert, content: {
                     Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
                 })
-            
-
-            
-
             
         }.padding(15)
 
