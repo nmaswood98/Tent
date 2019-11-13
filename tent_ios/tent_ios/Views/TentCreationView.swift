@@ -45,7 +45,7 @@ struct TentCreationView: View {
                 .frame(width: 300)
                 .padding(.bottom,50)
             
-            Button(action:{self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig)}){
+            Button(action:{self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, displayAlert:self.$showAlert)}){
                     Text("Build a new Tent")
                         .font(.body)
                         .foregroundColor(.green)

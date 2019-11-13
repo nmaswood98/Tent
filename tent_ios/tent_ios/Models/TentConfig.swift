@@ -32,4 +32,5 @@ class TentConfig: ObservableObject{
         UserDefaults.standard.set(self.name, forKey: "tentName")
     }
     
+    
 }

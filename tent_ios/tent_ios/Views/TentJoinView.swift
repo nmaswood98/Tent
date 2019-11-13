@@ -9,6 +9,7 @@
 import SwiftUI
 
 struct TentJoinView: View {
+    @ObservedObject var locationManager: LocationManager
     @State private var code: String = ""
     @State  var showAlert: Bool = false
     @EnvironmentObject var tentConfig: TentConfig
@@ -29,6 +30,10 @@ struct TentJoinView: View {
                           .foregroundColor(.green)
                           .padding(.bottom,30)
                 }
+            
+            MapView(currentPosition: locationManager.currentLocation, circleRadius: 0)
+                .frame(height:300)
+                .padding(.bottom, 50)
 
                                 
                 TextField("Code", text:$code)

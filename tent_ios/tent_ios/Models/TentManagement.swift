@@ -19,12 +19,13 @@ class TentManagement : ObservableObject {
     init(){
     }
     
-    func createTent(location:CLLocationCoordinate2D, radius: Double, config: TentConfig){
+    func createTent(location:CLLocationCoordinate2D, radius: Double, config: TentConfig,displayAlert: Binding<Bool>){
         print("Creating Tent")
     functions.httpsCallable("CreateTent").call(["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius]){ (result,error) in
             print("Got Creation result")
             if let error = error as NSError? {
-              print(error)
+                print(error)
+                displayAlert.wrappedValue = true
             }
             
             

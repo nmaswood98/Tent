@@ -58,7 +58,7 @@ struct ContentView: View {
                                 .font(.title)
                                 .foregroundColor(.green)
                         }.sheet(isPresented: $showTentEnterModal, content: {
-                            TentJoinView()
+                            TentJoinView(locationManager: self.locationManager)
                                 .environmentObject(self.tentConfig)
                         })
                         
