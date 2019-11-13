@@ -13,110 +13,61 @@ admin.initializeApp({
 
   const db = admin.firestore();
 
-  function doTentsOverlap(tent1, tent2){
-    let deltaLat = tent2.lat - tent1.lat;
-    let deltaLong = tent2.long - tent1.long;
+
+  function isUserInTent(userLoc, tent){
+    
+    let deltaLat = tent.lat - userLoc.lat;
+    let deltaLong = tent.long - userLoc.long;
   
     let a = Math.sin(deltaLat/2) * Math.sin(deltaLat/2) +
-        Math.cos(tent1.lat) * Math.cos(tent2.lat) *
+        Math.cos(userLoc.lat) * Math.cos(tent.lat) *
         Math.sin(deltaLong/2) * Math.sin(deltaLong/2);
   
     let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   
     let tentDist = (6371 * c);
-    let maxDist = (tent1.radius + tent2.radius); 
   
-    return (tentDist <= maxDist);
+    return (tentDist <= tent.radius);
   
   }
 
-  async function test(){
-    
-     tentReference = db
-        .collection("Tents")
-        .where('code','==','1234')
 
-        let a = performance.now();
-        await tentReference.get().then(snapshot => {
-          snapshot.forEach(function(doc) {
-            let tent = doc.data().Location;
-            console.log(tent);
-          });
-        });
-        let b = performance.now();
-
-        console.log("Call to doSomething took " + (b - a) + " milliseconds.");
-
-
-        tentReference2 = db
-        .collection("TentLogins")
-        .doc('1234')
-        .collection('Tents');
-
-
-        a = performance.now();
-        await tentReference2.get().then(snapshot => {
-          snapshot.forEach(function(doc) {
-            let tent = doc.data().Location;
-            console.log(tent);
-          });
-        });
-        b = performance.now();
-        console.log("Call to doSomething took " + (b - a) + " milliseconds.");
-
-
-      
-
-    
-  }
 
   async function hello() {
-    let testTent = { lat: 0.71246300071, long: -1.2753712511, radius: 50 };
-    let tentName = "TENTY";
-    let code = "-404";
-    let needNewCode = true;
-    let tentReference = null;
+ 
+      let code = data.code;
+      let tentName = "";
+      let foundTent = false;
 
-    let tentLoginRef = db
-    .collection("TentLogins")
-
-    while (needNewCode) {
-      code = Math.floor(1000 + Math.random() * 9000) + "";
-
-      tentReference = tentLoginRef
-        .doc(code)
-        .collection("Tents");
-
-      needNewCode = false;
-
-      await tentReference.get().then(snapshot => {
-        snapshot.forEach(function(doc) {
-          let tent = doc.data().Location;
-          console.log(tent);
-          if (tent && !needNewCode && doTentsOverlap(tent, testTent)) {
-            needNewCode = true;
-          }
-        });
+      let tentLoginRef = db.collection('TentLogins').doc(code).collection('Tents');
+      await tentLoginRef.get().then(snapshot =>{
+            snapshot.forEach(doc => {
+                if (!foundTent) {
+                  let tentData = doc.data();
+                  if (isUserInTent(data,tentData)){
+                    tentName = tentData.name;
+                    foundTent = true;
+                  }
+                }
+            });
       });
 
-    }
-
-    await tentLoginRef.doc(code).set({ exists: true });
-
-    await tentReference
-      .add({
-        "Location": {lat: testTent.lat, long: testTent.long, radius: testTent.radius},
-        name: tentName
-      })
-      .then(function(docRef) {
-        console.log(code);
-      })
-      .catch(function(error) {
-        console.log("False");
-      });
+      if(foundTent){
+        console.log(tentName);
+      }
+      else {
+        console.log("Couldn't Find");
+      }
+    
+     
 
   }
 
-  hello();
+  let tentTest = {lat: 0.711492510379, long: -1.28281659879, radius: 3}
+  let pos = {lat: 0.711083667002, long: -1.28312203141}
+
+  console.log(isUserInTentLocation(pos,tentTest));
+
+  //hello();
 
   
