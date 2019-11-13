@@ -31,10 +31,6 @@ struct TentJoinView: View {
                           .padding(.bottom,30)
                 }
             
-            MapView(currentPosition: locationManager.currentLocation, circleRadius: 0)
-                .frame(height:300)
-                .padding(.bottom, 50)
-
                                 
                 TextField("Code", text:$code)
                     .multilineTextAlignment(.center)
@@ -42,7 +38,7 @@ struct TentJoinView: View {
                     .keyboardType(.numberPad)
             
                             
-            Button(action:{self.tentManagement.submitCode(value: self.code, config:self.tentConfig, displayAlert:self.$showAlert)}){
+            Button(action:{self.tentManagement.submitCode(value: self.code, location: self.locationManager.currentLocation, config:self.tentConfig, displayAlert:self.$showAlert)}){
                     Text("Enter")
                         .font(.body)
                         .foregroundColor(.green)
