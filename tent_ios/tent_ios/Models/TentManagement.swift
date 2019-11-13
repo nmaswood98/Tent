@@ -39,13 +39,14 @@ class TentManagement : ObservableObject {
         }
     }
     
-    func submitCode(value: String, config: TentConfig, displayAlert: Binding<Bool>){
+    func submitCode(value: String, location: CLLocationCoordinate2D, config: TentConfig, displayAlert: Binding<Bool>){
         print("Submitting Code")
-        functions.httpsCallable("JoinTent").call(["code": value]) { (result, error) in
+        functions.httpsCallable("JoinTent").call(["code": value,"lat":location.latitude.radian,"long":location.longitude.radian]) { (result, error) in
             print("Got code result")
           if let error = error as NSError? {
             print(error)
-          }
+            displayAlert.wrappedValue = true
+          }else
             if let text = result?.data as? String {
                 
                 if(text == "False"){

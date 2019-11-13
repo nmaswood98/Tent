@@ -15,7 +15,6 @@ admin.initializeApp({
 
 
   function isUserInTent(userLoc, tent){
-    
     let deltaLat = tent.lat - userLoc.lat;
     let deltaLong = tent.long - userLoc.long;
   
@@ -34,17 +33,17 @@ admin.initializeApp({
 
 
   async function hello() {
- 
+      let data  = {lat: 0.7111082238, long: -1.2832674697, code:"2175"};
       let code = data.code;
       let tentName = "";
       let foundTent = false;
-
+      
       let tentLoginRef = db.collection('TentLogins').doc(code).collection('Tents');
       await tentLoginRef.get().then(snapshot =>{
             snapshot.forEach(doc => {
                 if (!foundTent) {
                   let tentData = doc.data();
-                  if (isUserInTent(data,tentData)){
+                  if (isUserInTent(data,tentData.Location)){
                     tentName = tentData.name;
                     foundTent = true;
                   }
@@ -63,11 +62,13 @@ admin.initializeApp({
 
   }
 
-  let tentTest = {lat: 0.711492510379, long: -1.28281659879, radius: 3}
-  let pos = {lat: 0.711083667002, long: -1.28312203141}
+  let tentTest = {lat: 0.7111100868758237, long: -1.2832668076375022, radius: 0.3}
+  let data  = {lat: 0.7111082238, long: -1.2832674697, code:"2175"};
 
-  console.log(isUserInTentLocation(pos,tentTest));
+  console.log(isUserInTent(data,tentTest));
 
+
+hello();
   //hello();
 
   

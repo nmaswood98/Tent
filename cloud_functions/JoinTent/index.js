@@ -37,7 +37,7 @@ exports.enterTent = functions.https.onCall((data, context) => {
           snapshot.forEach(doc => {
               if (!foundTent) {
                 let tentData = doc.data();
-                if (isUserInTent(data,tentData)){
+                if (isUserInTent(data,tentData.Location)){
                   tentName = tentData.name;
                   foundTent = true;
                 }
