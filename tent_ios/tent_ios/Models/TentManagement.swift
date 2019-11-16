@@ -34,6 +34,8 @@ class TentManagement : ObservableObject {
                 if let code = data["code"] as? String, let name = data["name"] as? String {
                     config.code = code
                     config.name = name
+                    config.tentLocation = TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius)
+
                 }
             }
             
@@ -62,7 +64,11 @@ class TentManagement : ObservableObject {
                 if let text = data["name"] as? String, let loc = data["Location"] as? NSDictionary {
                     config.code =  value
                     config.name = text
-                    print("Location: \n \(loc)");
+                    if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
+                        config.tentLocation = TentLocation(lat: lat, long: long, radius: radius)
+                    }
+
+                    print("Location: \n \(config.tentLocation)");
                 }
             }
             
