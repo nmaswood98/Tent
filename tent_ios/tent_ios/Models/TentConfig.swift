@@ -20,6 +20,8 @@ class TentConfig: ObservableObject{
     
     @Published var code: String = ""
     
+    var tentLocation: TentLocation = TentLocation(lat: 0, long: 0, radius: 0)
+    
     init(){
         self.code = UserDefaults.standard.string(forKey: "tentCode") ?? ""
         self.name = UserDefaults.standard.string(forKey: "tentName") ?? "DefaultTent"

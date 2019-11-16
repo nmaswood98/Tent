@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2E28A2B129AE26A921DC557D /* Pods_tent_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */; };
 		4C06CC9C237FA2E700201425 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06CC9B237FA2E700201425 /* LoadingView.swift */; };
+		4C06CCB2237FAC6E00201425 /* TentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06CCB1237FAC6E00201425 /* TentLocation.swift */; };
 		4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F619E2353EF1D00A56D14 /* UploadManager.swift */; };
 		4C28D22A23776B9A00C1B8BF /* TentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D22923776B9A00C1B8BF /* TentCreationView.swift */; };
 		4C28D24023776E6800C1B8BF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D23F23776E6800C1B8BF /* MapView.swift */; };
@@ -170,6 +171,7 @@
 /* Begin PBXFileReference section */
 		12D1BD8F9D8E7FE8B830FE56 /* Pods-tent_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios.debug.xcconfig"; sourceTree = "<group>"; };
 		4C06CC9B237FA2E700201425 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		4C06CCB1237FAC6E00201425 /* TentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentLocation.swift; sourceTree = "<group>"; };
 		4C0F619E2353EF1D00A56D14 /* UploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadManager.swift; sourceTree = "<group>"; };
 		4C0F61A023543DE100A56D14 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		4C28D22923776B9A00C1B8BF /* TentCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentCreationView.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				4CAC58DF2353AD2100184DEE /* Camera.swift */,
 				4CFA83112373DA63005348A3 /* TentManagement.swift */,
 				4C92D78B23558BFF00646CFB /* TentContent.swift */,
+				4C06CCB1237FAC6E00201425 /* TentLocation.swift */,
 				4C9C5B23237513C300B0C315 /* TentConfig.swift */,
 			);
 			path = Models;
@@ -649,6 +652,7 @@
 			files = (
 				4C28D22A23776B9A00C1B8BF /* TentCreationView.swift in Sources */,
 				4C92D78C23558BFF00646CFB /* TentContent.swift in Sources */,
+				4C06CCB2237FAC6E00201425 /* TentLocation.swift in Sources */,
 				4C28D26C2377E89D00C1B8BF /* LocationManager.swift in Sources */,
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
 				4CAC58E02353AD2100184DEE /* Camera.swift in Sources */,
