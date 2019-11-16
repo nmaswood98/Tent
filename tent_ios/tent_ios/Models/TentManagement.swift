@@ -56,13 +56,16 @@ class TentManagement : ObservableObject {
                 if(text == "False"){
                     displayAlert.wrappedValue = true
                 }
-                else {
-                    print(text)
-                    config.code =  value
-                    config.name = text
-                }
                 
           }
+            if let data = result?.data as? NSDictionary {
+                if let text = data["name"] as? String, let loc = data["Location"] as? NSDictionary {
+                    config.code =  value
+                    config.name = text
+                    print("Location: \n \(loc)");
+                }
+            }
+            
         }
         loadingAlert.wrappedValue = true
     }

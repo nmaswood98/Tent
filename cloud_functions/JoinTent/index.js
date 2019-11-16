@@ -30,6 +30,7 @@ exports.enterTent = functions.https.onCall((data, context) => {
 
     let code = data.code;
     let tentName = "";
+    let tentLocationData = {};
     let foundTent = false;
     
     let tentLoginRef = db.collection('TentLogins').doc(code).collection('Tents');
@@ -39,6 +40,7 @@ exports.enterTent = functions.https.onCall((data, context) => {
                 let tentData = doc.data();
                 if (isUserInTent(data,tentData.Location)){
                   tentName = tentData.name;
+                  tentLocationData = tentData.Location;
                   foundTent = true;
                 }
               }
@@ -46,7 +48,7 @@ exports.enterTent = functions.https.onCall((data, context) => {
     });
 
     if(foundTent){
-      resolve(tentName);
+      resolve({name:tentName,Location:tentLocationData});
     }
     else {
       reject("Couldn't Find Tent");
