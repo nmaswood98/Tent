@@ -36,18 +36,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let camera = Camera(uploadManager: uploadManager)
 
-        /*
+        
         let contentView = ContentView(locationManager: locationManager, camera: camera)
             .environmentObject(tentConfig)
             .environmentObject(tentContent)
- */
+ 
         
-        let designView = DesignView(camera: camera).environmentObject(tentConfig)
+       // let designView = DesignView(camera: camera).environmentObject(tentConfig)
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: designView)
+            window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }

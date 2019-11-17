@@ -30,29 +30,57 @@ struct ContentView: View {
                         .edgesIgnoringSafeArea(.all)
                         .environmentObject(tentConfig)
                     VStack{
-                        Text((tentConfig.code == "") ? "Tent" : "Tent: \(tentConfig.code)")
-                            .font(.largeTitle)
-                            .foregroundColor(.green)
                         Spacer()
-                        Button(action:takePicture){
-                            Text("Take Picture")
-                                .font(.title)
+
+
+                        
+                        Button(action:{self.showTentEnterModal = true}){
+                            Text((tentConfig.code == "") ? "Tent" : "Tent: \(tentConfig.code)")
                                 .foregroundColor(.green)
-                        }
-                        NavigationLink(destination: TentContentView().environmentObject(tentContent)){
-                                Text("View Tent")
-                                    .font(.title)
-                                    .foregroundColor(.green)
-                        }
-                        Button(action:{self.showTentCreationModal = true}){
-                            Text("Create a Tent")
-                                .font(.title)
-                                .foregroundColor(.green)
-                        }.sheet(isPresented: $showTentCreationModal, content: {
-                            TentCreationView(locationManager: self.locationManager)
+                        }.sheet(isPresented: $showTentEnterModal, content: {
+                            TentJoinView(locationManager: self.locationManager)
                                 .environmentObject(self.tentConfig)
                         })
                         
+                        ZStack{
+                            BlurView(style: .dark)
+                            
+                            HStack(spacing:60){
+                                
+                                NavigationLink(destination: TentContentView().environmentObject(tentContent)){
+                                        Rectangle()
+                                            .fill(Color.red)
+                                            .opacity(0.5)
+                                            .frame(width: 45, height: 45)
+                                }
+
+                                Button(action:takePicture){
+                                    Circle()
+                                        .fill(Color.green)
+                                        .opacity(0.5)
+                                        .frame(width: 75)
+                                        .padding(.bottom, 10)
+                                }
+                                
+                                Button(action:{self.showTentCreationModal = true}){
+                                    Rectangle()
+                                        .fill(Color.blue)
+                                        .opacity(0.5)
+                                        .frame(width: 45, height: 45)
+                                }.sheet(isPresented: $showTentCreationModal, content: {
+                                    TentCreationView(locationManager: self.locationManager)
+                                        .environmentObject(self.tentConfig)
+                                })
+                                
+                            }
+                            
+                            
+                        }
+                        .frame(minWidth: 0, maxWidth: .infinity)
+                        .frame( height: 125, alignment: .bottom)
+                        
+                        
+                        /*
                         Button(action:{self.showTentEnterModal = true}){
                             Text("Enter a Tent")
                                 .font(.title)
@@ -61,9 +89,11 @@ struct ContentView: View {
                             TentJoinView(locationManager: self.locationManager)
                                 .environmentObject(self.tentConfig)
                         })
-                        
+                        */
                     
                     }
+                    .edgesIgnoringSafeArea(.all)
+
                 }
             }.navigationBarHidden(true)
     }

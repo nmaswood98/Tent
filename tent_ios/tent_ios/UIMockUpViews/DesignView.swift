@@ -31,11 +31,13 @@ struct DesignView: View {
                                 .opacity(0.5)
                                 .frame(width: 45, height: 45)
                             
-                            Circle()
-                                .fill(Color.green)
-                                .opacity(0.5)
-                                .frame(width: 75)
-                                .padding(.bottom, 10)
+                            Button(action:{print("Took Picture")}){
+                                Circle()
+                                    .fill(Color.green)
+                                    .opacity(0.5)
+                                    .frame(width: 75)
+                                    .padding(.bottom, 10)
+                            }
                             
                             Rectangle()
                                 .fill(Color.blue)
