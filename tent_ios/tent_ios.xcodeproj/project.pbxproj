@@ -307,7 +307,7 @@
 				4CC0870C2352D5070086A5B0 /* AppDelegate.swift */,
 				4CC0870E2352D5070086A5B0 /* SceneDelegate.swift */,
 				4CC087102352D5070086A5B0 /* ContentView.swift */,
-				90E60D1323811D4A00C6E502 /* DesignView.swift */,
+				90E60D3123812B1800C6E502 /* UIMockUpViews */,
 				4C06CCB0237FA61300201425 /* OtherViews */,
 				4C28D22723754A3F00C1B8BF /* MainViews */,
 				4C28D213237549FE00C1B8BF /* Models */,
@@ -336,6 +336,14 @@
 				51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		90E60D3123812B1800C6E502 /* UIMockUpViews */ = {
+			isa = PBXGroup;
+			children = (
+				90E60D1323811D4A00C6E502 /* DesignView.swift */,
+			);
+			path = UIMockUpViews;
 			sourceTree = "<group>";
 		};
 		ED4AF1108802D9A97A856FFF /* Pods */ = {
