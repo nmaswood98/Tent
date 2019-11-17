@@ -148,7 +148,7 @@ DEPENDENCIES:
   - GooglePlaces
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - BoringSSL-GRPC
     - Firebase
     - FirebaseAnalytics
@@ -202,4 +202,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 5cb06b09208053b45bd98bc7d4d272dbf9ff4da5
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4
