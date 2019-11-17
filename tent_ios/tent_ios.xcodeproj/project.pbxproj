@@ -30,6 +30,8 @@
 		4CC087212352DE860086A5B0 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC087202352DE860086A5B0 /* CameraView.swift */; };
 		4CFA82FF2373CF5A005348A3 /* TentJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA82FE2373CF5A005348A3 /* TentJoinView.swift */; };
 		4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA83112373DA63005348A3 /* TentManagement.swift */; };
+		90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D1323811D4A00C6E502 /* DesignView.swift */; };
+		90E60D30238122E900C6E502 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D2F238122E900C6E502 /* BlurView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +196,8 @@
 		4CFA82FE2373CF5A005348A3 /* TentJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentJoinView.swift; sourceTree = "<group>"; };
 		4CFA83112373DA63005348A3 /* TentManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentManagement.swift; sourceTree = "<group>"; };
 		51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		90E60D1323811D4A00C6E502 /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
+		90E60D2F238122E900C6E502 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		9C2A77E255123014A3875B7C /* Pods-tent_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,6 +219,7 @@
 			isa = PBXGroup;
 			children = (
 				4C28D23F23776E6800C1B8BF /* MapView.swift */,
+				90E60D2F238122E900C6E502 /* BlurView.swift */,
 				4C06CC9B237FA2E700201425 /* LoadingView.swift */,
 			);
 			path = OtherViews;
@@ -302,6 +307,7 @@
 				4CC0870C2352D5070086A5B0 /* AppDelegate.swift */,
 				4CC0870E2352D5070086A5B0 /* SceneDelegate.swift */,
 				4CC087102352D5070086A5B0 /* ContentView.swift */,
+				90E60D1323811D4A00C6E502 /* DesignView.swift */,
 				4C06CCB0237FA61300201425 /* OtherViews */,
 				4C28D22723754A3F00C1B8BF /* MainViews */,
 				4C28D213237549FE00C1B8BF /* Models */,
@@ -567,22 +573,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources.sh",
-				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
-				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		59B9686D022929C67DB971FB /* [CP] Check Pods Manifest.lock */ = {
@@ -613,34 +612,15 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
-				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
-				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
-				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -655,6 +635,7 @@
 				4C06CCB2237FAC6E00201425 /* TentLocation.swift in Sources */,
 				4C28D26C2377E89D00C1B8BF /* LocationManager.swift in Sources */,
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
+				90E60D30238122E900C6E502 /* BlurView.swift in Sources */,
 				4CAC58E02353AD2100184DEE /* Camera.swift in Sources */,
 				4C28D24023776E6800C1B8BF /* MapView.swift in Sources */,
 				4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */,
@@ -662,6 +643,7 @@
 				4C06CC9C237FA2E700201425 /* LoadingView.swift in Sources */,
 				4CC0870F2352D5070086A5B0 /* SceneDelegate.swift in Sources */,
 				4CC087112352D5070086A5B0 /* ContentView.swift in Sources */,
+				90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */,
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,
 				4C92D77A2355860A00646CFB /* TentContentView.swift in Sources */,
 				4CFA82FF2373CF5A005348A3 /* TentJoinView.swift in Sources */,
