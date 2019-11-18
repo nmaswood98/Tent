@@ -17,9 +17,9 @@ struct BlurView: UIViewRepresentable {
         
         view.backgroundColor = .clear
         
-let blurEffect = UIBlurEffect(style: style)
+        let blurEffect = UIBlurEffect(style: style)
         
-                let blurView = UIVisualEffectView(effect: blurEffect)
+        let blurView = UIVisualEffectView(effect: blurEffect)
         
         blurView.translatesAutoresizingMaskIntoConstraints = false
         
