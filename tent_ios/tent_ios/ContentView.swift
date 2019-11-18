@@ -48,29 +48,40 @@ struct ContentView: View {
                             HStack(spacing:60){
                                 
                                 NavigationLink(destination: TentContentView().environmentObject(tentContent)){
-                                        Rectangle()
-                                            .fill(Color.red)
-                                            .opacity(0.5)
-                                            .frame(width: 45, height: 45)
+                                        Image("gallery")
+                                            .resizable()
+                                            .frame(width: 50, height: 50)
                                 }
+                                .buttonStyle(PlainButtonStyle())
+
 
                                 Button(action:takePicture){
-                                    Circle()
-                                        .fill(Color.green)
-                                        .opacity(0.5)
+                                        ZStack{
+                                            Circle()
+                                                .fill(Color.gray)
+                                                .opacity(1)
+                                            Circle()
+                                                .fill(Color.white)
+                                                .opacity(1)
+                                                .frame(width:65)
+
+                                        }
                                         .frame(width: 75)
                                         .padding(.bottom, 10)
-                                }
+
+                                    }
                                 
                                 Button(action:{self.showTentCreationModal = true}){
-                                    Rectangle()
-                                        .fill(Color.blue)
-                                        .opacity(0.5)
-                                        .frame(width: 45, height: 45)
+                                    Image("tent")
+                                        .resizable()
+                                        .frame(width: 50, height: 50)
+                                        .padding(.top, 5)
                                 }.sheet(isPresented: $showTentCreationModal, content: {
                                     TentCreationView(locationManager: self.locationManager)
                                         .environmentObject(self.tentConfig)
                                 })
+                                .buttonStyle(PlainButtonStyle())
+
                                 
                             }
                             
