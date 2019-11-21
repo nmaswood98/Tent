@@ -2,6 +2,10 @@
 Possible Names: SnapTent , PictoTent , CapTent
 An app that allows image capture synchronization based on location. 
 
+## Trello Board
+
+https://trello.com/b/oF4K9xJO/tent
+
 ## What is a tent? 
 
 A tent is a digital area of a specified size at a location. 
