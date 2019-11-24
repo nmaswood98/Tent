@@ -9,7 +9,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var open: Bool = false
+    
     var body: some View {
+        
                 
             ZStack{
                 Rectangle()
@@ -18,8 +21,61 @@ struct ContentView: View {
                 VStack{
                     
                     Spacer()
-                    Text("Tent: 1234")
-                        .foregroundColor(.green)
+
+                        VStack{
+                            ZStack{
+                                Rectangle()
+                                    .fill(Color.white)
+                                    .frame(width: 300, height: 100)
+                                    .cornerRadius(20)
+                                
+                                HStack(spacing:27){
+                                    Image("redtent")
+                                        .resizable()
+                                        .frame(width: 70, height: 70)
+                                        .padding(.bottom, 3)
+                                    
+                                    Text("   Join a Tent  ")
+                                        .font(.custom("text", size: 20))
+                                }
+                            }
+                            .padding(10)
+                            
+                            
+                            
+                            ZStack{
+                                Rectangle()
+                                    .fill(Color.white)
+                                    .frame(width: 300, height: 100)
+                                    .cornerRadius(20)
+                                
+                                HStack(spacing:30){
+                                    Image("bluetent")
+                                        .resizable()
+                                        .frame(width: 70, height: 70)
+                                        .padding(.bottom, 3)
+                                    
+                                    Text("Create a Tent")
+                                        .font(.custom("text", size: 20))
+                                }
+                            }
+                            .padding(10)
+                        }
+                        .offset(y:open ? 0 : UIScreen.main.bounds.height)
+                        .animation(.default)
+                    
+                    if (!open){
+                        Text("Tent: 1234")
+                            .foregroundColor(.green)
+                    }
+
+                    
+                   
+                    
+
+                    
+
+
                     ZStack{
                         Rectangle()
                             .fill(Color.black)
@@ -33,11 +89,11 @@ struct ContentView: View {
                                 ZStack{
                                     Circle()
                                         .fill(Color.gray)
-                                        .opacity(0.5)
+                                        .opacity(1)
                                     Circle()
                                         .fill(Color.white)
                                         .opacity(1)
-                                        .frame(width:60)
+                                        .frame(width:65)
 
                                 }
                                 .frame(width: 75)
@@ -45,10 +101,16 @@ struct ContentView: View {
 
                             }
                             
-                            Image("tent")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                                .padding(.top, 5)
+
+                            
+                            Button(action:{
+                                self.open.toggle()
+                            }){
+                                Image("tent")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                                    .padding(.top, 5)
+                            }
 
                             
 
