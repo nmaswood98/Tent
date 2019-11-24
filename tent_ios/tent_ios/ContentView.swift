@@ -20,6 +20,7 @@ struct ContentView: View {
     
     @State var showTentEnterModal = false
     @State var showTentCreationModal = false
+    @State var open = false
     
         var body: some View {
             
@@ -31,19 +32,85 @@ struct ContentView: View {
                         .environmentObject(tentConfig)
                     VStack{
                         Spacer()
+                        
+                        VStack{
+                            
+                            Button(action:{
+                                self.showTentEnterModal = true
+                                self.open.toggle()
+                            }){
+                                ZStack{
+                                    Rectangle()
+                                        .fill(Color.white)
+                                        .frame(width: 300, height: 100)
+                                        .cornerRadius(20)
+                                    
+                                    HStack(spacing:27){
+                                        Image("redtent")
+                                            .resizable()
+                                            .frame(width: 70, height: 70)
+                                            .padding(.bottom, 3)
+                                        
+                                        Text("   Join a Tent  ")
+                                            .font(.custom("text", size: 20))
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                                .padding(10)
+                            }.sheet(isPresented: $showTentEnterModal, content: {
+                                TentJoinView(locationManager: self.locationManager)
+                                    .environmentObject(self.tentConfig)
+                            })
+                            .buttonStyle(PlainButtonStyle())
+                            
 
+                            
+                            Button(action:{
+                                self.showTentCreationModal = true
+                                self.open.toggle()
+                            }){
+                                ZStack{
+                                    Rectangle()
+                                        .fill(Color.white)
+                                        .frame(width: 300, height: 100)
+                                        .cornerRadius(20)
+                                    
+                                    HStack(spacing:30){
+                                        Image("bluetent")
+                                            .resizable()
+                                            .frame(width: 70, height: 70)
+                                            .padding(.bottom, 3)
+                                        
+                                        Text("Create a Tent")
+                                            .font(.custom("text", size: 20))
+                                            .foregroundColor(.black)
+                                    }
+                                }
+                                .padding(10)
+                            }.sheet(isPresented: $showTentCreationModal, content: {
+                                TentCreationView(locationManager: self.locationManager)
+                                    .environmentObject(self.tentConfig)
+                            })
+                            .buttonStyle(PlainButtonStyle())
+                            
+                            
+                            
+
+                        }
+                        .offset(y:open ? 0 : UIScreen.main.bounds.height)
+                        .animation(.default)
 
                         
-                        Button(action:{self.showTentEnterModal = true}){
-                            Text((tentConfig.code == "") ? "Tent" : "Tent: \(tentConfig.code)")
-                                .foregroundColor(.green)
-                        }.sheet(isPresented: $showTentEnterModal, content: {
-                            TentJoinView(locationManager: self.locationManager)
-                                .environmentObject(self.tentConfig)
-                        })
+                            Button(action:{self.showTentEnterModal = true}){
+                                Text((tentConfig.code == "") ? "Tent" : "Tent: \(tentConfig.code)")
+                                    .foregroundColor(.green)
+                            }.sheet(isPresented: $showTentEnterModal, content: {
+                                TentJoinView(locationManager: self.locationManager)
+                                    .environmentObject(self.tentConfig)
+                            })
                         
                         ZStack{
-                            BlurView(style: .dark)
+                            BlurView(style: .light)
                             
                             HStack(spacing:60){
                                 
@@ -71,7 +138,7 @@ struct ContentView: View {
 
                                     }
                                 
-                                Button(action:{self.showTentCreationModal = true}){
+                                Button(action:{self.open.toggle()}){
                                     Image("tent")
                                         .resizable()
                                         .frame(width: 50, height: 50)
