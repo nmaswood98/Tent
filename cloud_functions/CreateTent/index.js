@@ -5,6 +5,8 @@ const functions = require('firebase-functions');
 const admin = require('firebase-admin');
 const uuid = require('uuid/v4');
 
+const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789ABCDEFGHIJKLMNOPQRZTUVWXYZ";
+
 
 admin.initializeApp({
   databaseURL: 'https://tent-cfd6c.firebaseio.com'
@@ -37,7 +39,7 @@ exports.createTent = functions.https.onCall((newTentLoc, context) => {
     let tentLoginRef = db.collection("TentLogins");
 
     while (needNewCode) {
-      code = Math.floor(1000 + Math.random() * 9000) + "";
+      code = Array(4).join().split(',').map(function() { return alphabet.charAt(Math.floor(Math.random() * alphabet.length)); }).join('');
 
       tentReference = tentLoginRef.doc(code).collection("Tents");
 
