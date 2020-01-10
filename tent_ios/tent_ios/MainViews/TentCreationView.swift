@@ -10,6 +10,7 @@ import SwiftUI
 import CoreLocation
 
 struct TentCreationView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var locationManager: LocationManager
     @EnvironmentObject var tentConfig: TentConfig
     @State var showAlert: Bool = false
@@ -48,7 +49,11 @@ struct TentCreationView: View {
                     .frame(width: 300)
                     .padding(.bottom,50)
                 
-                Button(action:{self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, displayAlert:self.$showAlert, loadingAlert: self.$showLoading)}){
+                Button(action:{self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, displayAlert:self.$showAlert, loadingAlert: self.$showLoading, completion: {status in
+                    if(status){
+                        self.presentationMode.wrappedValue.dismiss()
+                    }
+                })}){
                     Text("Build a new Tent")
                         .font(.body)
                         .foregroundColor(.green)
