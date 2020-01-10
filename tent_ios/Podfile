@@ -16,4 +16,6 @@ target 'tent_ios' do
   pod 'GoogleMaps'
   pod 'GooglePlaces'
 
+  pod "Introspect"
+
 end

@@ -11,6 +11,12 @@ import FirebaseFunctions
 import SwiftUI
 import CoreLocation
 
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
 class TentManagement : ObservableObject {
     
     lazy var functions = Functions.functions()
@@ -43,7 +49,7 @@ class TentManagement : ObservableObject {
         loadingAlert.wrappedValue = true
     }
     
-    func submitCode(value: String, location: CLLocationCoordinate2D, config: TentConfig, displayAlert: Binding<Bool>, loadingAlert: Binding<Bool>){
+    func submitCode(value: String, location: CLLocationCoordinate2D, config: TentConfig, displayAlert: Binding<Bool>, loadingAlert: Binding<Bool>, completion: @escaping (Bool)->()){
         print("Submitting Code")
         functions.httpsCallable("JoinTent").call(["code": value,"lat":location.latitude.radian,"long":location.longitude.radian]) { (result, error) in
             print("Got code result")
@@ -52,6 +58,7 @@ class TentManagement : ObservableObject {
           if let error = error as NSError? {
             print(error)
             displayAlert.wrappedValue = true
+            completion(false);
           }else
             if let text = result?.data as? String {
                 
@@ -66,6 +73,7 @@ class TentManagement : ObservableObject {
                     config.name = text
                     if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
                         config.tentLocation = TentLocation(lat: lat, long: long, radius: radius)
+                        completion(true);
                     }
 
                     print("Location: \n \(config.tentLocation)");
@@ -75,5 +83,7 @@ class TentManagement : ObservableObject {
         }
         loadingAlert.wrappedValue = true
     }
+    
+
     
 }
