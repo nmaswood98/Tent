@@ -21,15 +21,19 @@ struct ContentView: View {
     @State var showTentEnterModal = false
     @State var showTentCreationModal = false
     @State var open = false
+    @State var shouldFlash = false
     
         var body: some View {
             
             NavigationView{
                 ZStack(alignment: .center){
- 
+
                     CameraView(camera: camera, color: UIColor.red)
                         .edgesIgnoringSafeArea(.all)
                         .environmentObject(tentConfig)
+                    
+                    CameraSnapView(shouldFlash: self.$shouldFlash)
+                    
                     VStack{
                         Spacer()
                         
@@ -122,7 +126,10 @@ struct ContentView: View {
                                 .buttonStyle(PlainButtonStyle())
 
 
-                                Button(action:takePicture){
+                                Button(action:{
+                                    self.takePicture()
+                                    self.shouldFlash = true
+                                }){
                                         ZStack{
                                             Circle()
                                                 .fill(Color.gray)
