@@ -25,7 +25,7 @@ class TentManagement : ObservableObject {
     init(){
     }
     
-    func createTent(location:CLLocationCoordinate2D, radius: Double, config: TentConfig,displayAlert: Binding<Bool>, loadingAlert: Binding<Bool>){
+    func createTent(location:CLLocationCoordinate2D, radius: Double, config: TentConfig,displayAlert: Binding<Bool>, loadingAlert: Binding<Bool>,completion: @escaping (Bool)->()){
         print("Creating Tent")
     functions.httpsCallable("CreateTent").call(["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius]){ (result,error) in
             print("Got Creation result")
@@ -33,6 +33,7 @@ class TentManagement : ObservableObject {
             if let error = error as NSError? {
                 print(error)
                 displayAlert.wrappedValue = true
+                completion(false);
             }
             
             
@@ -41,7 +42,7 @@ class TentManagement : ObservableObject {
                     config.code = code
                     config.name = name
                     config.tentLocation = TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius)
-
+                    completion(true);
                 }
             }
             

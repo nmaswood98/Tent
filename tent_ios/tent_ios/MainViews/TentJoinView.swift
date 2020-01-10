@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TentJoinView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode> 
     @ObservedObject var locationManager: LocationManager
     @State private var code: String = ""
     @State  var showAlert: Bool = false
@@ -69,19 +69,10 @@ struct TentJoinView: View {
                             textField.becomeFirstResponder()
                             self.shouldOpenKeyboard = false
                         }
-                    }
-                 
- 
-
+                    }.alert(isPresented: self.$showAlert, content: {
+                        Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
+                    })
                 
-                Button(action:{self.tentManagement.submitCode(value: self.code, location: self.locationManager.currentLocation, config:self.tentConfig, displayAlert:self.$showAlert, loadingAlert: self.$showLoading, completion: {status in})}){
-                    Text("Enter")
-                        .font(.body)
-                        .foregroundColor(.green)
-                        .padding(.top,30)
-                }.alert(isPresented: self.$showAlert, content: {
-                    Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
-                })
                 
                 Spacer()
                 
