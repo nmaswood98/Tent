@@ -10,7 +10,7 @@ https://trello.com/b/oF4K9xJO/tent
 
 A tent is a digital area of a specified size at a location. 
 
-If a user has entered a tent then any image captured will be part of the tent. All users in a tent can view the images at a tent instantly. 
+If a user has entered a tent then any image captured will be part of the tent. A user can also draw message and send them into the tent. All users in a tent can view the images at a tent instantly. 
 
 ## Tent Owner 
 
