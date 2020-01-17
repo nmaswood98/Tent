@@ -23,6 +23,8 @@ struct ContentView: View {
     @State var open = false
     @State var shouldFlash = false
     
+    @State var expandMenu = false
+    
         var body: some View {
             
             NavigationView{
@@ -115,54 +117,67 @@ struct ContentView: View {
                         
                         ZStack{
                             BlurView(style: .light)
+                                .cornerRadius(30)
                             
-                            HStack(spacing:60){
+                            VStack{
+                                Spacer()
                                 
-                                NavigationLink(destination: TentContentView().environmentObject(tentContent)){
-                                        Image("gallery")
-                                            .resizable()
-                                            .frame(width: 50, height: 50)
-                                }
-                                .buttonStyle(PlainButtonStyle())
+                                HStack(spacing:60){
+                                    
+                                    NavigationLink(destination: TentContentView().environmentObject(tentContent)){
+                                            Image("gallery")
+                                                .resizable()
+                                                .frame(width: 50, height: 50)
+                                    }
+                                    .buttonStyle(PlainButtonStyle())
 
 
-                                Button(action:{
-                                    self.takePicture()
-                                    self.shouldFlash = true
-                                }){
-                                        ZStack{
-                                            Circle()
-                                                .fill(Color.gray)
-                                                .opacity(1)
-                                            Circle()
-                                                .fill(Color.white)
-                                                .opacity(1)
-                                                .frame(width:65)
+                                    Button(action:{
+                                        self.takePicture()
+                                        self.shouldFlash = true
+                                    }){
+                                            ZStack{
+                                                Circle()
+                                                    .fill(Color.gray)
+                                                    .opacity(1)
+                                                Circle()
+                                                    .fill(Color.white)
+                                                    .opacity(1)
+                                                    .frame(width:65)
+
+                                            }
+                                            .frame(width: 75, height: 75)
+                                            .padding(.bottom, 10)
 
                                         }
-                                        .frame(width: 75)
-                                        .padding(.bottom, 10)
+                                    
+                                    Button(action:{
+                                        withAnimation{
+                                            self.expandMenu.toggle()
+                                        }
+                                      //  self.open.toggle()
+                                    }){
+                                        Image("tent")
+                                            .resizable()
+                                            .frame(width: 50, height: 50)
+                                            .padding(.top, 5)
+                                    }.sheet(isPresented: $showTentCreationModal, content: {
+                                        TentCreationView(locationManager: self.locationManager)
+                                            .environmentObject(self.tentConfig)
+                                    })
+                                    .buttonStyle(PlainButtonStyle())
 
-                                    }
-                                
-                                Button(action:{self.open.toggle()}){
-                                    Image("tent")
-                                        .resizable()
-                                        .frame(width: 50, height: 50)
-                                        .padding(.top, 5)
-                                }.sheet(isPresented: $showTentCreationModal, content: {
-                                    TentCreationView(locationManager: self.locationManager)
-                                        .environmentObject(self.tentConfig)
-                                })
-                                .buttonStyle(PlainButtonStyle())
-
-                                
+                                    
+                                }.padding()
                             }
+                            
+
                             
                             
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
-                        .frame( height: 125, alignment: .bottom)
+                        .frame( height: expandMenu ? 300 : 125, alignment: .bottom)
+                        .animation(.spring())
                         
                         
                         /*

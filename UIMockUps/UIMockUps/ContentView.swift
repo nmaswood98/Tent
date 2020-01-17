@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var open: Bool = false
+    @State var expand: Bool = false
     
     var body: some View {
         
@@ -79,48 +80,60 @@ struct ContentView: View {
                     ZStack{
                         Rectangle()
                             .fill(Color.black)
+                            .cornerRadius(30)
                         
-                        HStack(spacing:60){
-                            Image("gallery")
-                                .resizable()
-                                .frame(width: 50, height: 50)
-                            
-                            Button(action:{print("Took Picture")}){
-                                ZStack{
-                                    Circle()
-                                        .fill(Color.gray)
-                                        .opacity(1)
-                                    Circle()
-                                        .fill(Color.white)
-                                        .opacity(1)
-                                        .frame(width:65)
+                        VStack(){
+                            HStack(spacing:60){
+                                  Image("gallery")
+                                      .resizable()
+                                      .frame(width: 50, height: 50)
+                                  
+                                  Button(action:{print("Took Picture")}){
+                                      ZStack{
+                                          Circle()
+                                              .fill(Color.gray)
+                                              .opacity(1)
+                                          Circle()
+                                              .fill(Color.white)
+                                              .opacity(1)
+                                              .frame(width:65)
 
-                                }
-                                .frame(width: 75)
-                                .padding(.bottom, 10)
+                                      }
+                                      .frame(width: 75,height:75)
+                                      .padding(.bottom, 10)
 
-                            }
-                            
+                                  }
+                                  
 
-                            
-                            Button(action:{
-                                self.open.toggle()
-                            }){
-                                Image("tent")
-                                    .resizable()
-                                    .frame(width: 50, height: 50)
-                                    .padding(.top, 5)
-                            }
+                                  
+                                  Button(action:{
+                                    withAnimation{
+                                        self.expand.toggle()
+                                    }
+                                  }){
+                                      Image("tent")
+                                          .resizable()
+                                          .frame(width: 50, height: 50)
+                                          .padding(.top, 5)
+                                  }
 
-                            
+                                  
 
-                                
+                                      
+                              }
+                            .padding()
+                            Spacer()
+
                         }
+                        
+  
                         
                         
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .frame( height: 125, alignment: .bottom)
+                    .frame( height: expand ? 400 : 125, alignment: .bottom)
+                    .animation(.spring())
+                    
                     
                     
                     
