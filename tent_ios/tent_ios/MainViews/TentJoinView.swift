@@ -23,6 +23,7 @@ struct TentJoinView: View {
         LoadingView(message: "Joining...", isShowing: $showLoading) {
             
             
+            
             VStack(alignment: .center) {
                 
                 if(self.tentConfig.code == ""){
@@ -77,6 +78,7 @@ struct TentJoinView: View {
                 Spacer()
                 
             }.padding(15)
+            
             
         }
     }
