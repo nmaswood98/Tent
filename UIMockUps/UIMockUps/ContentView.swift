@@ -11,6 +11,7 @@ import SwiftUI
 struct ContentView: View {
     @State var open: Bool = false
     @State var expand: Bool = false
+    @State var expandInstant: Bool = false
     
     var body: some View {
         
@@ -23,47 +24,7 @@ struct ContentView: View {
                     
                     Spacer()
 
-                        VStack{
-                            ZStack{
-                                Rectangle()
-                                    .fill(Color.white)
-                                    .frame(width: 300, height: 100)
-                                    .cornerRadius(20)
-                                
-                                HStack(spacing:27){
-                                    Image("redtent")
-                                        .resizable()
-                                        .frame(width: 70, height: 70)
-                                        .padding(.bottom, 3)
-                                    
-                                    Text("   Join a Tent  ")
-                                        .font(.custom("text", size: 20))
-                                }
-                            }
-                            .padding(10)
-                            
-                            
-                            
-                            ZStack{
-                                Rectangle()
-                                    .fill(Color.white)
-                                    .frame(width: 300, height: 100)
-                                    .cornerRadius(20)
-                                
-                                HStack(spacing:30){
-                                    Image("bluetent")
-                                        .resizable()
-                                        .frame(width: 70, height: 70)
-                                        .padding(.bottom, 3)
-                                    
-                                    Text("Create a Tent")
-                                        .font(.custom("text", size: 20))
-                                }
-                            }
-                            .padding(10)
-                        }
-                        .offset(y:open ? 0 : UIScreen.main.bounds.height)
-                        .animation(.default)
+
                     
                     if (!open){
                         Text("Tent: 1234")
@@ -83,6 +44,30 @@ struct ContentView: View {
                             .cornerRadius(30)
                         
                         VStack(){
+                            
+                            if(self.expand){
+                                Spacer()
+
+                                HStack(spacing:10){
+                                    Spacer()
+                                    
+                                    MenuButton(text:"Tents", action:{print("Tents")})
+                                    MenuButton(text:"Join", action:{print("Join")})
+                                    MenuButton(text:"Create", action:{print("Create")})
+
+                                    Spacer()
+                                }
+                                .frame( height: 60)
+                                .offset(x:0,y:expand ? 0 : 200)
+                                .transition(.offset(x: 0, y: 200))
+                                .transition(.scale(scale: 0, anchor: .bottom))
+
+                            }
+                            
+
+                            Spacer()
+
+
                             HStack(spacing:60){
                                   Image("gallery")
                                       .resizable()
@@ -107,9 +92,12 @@ struct ContentView: View {
 
                                   
                                   Button(action:{
+
                                     withAnimation{
                                         self.expand.toggle()
                                     }
+
+                                    
                                   }){
                                       Image("tent")
                                           .resizable()
@@ -122,7 +110,6 @@ struct ContentView: View {
                                       
                               }
                             .padding()
-                            Spacer()
 
                         }
                         
@@ -131,7 +118,7 @@ struct ContentView: View {
                         
                     }
                     .frame(minWidth: 0, maxWidth: .infinity)
-                    .frame( height: expand ? 400 : 125, alignment: .bottom)
+                    .frame( height: expand ? 200 : 125)
                     .animation(.spring())
                     
                     

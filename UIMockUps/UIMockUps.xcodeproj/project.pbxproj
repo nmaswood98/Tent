@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9013BFF623D287C30091BE73 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013BFF523D287C30091BE73 /* MenuButton.swift */; };
 		9085B4ED2381AD7A00F0BAC3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085B4EC2381AD7A00F0BAC3 /* AppDelegate.swift */; };
 		9085B4EF2381AD7A00F0BAC3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085B4EE2381AD7A00F0BAC3 /* SceneDelegate.swift */; };
 		9085B4F12381AD7A00F0BAC3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9085B4F02381AD7A00F0BAC3 /* ContentView.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9013BFF523D287C30091BE73 /* MenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButton.swift; sourceTree = "<group>"; };
 		9085B4E92381AD7A00F0BAC3 /* UIMockUps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIMockUps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9085B4EC2381AD7A00F0BAC3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9085B4EE2381AD7A00F0BAC3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +66,7 @@
 				9085B4EE2381AD7A00F0BAC3 /* SceneDelegate.swift */,
 				9085B50123824C7200F0BAC3 /* BlurView.swift */,
 				9085B4F02381AD7A00F0BAC3 /* ContentView.swift */,
+				9013BFF523D287C30091BE73 /* MenuButton.swift */,
 				9085B4F22381AD7B00F0BAC3 /* Assets.xcassets */,
 				9085B4F72381AD7B00F0BAC3 /* LaunchScreen.storyboard */,
 				9085B4FA2381AD7B00F0BAC3 /* Info.plist */,
@@ -155,6 +158,7 @@
 			files = (
 				9085B4ED2381AD7A00F0BAC3 /* AppDelegate.swift in Sources */,
 				9085B50223824C7200F0BAC3 /* BlurView.swift in Sources */,
+				9013BFF623D287C30091BE73 /* MenuButton.swift in Sources */,
 				9085B4EF2381AD7A00F0BAC3 /* SceneDelegate.swift in Sources */,
 				9085B4F12381AD7A00F0BAC3 /* ContentView.swift in Sources */,
 			);
