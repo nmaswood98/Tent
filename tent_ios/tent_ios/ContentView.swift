@@ -39,72 +39,7 @@ struct ContentView: View {
                     VStack{
                         Spacer()
                         
-                        VStack{
-                            
-                            Button(action:{
-                                self.showTentEnterModal = true
-                                self.open.toggle()
-                            }){
-                                ZStack{
-                                    Rectangle()
-                                        .fill(Color.white)
-                                        .frame(width: 300, height: 100)
-                                        .cornerRadius(20)
-                                    
-                                    HStack(spacing:27){
-                                        Image("redtent")
-                                            .resizable()
-                                            .frame(width: 70, height: 70)
-                                            .padding(.bottom, 3)
-                                        
-                                        Text("   Join a Tent  ")
-                                            .font(.custom("text", size: 20))
-                                            .foregroundColor(.black)
-                                    }
-                                }
-                                .padding(10)
-                            }.sheet(isPresented: $showTentEnterModal, content: {
-                                TentJoinView(locationManager: self.locationManager)
-                                    .environmentObject(self.tentConfig)
-                            })
-                            .buttonStyle(PlainButtonStyle())
-                            
 
-                            
-                            Button(action:{
-                                self.showTentCreationModal = true
-                                self.open.toggle()
-                            }){
-                                ZStack{
-                                    Rectangle()
-                                        .fill(Color.white)
-                                        .frame(width: 300, height: 100)
-                                        .cornerRadius(20)
-                                    
-                                    HStack(spacing:30){
-                                        Image("bluetent")
-                                            .resizable()
-                                            .frame(width: 70, height: 70)
-                                            .padding(.bottom, 3)
-                                        
-                                        Text("Create a Tent")
-                                            .font(.custom("text", size: 20))
-                                            .foregroundColor(.black)
-                                    }
-                                }
-                                .padding(10)
-                            }.sheet(isPresented: $showTentCreationModal, content: {
-                                TentCreationView(locationManager: self.locationManager)
-                                    .environmentObject(self.tentConfig)
-                            })
-                            .buttonStyle(PlainButtonStyle())
-                            
-                            
-                            
-
-                        }
-                        .offset(y:open ? 0 : UIScreen.main.bounds.height)
-                        .animation(.default)
 
                         
                             Button(action:{self.showTentEnterModal = true}){
@@ -116,11 +51,43 @@ struct ContentView: View {
                             })
                         
                         ZStack{
-                            BlurView(style: .light)
+                            BlurView(style: .dark)
                                 .cornerRadius(30)
                             
                             VStack{
                                 Spacer()
+                            
+
+                                if(self.expandMenu){
+                                    Spacer()
+                                    HStack(spacing:10){
+                                        Spacer()
+                                                  
+                                        MenuButton(text:"Tents", action:{print("Tents")})
+                                        MenuButton(text:"Join", action:{
+                                            self.showTentEnterModal = true
+                                            self.open.toggle()
+                                        })
+                                        .sheet(isPresented: $showTentEnterModal, content: {
+                                            TentJoinView(locationManager: self.locationManager)
+                                                .environmentObject(self.tentConfig)
+                                        })
+                                        MenuButton(text:"Create", action:{
+                                            self.showTentCreationModal = true
+                                            self.expandMenu.toggle()
+                                            
+                                        })
+                                        .sheet(isPresented: $showTentCreationModal, content: {
+                                            TentCreationView(locationManager: self.locationManager)
+                                                .environmentObject(self.tentConfig)
+                                        })
+
+                                        Spacer()
+                                    }
+                                    .frame( height: 60)
+                                    .transition(.offset(x: 0, y: 200))
+                                    .animation(.spring())
+                                }
                                 
                                 HStack(spacing:60){
                                     
@@ -176,7 +143,7 @@ struct ContentView: View {
                             
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
-                        .frame( height: expandMenu ? 300 : 125, alignment: .bottom)
+                        .frame( height: expandMenu ? 200 : 125, alignment: .bottom)
                         .animation(.spring())
                         
                         
