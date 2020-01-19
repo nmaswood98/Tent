@@ -18,8 +18,9 @@ struct ContentView: View {
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var tentContent: TentContent
     
-    @State var showTentEnterModal = false
-    @State var showTentCreationModal = false
+    @State var temp = false
+    @State var showTentJoin = false
+    @State var showTentCreate = false
     @State var open = false
     @State var shouldFlash = false
     
@@ -29,6 +30,7 @@ struct ContentView: View {
             
             NavigationView{
                 ZStack(alignment: .center){
+                    
 
                     CameraView(camera: camera, color: UIColor.red)
                         .edgesIgnoringSafeArea(.all)
@@ -42,13 +44,14 @@ struct ContentView: View {
 
 
                         
-                            Button(action:{self.showTentEnterModal = true}){
+                            Button(action:{
+                                withAnimation{
+                                    self.showTentJoin.toggle();
+                                }
+                            }){
                                 Text((tentConfig.code == "") ? "Tent" : "Tent: \(tentConfig.code)")
                                     .foregroundColor(.green)
-                            }.sheet(isPresented: $showTentEnterModal, content: {
-                                TentJoinView(locationManager: self.locationManager)
-                                    .environmentObject(self.tentConfig)
-                            })
+                            }
                         
                         ZStack{
                             BlurView(style: .dark)
@@ -65,22 +68,20 @@ struct ContentView: View {
                                                   
                                         MenuButton(text:"Tents", action:{print("Tents")})
                                         MenuButton(text:"Join", action:{
-                                            self.showTentEnterModal = true
-                                            self.open.toggle()
+                                            withAnimation{
+                                                self.showTentJoin.toggle()
+                                            }
+                                            self.expandMenu.toggle()
                                         })
-                                        .sheet(isPresented: $showTentEnterModal, content: {
-                                            TentJoinView(locationManager: self.locationManager)
-                                                .environmentObject(self.tentConfig)
-                                        })
+                                     
                                         MenuButton(text:"Create", action:{
-                                            self.showTentCreationModal = true
+                                            withAnimation{
+                                                self.showTentCreate.toggle()
+                                            }
                                             self.expandMenu.toggle()
                                             
                                         })
-                                        .sheet(isPresented: $showTentCreationModal, content: {
-                                            TentCreationView(locationManager: self.locationManager)
-                                                .environmentObject(self.tentConfig)
-                                        })
+
 
                                         Spacer()
                                     }
@@ -122,16 +123,12 @@ struct ContentView: View {
                                         withAnimation{
                                             self.expandMenu.toggle()
                                         }
-                                      //  self.open.toggle()
                                     }){
                                         Image("tent")
                                             .resizable()
                                             .frame(width: 50, height: 50)
                                             .padding(.top, 5)
-                                    }.sheet(isPresented: $showTentCreationModal, content: {
-                                        TentCreationView(locationManager: self.locationManager)
-                                            .environmentObject(self.tentConfig)
-                                    })
+                                    }
                                     .buttonStyle(PlainButtonStyle())
 
                                     
@@ -147,27 +144,49 @@ struct ContentView: View {
                         .animation(.spring())
                         
                         
-                        /*
-                        Button(action:{self.showTentEnterModal = true}){
-                            Text("Enter a Tent")
-                                .font(.title)
-                                .foregroundColor(.green)
-                        }.sheet(isPresented: $showTentEnterModal, content: {
-                            TentJoinView(locationManager: self.locationManager)
-                                .environmentObject(self.tentConfig)
-                        })
-                        */
+
                     
                     }
                     .edgesIgnoringSafeArea(.all)
+                    
+                    if(self.showTentJoin){
+                        BlurContainer{
+                            TentJoinView(locationManager: self.locationManager, backTap:{
+                                withAnimation{
+                                    self.showTentJoin.toggle()
+                                }
+                            })
+                                .environmentObject(self.tentConfig)
+                        }
+                        .edgesIgnoringSafeArea(.all)
+                        .transition(.opacity)
+                        .zIndex(1)
+                    }
+                    
+                    if(self.showTentCreate){
+                        BlurContainer{
+                            TentCreationView(locationManager: self.locationManager, backTap:{
+                                withAnimation{
+                                    self.showTentCreate.toggle()
+                                }
+                            })
+                                .environmentObject(self.tentConfig)
+                        }
+                        .edgesIgnoringSafeArea(.all)
+                        .transition(.opacity)
+                        .zIndex(1)
+                    }
 
                 }
             }.navigationBarHidden(true)
+                .statusBar(hidden: true)
     }
     
     func takePicture(){
         camera.takePicture()
     }
+    
+
 }
 
 
