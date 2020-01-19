@@ -18,13 +18,34 @@ struct TentJoinView: View {
     @State private var radius: Double = 0
     @State private var shouldOpenKeyboard: Bool = true
 
+    
+    var backTap: () -> ()
     var tentManagement: TentManagement = TentManagement()
     var body: some View {
+        
+        ZStack{
+            VStack{
+                HStack{
+                    Button(action:{
+                        UIApplication.shared.endEditing()
+                        self.backTap()
+                    }){
+                        Text("Back")
+                            .foregroundColor(.green)
+                            .font(.system(size: 20))
+                    }
+                    .padding(.top,30)
+                    .padding(.leading,20)
+                    Spacer()
+                }
+                Spacer()
+            }
         LoadingView(message: "Joining...", isShowing: $showLoading) {
             
             
             
             VStack(alignment: .center) {
+                
                 
                 if(self.tentConfig.code == ""){
                     Text("Current Tent: None")
@@ -74,13 +95,15 @@ struct TentJoinView: View {
                         Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
                     })
                 
-                
                 Spacer()
-                
-            }.padding(15)
+
+            }
+            .padding(15)
+            .padding(.top,50)
             
             
         }
+    }
     }
 }
 

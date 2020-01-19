@@ -17,9 +17,27 @@ struct TentCreationView: View {
     @State var showLoading: Bool = false
     @State private var radius: Double = 0
     
+    var backTap: () -> ()
     var tentManagement: TentManagement = TentManagement()
     
     var body: some View {
+        ZStack{
+            VStack{
+                HStack{
+                    Button(action:{
+                        UIApplication.shared.endEditing()
+                        self.backTap()
+                    }){
+                        Text("Back")
+                            .foregroundColor(.green)
+                            .font(.system(size: 20))
+                    }
+                    .padding(.top,30)
+                    .padding(.leading,20)
+                    Spacer()
+                }
+                Spacer()
+            }
         LoadingView(message: "Creating...", isShowing: $showLoading) {
             
             VStack(alignment: .center) {
@@ -63,6 +81,9 @@ struct TentCreationView: View {
                 
                 
             }
+            .padding(15)
+            .padding(.top,50)
+        }
         }
     }
 }
