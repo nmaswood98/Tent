@@ -17,6 +17,8 @@ struct TentJoinView: View {
     @EnvironmentObject var tentConfig: TentConfig
     @State private var radius: Double = 0
     @State private var shouldOpenKeyboard: Bool = true
+    
+    @State private var shouldLoadMap: Bool = false
 
     
     var backTap: () -> ()
@@ -60,9 +62,11 @@ struct TentJoinView: View {
                         .padding(.top,30)
                 }
                 
-                MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3)
-                    .frame(height:300)
-                    .padding(.top, 15)
+                if(self.shouldLoadMap){
+                    MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3)
+                        .frame(height:300)
+                        .padding(.top, 15)
+                }
                 
                 TextField("Code", text:self.$code,onCommit: {
                     self.tentManagement.submitCode(value: self.code, location: self.locationManager.currentLocation, config:self.tentConfig, displayAlert:self.$showAlert, loadingAlert: self.$showLoading, completion: { status in
@@ -97,13 +101,17 @@ struct TentJoinView: View {
                 
                 Spacer()
 
-            }
-            .padding(15)
-            .padding(.top,50)
+            }.padding(15)
+                .padding(.top,50)
+            
             
             
         }
-    }
+        }.onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now() ) {
+                self.shouldLoadMap = true
+            }
+        }
     }
 }
 
