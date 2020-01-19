@@ -17,6 +17,9 @@ struct TentCreationView: View {
     @State var showLoading: Bool = false
     @State private var radius: Double = 0
     
+    @State private var shouldLoadMap: Bool = false
+
+    
     var backTap: () -> ()
     var tentManagement: TentManagement = TentManagement()
     
@@ -46,22 +49,28 @@ struct TentCreationView: View {
                     Text("Current Tent: None")
                         .font(.title)
                         .foregroundColor(.green)
-                        .padding(.bottom,30)
+                        .padding(.top,30)
                 }
                 else{
                     Text("Current Tent: \(self.tentConfig.code)")
                         .font(.title)
                         .foregroundColor(.green)
-                        .padding(.bottom,30)
+                        .padding(.top,30)
                 }
                 
-                MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3)
-                    .frame(height:300)
-                    .padding(.bottom, 50)
+                if(self.shouldLoadMap){
+                    
+                    MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3)
+                        .frame(height:300)
+                        .padding(.top, 15)
+                    
+                }
                 
+
                 Text("Radius:")
                     .font(.body)
                     .foregroundColor(.green)
+                    .padding(.top,10)
                 
                 Slider(value: self.$radius, in: -2...3, step: 0.01)
                     .frame(width: 300)
@@ -79,11 +88,17 @@ struct TentCreationView: View {
                     Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
                 })
                 
+                Spacer()
+                
                 
             }
-            .padding(15)
             .padding(.top,50)
         }
+        }.onAppear{
+            DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    self.shouldLoadMap = true
+                self.radius = 0
+            }
         }
     }
 }

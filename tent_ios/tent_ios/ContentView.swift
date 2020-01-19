@@ -171,10 +171,12 @@ struct ContentView: View {
                                 }
                             })
                                 .environmentObject(self.tentConfig)
+                            
                         }
                         .edgesIgnoringSafeArea(.all)
                         .transition(.opacity)
                         .zIndex(1)
+
                     }
 
                 }
