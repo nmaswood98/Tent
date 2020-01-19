@@ -15,9 +15,9 @@ struct TentCreationView: View {
     @EnvironmentObject var tentConfig: TentConfig
     @State var showAlert: Bool = false
     @State var showLoading: Bool = false
-    @State private var radius: Double = 0
+    @State private var radius: Double = 0.1
     
-    @State private var shouldLoadMap: Bool = false
+    @State private var shouldLoadMap: Bool = true
 
     
     var backTap: () -> ()
@@ -92,11 +92,11 @@ struct TentCreationView: View {
                 
                 
             }
+        .padding(15)
             .padding(.top,50)
         }
         }.onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now()) {
-                    self.shouldLoadMap = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 self.radius = 0
             }
         }

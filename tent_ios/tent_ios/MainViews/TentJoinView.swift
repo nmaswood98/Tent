@@ -15,10 +15,10 @@ struct TentJoinView: View {
     @State  var showAlert: Bool = false
     @State var showLoading: Bool = false
     @EnvironmentObject var tentConfig: TentConfig
-    @State private var radius: Double = 0
+    @State private var radius: Double = 0.1
     @State private var shouldOpenKeyboard: Bool = true
     
-    @State private var shouldLoadMap: Bool = false
+    @State private var shouldLoadMap: Bool = true
 
     
     var backTap: () -> ()
@@ -108,8 +108,8 @@ struct TentJoinView: View {
             
         }
         }.onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now()  ) {
-                                self.shouldLoadMap = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.01 ) {
+                self.radius = 0
             }
         }
     }
