@@ -18,21 +18,24 @@ struct MapView: UIViewRepresentable {
         
         let camera = GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: 15.00)
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
-        mapView.settings.scrollGestures = false
+        mapView.settings.scrollGestures = true
         mapView.settings.zoomGestures = false
+        mapView.moveCamera(GMSCameraUpdate.setCamera(GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: 15.00)))
         return mapView
     }
     
 
     
     func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
-        mapView.animate(to: GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: 15.00))
+        mapView.moveCamera(GMSCameraUpdate.setCamera(GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: 15.00)))
+
         mapView.clear()
         circle.radius = 100 * circleRadius
         
         circle.position = currentPosition
         circle.map = mapView
     }
+
 }
 
 

@@ -108,8 +108,8 @@ struct TentJoinView: View {
             
         }
         }.onAppear{
-            DispatchQueue.main.asyncAfter(deadline: .now() ) {
-                self.shouldLoadMap = true
+            DispatchQueue.main.asyncAfter(deadline: .now()  ) {
+                                self.shouldLoadMap = true
             }
         }
     }
