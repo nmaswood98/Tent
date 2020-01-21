@@ -151,12 +151,24 @@ struct ContentView: View {
                     
                     if(self.showTentJoin){
                         BlurContainer{
-                            TentJoinView(locationManager: self.locationManager, backTap:{
-                                withAnimation{
-                                    self.showTentJoin.toggle()
-                                }
-                            })
-                                .environmentObject(self.tentConfig)
+                                    ZStack{
+                                        ScrollView{
+                                            VStack(spacing:15){
+                                                Spacer().frame(height:100)
+                                                TentHistoryView()
+                                                TentHistoryView()
+
+                                                TentHistoryView()
+                                                TentHistoryView()
+                                                TentHistoryView()
+
+
+                                                
+
+                                            }
+                                        }
+
+                            }
                         }
                         .edgesIgnoringSafeArea(.all)
                         .transition(.opacity)
