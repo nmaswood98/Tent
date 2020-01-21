@@ -20,6 +20,7 @@ struct MapView: UIViewRepresentable {
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
         mapView.settings.scrollGestures = true
         mapView.settings.zoomGestures = false
+        mapView.settings.consumesGesturesInView = false
         mapView.moveCamera(GMSCameraUpdate.setCamera(GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: 15.00)))
         return mapView
     }

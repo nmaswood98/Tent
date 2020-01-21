@@ -32,6 +32,8 @@
 		4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA83112373DA63005348A3 /* TentManagement.swift */; };
 		9013C01423D291630091BE73 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013C01323D291630091BE73 /* MenuButton.swift */; };
 		901B864023C801750095C0F8 /* CameraSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B863F23C801750095C0F8 /* CameraSnapView.swift */; };
+		905B580F23D4FD5D00D114F3 /* TentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B580E23D4FD5D00D114F3 /* TentInfoView.swift */; };
+		9072821A23D69AD40091BE14 /* TentInfoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072821923D69AD40091BE14 /* TentInfoComponent.swift */; };
 		90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D1323811D4A00C6E502 /* DesignView.swift */; };
 		90E60D30238122E900C6E502 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D2F238122E900C6E502 /* BlurView.swift */; };
 		90F9983A23D423C300B4C2C6 /* BlurContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9983923D423C300B4C2C6 /* BlurContainer.swift */; };
@@ -208,6 +210,8 @@
 		51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9013C01323D291630091BE73 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuButton.swift; path = ../../../UIMockUps/UIMockUps/MenuButton.swift; sourceTree = "<group>"; };
 		901B863F23C801750095C0F8 /* CameraSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSnapView.swift; sourceTree = "<group>"; };
+		905B580E23D4FD5D00D114F3 /* TentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentInfoView.swift; sourceTree = "<group>"; };
+		9072821923D69AD40091BE14 /* TentInfoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentInfoComponent.swift; sourceTree = "<group>"; };
 		90E60D1323811D4A00C6E502 /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
 		90E60D2F238122E900C6E502 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		90F9983923D423C300B4C2C6 /* BlurContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurContainer.swift; sourceTree = "<group>"; };
@@ -237,6 +241,7 @@
 				4C28D23F23776E6800C1B8BF /* MapView.swift */,
 				90E60D2F238122E900C6E502 /* BlurView.swift */,
 				4C06CC9B237FA2E700201425 /* LoadingView.swift */,
+				9072821923D69AD40091BE14 /* TentInfoComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -280,15 +285,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		4C28D22723754A3F00C1B8BF /* MainViews */ = {
+		4C28D22723754A3F00C1B8BF /* MainPages */ = {
 			isa = PBXGroup;
 			children = (
 				4CC087202352DE860086A5B0 /* CameraView.swift */,
 				4C92D7792355860A00646CFB /* TentContentView.swift */,
 				4CFA82FE2373CF5A005348A3 /* TentJoinView.swift */,
 				4C28D22923776B9A00C1B8BF /* TentCreationView.swift */,
+				905B580E23D4FD5D00D114F3 /* TentInfoView.swift */,
 			);
-			path = MainViews;
+			path = MainPages;
 			sourceTree = "<group>";
 		};
 		4C28D2AC2379279D00C1B8BF /* Managers */ = {
@@ -326,7 +332,7 @@
 				4CC087102352D5070086A5B0 /* ContentView.swift */,
 				90E60D3123812B1800C6E502 /* UIMockUpViews */,
 				4C06CCB0237FA61300201425 /* Components */,
-				4C28D22723754A3F00C1B8BF /* MainViews */,
+				4C28D22723754A3F00C1B8BF /* MainPages */,
 				4C28D213237549FE00C1B8BF /* Models */,
 				4C28D2AC2379279D00C1B8BF /* Managers */,
 				4CC087122352D5090086A5B0 /* Assets.xcassets */,
@@ -678,11 +684,13 @@
 				9013C01423D291630091BE73 /* MenuButton.swift in Sources */,
 				4CC0870F2352D5070086A5B0 /* SceneDelegate.swift in Sources */,
 				4CC087112352D5070086A5B0 /* ContentView.swift in Sources */,
+				9072821A23D69AD40091BE14 /* TentInfoComponent.swift in Sources */,
 				90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */,
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,
 				4C92D77A2355860A00646CFB /* TentContentView.swift in Sources */,
 				4CFA82FF2373CF5A005348A3 /* TentJoinView.swift in Sources */,
 				4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */,
+				905B580F23D4FD5D00D114F3 /* TentInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
