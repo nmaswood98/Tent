@@ -65,8 +65,25 @@ struct ContentView: View {
                                     Spacer()
                                     HStack(spacing:10){
                                         Spacer()
+                                        
+                                    
                                                   
-                                        MenuButton(text:"Tents", action:{print("Tents")})
+                                        NavigationLink(destination: InfoView())
+                                        {
+                                            
+                                            ZStack{
+                                                Rectangle()
+                                                    .fill(Color.green)
+                                                    .cornerRadius(30)
+                                            
+                                                Text("Tents")
+                                                    .foregroundColor(.white)
+                                            }
+                                            
+                                        }
+                                        
+                                        
+                                        
                                         MenuButton(text:"Join", action:{
                                             withAnimation{
                                                 self.showTentJoin.toggle()
@@ -151,24 +168,12 @@ struct ContentView: View {
                     
                     if(self.showTentJoin){
                         BlurContainer{
-                                    ZStack{
-                                        ScrollView{
-                                            VStack(spacing:15){
-                                                Spacer().frame(height:100)
-                                                TentHistoryView()
-                                                TentHistoryView()
-
-                                                TentHistoryView()
-                                                TentHistoryView()
-                                                TentHistoryView()
-
-
-                                                
-
-                                            }
-                                        }
-
-                            }
+                            TentJoinView(locationManager: self.locationManager, backTap:{
+                                withAnimation{
+                                    self.showTentJoin.toggle()
+                                }
+                            })
+                                .environmentObject(self.tentConfig)
                         }
                         .edgesIgnoringSafeArea(.all)
                         .transition(.opacity)

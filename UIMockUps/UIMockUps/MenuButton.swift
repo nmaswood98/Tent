@@ -11,6 +11,7 @@ import SwiftUI
 struct MenuButton: View {
     var text: String
     var action: () -> ()
+    var destination: String = ""
     var body: some View {
         
         Button(action:self.action){
