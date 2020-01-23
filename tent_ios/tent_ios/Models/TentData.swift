@@ -12,13 +12,13 @@ struct TentData: Codable {
     var code: String
     var tentLoc: TentLocation
     
-    static func saveTentHistory(arr: [TentData]){
+    static func saveTentHistory(arr: [String:TentData]){
         UserDefaults.standard.set(try? JSONEncoder().encode(arr), forKey:"tentHistory")
     }
     
-    static func getTentHistory() -> [TentData]?{
+    static func getTentHistory() -> [String:TentData]?{
         if let data = UserDefaults.standard.value(forKey:"tentHistory") as? Data {
-            let tentData = try? JSONDecoder().decode(Array<TentData>.self, from: data)
+            let tentData = try? JSONDecoder().decode(Dictionary<String,TentData>.self, from: data)
                 return tentData
         }
         return nil

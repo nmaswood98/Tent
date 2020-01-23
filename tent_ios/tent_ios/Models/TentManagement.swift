@@ -40,8 +40,8 @@ class TentManagement : ObservableObject {
             if let data = result?.data as? NSDictionary {
                 if let code = data["code"] as? String, let name = data["name"] as? String {
                     config.code = code
-                    config.name = name
                     config.tentLocation = TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius)
+                    config.name = name
                     completion(true);
                 }
             }
@@ -70,15 +70,29 @@ class TentManagement : ObservableObject {
           }
             if let data = result?.data as? NSDictionary {
                 if let text = data["name"] as? String, let loc = data["Location"] as? NSDictionary {
-                    config.code =  value
-                    config.name = text
                     if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
+                        config.code =  value
                         config.tentLocation = TentLocation(lat: lat, long: long, radius: radius)
+                        config.name = text
+
                         completion(true);
                         
-                        let hello = TentData(code: "1234",tentLoc: TentLocation(lat: 12, long: 12, radius: 12));
-                        TentData.saveTentHistory(arr: [hello])
+                        print("**********************************");
+                        print("**********************************");
+
+                        print("**********************************");
+
+                        print("**********************************");
+
                         print(TentData.getTentHistory())
+                        print("**********************************");
+
+                        print("**********************************");
+
+                        print("**********************************");
+
+                        print("**********************************");
+
                     }
 
                     print("Location: \n \(config.tentLocation)");
