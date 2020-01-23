@@ -12,11 +12,11 @@ struct JoinView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var tentManagement: TentManagement
+    @EnvironmentObject var loadingService: LoadingViewService
     
     @ObservedObject var locationManager: LocationManager
     @State private var code: String = ""
     @State  var showAlert: Bool = false
-    @State var showLoading: Bool = false
     @State private var radius: Double = 0.1
     @State private var shouldOpenKeyboard: Bool = true
     
@@ -43,9 +43,6 @@ struct JoinView: View {
                 }
                 Spacer()
             }
-        LoadingView(message: "Joining...", isShowing: $showLoading) {
-            
-            
             
             VStack(alignment: .center) {
                 
@@ -70,9 +67,9 @@ struct JoinView: View {
                 }
                 
                 TextField("Code", text:self.$code,onCommit: {
-                    self.showLoading = true;
+                    self.loadingService.enableLoadingDialog()
                     self.tentManagement.submitCode(value: self.code, location: self.locationManager.currentLocation, config:self.tentConfig, completion: { status in
-                        self.showLoading = false;
+                        self.loadingService.disableLoadingDialog()
                             if (status){
                                 print("Completed")
                                 UIApplication.shared.endEditing()
@@ -110,8 +107,9 @@ struct JoinView: View {
             
             
             
-        }
+        
         }.onAppear{
+            self.loadingService.setLoadingMessage(text: "Joining...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01 ) {
                 self.radius = 0
             }
