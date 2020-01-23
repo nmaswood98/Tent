@@ -9,7 +9,7 @@
 import SwiftUI
 import CoreLocation
 
-struct TentCreationView: View {
+struct CreationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var locationManager: LocationManager
     @EnvironmentObject var tentConfig: TentConfig

@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct TentJoinView: View {
+struct JoinView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode> 
     @ObservedObject var locationManager: LocationManager
     @State private var code: String = ""

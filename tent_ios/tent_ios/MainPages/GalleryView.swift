@@ -10,7 +10,7 @@
 import SwiftUI
 import KingfisherSwiftUI
 
-struct TentContentView: View {
+struct GalleryView: View {
     @EnvironmentObject var tentContent: TentContent
     
     var body: some View {
