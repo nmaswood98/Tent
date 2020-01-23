@@ -14,9 +14,9 @@ struct CreationView: View {
     @ObservedObject var locationManager: LocationManager
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var tentManagement: TentManagement
+    @EnvironmentObject var loadingService: LoadingViewService
     
     @State var showAlert: Bool = false
-    @State var showLoading: Bool = false
     @State private var radius: Double = 0.1
     
     @State private var shouldLoadMap: Bool = true
@@ -42,7 +42,6 @@ struct CreationView: View {
                 }
                 Spacer()
             }
-        LoadingView(message: "Creating...", isShowing: $showLoading) {
             
             VStack(alignment: .center) {
                 
@@ -78,11 +77,9 @@ struct CreationView: View {
                     .padding(.bottom,50)
                 
                 Button(action:{
-                    self.showLoading = true;
+                    self.loadingService.enableLoadingDialog()
                     self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, completion: {status in
-                    //self.showAlert
-                    //self.loadingAlert
-                    self.showLoading = false;
+                    self.loadingService.disableLoadingDialog()
                     if(status){
                         self.backTap()
                     }
@@ -103,8 +100,9 @@ struct CreationView: View {
             }
         .padding(15)
             .padding(.top,50)
-        }
+
         }.onAppear{
+            self.loadingService.setLoadingMessage(text: "Creating...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 self.radius = 0
             }

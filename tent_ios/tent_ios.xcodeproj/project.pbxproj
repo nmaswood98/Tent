@@ -38,6 +38,7 @@
 		9072823723D6B2D30091BE14 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072823623D6B2D30091BE14 /* InfoView.swift */; };
 		90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D1323811D4A00C6E502 /* DesignView.swift */; };
 		90E60D30238122E900C6E502 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D2F238122E900C6E502 /* BlurView.swift */; };
+		90EA973423D98CF600FFBEF4 /* LoadingViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA973323D98CF600FFBEF4 /* LoadingViewService.swift */; };
 		90F9983A23D423C300B4C2C6 /* BlurContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9983923D423C300B4C2C6 /* BlurContainer.swift */; };
 /* End PBXBuildFile section */
 
@@ -218,6 +219,7 @@
 		9072823623D6B2D30091BE14 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		90E60D1323811D4A00C6E502 /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
 		90E60D2F238122E900C6E502 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		90EA973323D98CF600FFBEF4 /* LoadingViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewService.swift; sourceTree = "<group>"; };
 		90F9983923D423C300B4C2C6 /* BlurContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurContainer.swift; sourceTree = "<group>"; };
 		9C2A77E255123014A3875B7C /* Pods-tent_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -288,6 +290,7 @@
 				4C06CCB1237FAC6E00201425 /* TentLocation.swift */,
 				4C9C5B23237513C300B0C315 /* TentConfig.swift */,
 				9045E4D723D961AA00CE5618 /* TentData.swift */,
+				90EA973323D98CF600FFBEF4 /* LoadingViewService.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -697,6 +700,7 @@
 				90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */,
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,
 				4C92D77A2355860A00646CFB /* GalleryView.swift in Sources */,
+				90EA973423D98CF600FFBEF4 /* LoadingViewService.swift in Sources */,
 				4CFA82FF2373CF5A005348A3 /* JoinView.swift in Sources */,
 				4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */,
 			);

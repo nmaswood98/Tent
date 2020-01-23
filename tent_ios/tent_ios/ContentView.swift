@@ -25,14 +25,17 @@ struct ContentView: View {
     @State var shouldFlash = false
     
     @State var expandMenu = false
+    @State var showLoading = true
     
         var body: some View {
             
+            LoadingView() {
+
             NavigationView{
                 ZStack(alignment: .center){
                     
 
-                    CameraView(camera: camera, color: UIColor.red)
+                    CameraView(camera: self.camera, color: UIColor.red)
                         .edgesIgnoringSafeArea(.all)
                     
                     CameraSnapView(shouldFlash: self.$shouldFlash)
@@ -45,7 +48,7 @@ struct ContentView: View {
                                     self.showTentJoin.toggle();
                                 }
                             }){
-                                Text((tentConfig.code == "") ? "Tent" : "Tent: \(tentConfig.code)")
+                                Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
                                     .foregroundColor(.green)
                             }
                         
@@ -150,7 +153,7 @@ struct ContentView: View {
                             
                         }
                         .frame(minWidth: 0, maxWidth: .infinity)
-                        .frame( height: expandMenu ? 200 : 125, alignment: .bottom)
+                        .frame( height: self.expandMenu ? 200 : 125, alignment: .bottom)
                         .animation(.spring())
                         
                         
@@ -189,6 +192,7 @@ struct ContentView: View {
                 }
             }.navigationBarHidden(true)
                 .statusBar(hidden: true)
+    }
     }
     
     func takePicture(){

@@ -10,8 +10,10 @@ import SwiftUI
 import GoogleMaps
 
 struct TentHistoryView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var tentManagment: TentManagement
     @EnvironmentObject var tentConfig: TentConfig
+    @EnvironmentObject var loadingService: LoadingViewService
     var code: String
     var tentLocation: TentLocation
     var body: some View {
@@ -46,7 +48,13 @@ struct TentHistoryView: View {
                     Spacer()
                     
                     Button(action:{
-                        self.tentManagment.submitCode(value: self.code, location: self.tentLocation.getCLLocationCoordinate2D(), config: self.tentConfig, completion: {value in })
+                        self.loadingService.enableLoadingDialog()
+                        
+                        self.tentManagment.submitCode(value: self.code, location: self.tentLocation.getCLLocationCoordinate2D(), config: self.tentConfig, completion: {value in
+                            self.loadingService.disableLoadingDialog()
+                            self.presentationMode.wrappedValue.dismiss()
+                        })
+                        
                     }){
                         ZStack{
                             Rectangle()

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct InfoView: View {
     @EnvironmentObject var tentConfig: TentConfig
+    @EnvironmentObject var loadingService: LoadingViewService
     
     var body: some View {
         TabView {
@@ -36,6 +37,9 @@ struct InfoView: View {
                 }
         }
         .font(.headline)
+        .onAppear{
+            self.loadingService.setLoadingMessage(text: "Joining...")
+        }
     }
 }
 
