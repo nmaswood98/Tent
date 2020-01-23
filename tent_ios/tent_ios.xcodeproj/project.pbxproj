@@ -33,6 +33,7 @@
 		9013C01423D291630091BE73 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013C01323D291630091BE73 /* MenuButton.swift */; };
 		901B864023C801750095C0F8 /* CameraSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B863F23C801750095C0F8 /* CameraSnapView.swift */; };
 		9045E4D823D961AA00CE5618 /* TentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D723D961AA00CE5618 /* TentData.swift */; };
+		9045E4DA23D9735B00CE5618 /* MapView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D923D9735B00CE5618 /* MapView2.swift */; };
 		9072821A23D69AD40091BE14 /* TentInfoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072821923D69AD40091BE14 /* TentInfoComponent.swift */; };
 		9072823723D6B2D30091BE14 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072823623D6B2D30091BE14 /* InfoView.swift */; };
 		90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D1323811D4A00C6E502 /* DesignView.swift */; };
@@ -212,6 +213,7 @@
 		9013C01323D291630091BE73 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuButton.swift; path = ../../../UIMockUps/UIMockUps/MenuButton.swift; sourceTree = "<group>"; };
 		901B863F23C801750095C0F8 /* CameraSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSnapView.swift; sourceTree = "<group>"; };
 		9045E4D723D961AA00CE5618 /* TentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentData.swift; sourceTree = "<group>"; };
+		9045E4D923D9735B00CE5618 /* MapView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView2.swift; path = ../../../UIMockUps/UIMockUps/MapView2.swift; sourceTree = "<group>"; };
 		9072821923D69AD40091BE14 /* TentInfoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentInfoComponent.swift; sourceTree = "<group>"; };
 		9072823623D6B2D30091BE14 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		90E60D1323811D4A00C6E502 /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 				9013C01323D291630091BE73 /* MenuButton.swift */,
 				90F9983923D423C300B4C2C6 /* BlurContainer.swift */,
 				4C28D23F23776E6800C1B8BF /* MapView.swift */,
+				9045E4D923D9735B00CE5618 /* MapView2.swift */,
 				90E60D2F238122E900C6E502 /* BlurView.swift */,
 				4C06CC9B237FA2E700201425 /* LoadingView.swift */,
 				9072821923D69AD40091BE14 /* TentInfoComponent.swift */,
@@ -679,6 +682,7 @@
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
 				9045E4D823D961AA00CE5618 /* TentData.swift in Sources */,
 				90E60D30238122E900C6E502 /* BlurView.swift in Sources */,
+				9045E4DA23D9735B00CE5618 /* MapView2.swift in Sources */,
 				90F9983A23D423C300B4C2C6 /* BlurContainer.swift in Sources */,
 				4CAC58E02353AD2100184DEE /* Camera.swift in Sources */,
 				4C28D24023776E6800C1B8BF /* MapView.swift in Sources */,

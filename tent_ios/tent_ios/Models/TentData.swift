@@ -8,9 +8,20 @@
 
 import Foundation
 
-struct TentData: Codable {
+struct TentData: Codable, Hashable {
+
+    
+    var id: String
     var code: String
     var tentLoc: TentLocation
+    
+    static func == (lhs: TentData, rhs: TentData) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
     
     static func saveTentHistory(arr: [String:TentData]){
         UserDefaults.standard.set(try? JSONEncoder().encode(arr), forKey:"tentHistory")

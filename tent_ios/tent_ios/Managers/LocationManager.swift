@@ -12,7 +12,7 @@ import SwiftUI
 
 extension Double {
     var radian: Double { return Double(self) * .pi / 180 }
-    var degree: Double { return Double(self) * 108 / .pi}
+    var degree: Double { return Double(self) * 180 / .pi}
 }
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate{

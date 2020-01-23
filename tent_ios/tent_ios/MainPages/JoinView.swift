@@ -63,7 +63,7 @@ struct JoinView: View {
                 }
                 
                 if(self.shouldLoadMap){
-                    MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3)
+                    MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3,zoom:15)
                         .frame(height:300)
                         .padding(.top, 15)
                 }
@@ -72,8 +72,8 @@ struct JoinView: View {
                     self.tentManagement.submitCode(value: self.code, location: self.locationManager.currentLocation, config:self.tentConfig, displayAlert:self.$showAlert, loadingAlert: self.$showLoading, completion: { status in
                             if (status){
                                 print("Completed")
-                                self.presentationMode.wrappedValue.dismiss()
                                 UIApplication.shared.endEditing()
+                                self.backTap()
                                 
                             }
                             else{
