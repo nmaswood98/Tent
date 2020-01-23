@@ -25,14 +25,12 @@ class TentManagement : ObservableObject {
     init(){
     }
     
-    func createTent(location:CLLocationCoordinate2D, radius: Double, config: TentConfig,displayAlert: Binding<Bool>, loadingAlert: Binding<Bool>,completion: @escaping (Bool)->()){
+    func createTent(location:CLLocationCoordinate2D, radius: Double, config: TentConfig,completion: @escaping (Bool)->()){
         print("Creating Tent")
     functions.httpsCallable("CreateTent").call(["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius]){ (result,error) in
             print("Got Creation result")
-            loadingAlert.wrappedValue = false
             if let error = error as NSError? {
                 print(error)
-                displayAlert.wrappedValue = true
                 completion(false);
             }
             
@@ -47,24 +45,21 @@ class TentManagement : ObservableObject {
             }
             
         }
-        loadingAlert.wrappedValue = true
     }
     
-    func submitCode(value: String, location: CLLocationCoordinate2D, config: TentConfig, displayAlert: Binding<Bool>, loadingAlert: Binding<Bool>, completion: @escaping (Bool)->()){
+    func submitCode(value: String, location: CLLocationCoordinate2D, config: TentConfig, completion: @escaping (Bool)->()){
         print("Submitting Code")
         functions.httpsCallable("JoinTent").call(["code": value,"lat":location.latitude.radian,"long":location.longitude.radian]) { (result, error) in
             print("Got code result")
-            loadingAlert.wrappedValue = false
 
           if let error = error as NSError? {
             print(error)
-            displayAlert.wrappedValue = true
             completion(false);
           }else
             if let text = result?.data as? String {
                 
                 if(text == "False"){
-                    displayAlert.wrappedValue = true
+                    completion(false);
                 }
                 
           }
@@ -100,7 +95,6 @@ class TentManagement : ObservableObject {
             }
             
         }
-        loadingAlert.wrappedValue = true
     }
     
 
