@@ -11,10 +11,10 @@
 		4C06CC9C237FA2E700201425 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06CC9B237FA2E700201425 /* LoadingView.swift */; };
 		4C06CCB2237FAC6E00201425 /* TentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06CCB1237FAC6E00201425 /* TentLocation.swift */; };
 		4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F619E2353EF1D00A56D14 /* UploadManager.swift */; };
-		4C28D22A23776B9A00C1B8BF /* TentCreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D22923776B9A00C1B8BF /* TentCreationView.swift */; };
+		4C28D22A23776B9A00C1B8BF /* CreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D22923776B9A00C1B8BF /* CreationView.swift */; };
 		4C28D24023776E6800C1B8BF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D23F23776E6800C1B8BF /* MapView.swift */; };
 		4C28D26C2377E89D00C1B8BF /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D26B2377E89D00C1B8BF /* LocationManager.swift */; };
-		4C92D77A2355860A00646CFB /* TentContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D7792355860A00646CFB /* TentContentView.swift */; };
+		4C92D77A2355860A00646CFB /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D7792355860A00646CFB /* GalleryView.swift */; };
 		4C92D78C23558BFF00646CFB /* TentContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D78B23558BFF00646CFB /* TentContent.swift */; };
 		4C92D790235596A400646CFB /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D78F235596A400646CFB /* KingfisherSwiftUI */; };
 		4C92D792235596A400646CFB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D791235596A400646CFB /* Kingfisher */; };
@@ -28,11 +28,10 @@
 		4CC087162352D5090086A5B0 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4CC087152352D5090086A5B0 /* Preview Assets.xcassets */; };
 		4CC087192352D5090086A5B0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CC087172352D5090086A5B0 /* LaunchScreen.storyboard */; };
 		4CC087212352DE860086A5B0 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CC087202352DE860086A5B0 /* CameraView.swift */; };
-		4CFA82FF2373CF5A005348A3 /* TentJoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA82FE2373CF5A005348A3 /* TentJoinView.swift */; };
+		4CFA82FF2373CF5A005348A3 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA82FE2373CF5A005348A3 /* JoinView.swift */; };
 		4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CFA83112373DA63005348A3 /* TentManagement.swift */; };
 		9013C01423D291630091BE73 /* MenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9013C01323D291630091BE73 /* MenuButton.swift */; };
 		901B864023C801750095C0F8 /* CameraSnapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 901B863F23C801750095C0F8 /* CameraSnapView.swift */; };
-		905B580F23D4FD5D00D114F3 /* TentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905B580E23D4FD5D00D114F3 /* TentInfoView.swift */; };
 		9072821A23D69AD40091BE14 /* TentInfoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072821923D69AD40091BE14 /* TentInfoComponent.swift */; };
 		9072823723D6B2D30091BE14 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072823623D6B2D30091BE14 /* InfoView.swift */; };
 		90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D1323811D4A00C6E502 /* DesignView.swift */; };
@@ -189,10 +188,10 @@
 		4C06CCB1237FAC6E00201425 /* TentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentLocation.swift; sourceTree = "<group>"; };
 		4C0F619E2353EF1D00A56D14 /* UploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadManager.swift; sourceTree = "<group>"; };
 		4C0F61A023543DE100A56D14 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
-		4C28D22923776B9A00C1B8BF /* TentCreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentCreationView.swift; sourceTree = "<group>"; };
+		4C28D22923776B9A00C1B8BF /* CreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationView.swift; sourceTree = "<group>"; };
 		4C28D23F23776E6800C1B8BF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		4C28D26B2377E89D00C1B8BF /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		4C92D7792355860A00646CFB /* TentContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentContentView.swift; sourceTree = "<group>"; };
+		4C92D7792355860A00646CFB /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		4C92D78B23558BFF00646CFB /* TentContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentContent.swift; sourceTree = "<group>"; };
 		4C9C5B23237513C300B0C315 /* TentConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentConfig.swift; sourceTree = "<group>"; };
 		4CAC58DF2353AD2100184DEE /* Camera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
@@ -206,12 +205,11 @@
 		4CC087182352D5090086A5B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4CC0871A2352D5090086A5B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4CC087202352DE860086A5B0 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		4CFA82FE2373CF5A005348A3 /* TentJoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentJoinView.swift; sourceTree = "<group>"; };
+		4CFA82FE2373CF5A005348A3 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		4CFA83112373DA63005348A3 /* TentManagement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentManagement.swift; sourceTree = "<group>"; };
 		51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9013C01323D291630091BE73 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuButton.swift; path = ../../../UIMockUps/UIMockUps/MenuButton.swift; sourceTree = "<group>"; };
 		901B863F23C801750095C0F8 /* CameraSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSnapView.swift; sourceTree = "<group>"; };
-		905B580E23D4FD5D00D114F3 /* TentInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentInfoView.swift; sourceTree = "<group>"; };
 		9072821923D69AD40091BE14 /* TentInfoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentInfoComponent.swift; sourceTree = "<group>"; };
 		9072823623D6B2D30091BE14 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		90E60D1323811D4A00C6E502 /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
@@ -244,6 +242,7 @@
 				90E60D2F238122E900C6E502 /* BlurView.swift */,
 				4C06CC9B237FA2E700201425 /* LoadingView.swift */,
 				9072821923D69AD40091BE14 /* TentInfoComponent.swift */,
+				4CC087202352DE860086A5B0 /* CameraView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -290,12 +289,10 @@
 		4C28D22723754A3F00C1B8BF /* MainPages */ = {
 			isa = PBXGroup;
 			children = (
-				4CC087202352DE860086A5B0 /* CameraView.swift */,
 				9072823623D6B2D30091BE14 /* InfoView.swift */,
-				4C92D7792355860A00646CFB /* TentContentView.swift */,
-				4CFA82FE2373CF5A005348A3 /* TentJoinView.swift */,
-				4C28D22923776B9A00C1B8BF /* TentCreationView.swift */,
-				905B580E23D4FD5D00D114F3 /* TentInfoView.swift */,
+				4C92D7792355860A00646CFB /* GalleryView.swift */,
+				4CFA82FE2373CF5A005348A3 /* JoinView.swift */,
+				4C28D22923776B9A00C1B8BF /* CreationView.swift */,
 			);
 			path = MainPages;
 			sourceTree = "<group>";
@@ -671,7 +668,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C28D22A23776B9A00C1B8BF /* TentCreationView.swift in Sources */,
+				4C28D22A23776B9A00C1B8BF /* CreationView.swift in Sources */,
 				901B864023C801750095C0F8 /* CameraSnapView.swift in Sources */,
 				4C92D78C23558BFF00646CFB /* TentContent.swift in Sources */,
 				4C06CCB2237FAC6E00201425 /* TentLocation.swift in Sources */,
@@ -691,10 +688,9 @@
 				9072821A23D69AD40091BE14 /* TentInfoComponent.swift in Sources */,
 				90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */,
 				4CC087212352DE860086A5B0 /* CameraView.swift in Sources */,
-				4C92D77A2355860A00646CFB /* TentContentView.swift in Sources */,
-				4CFA82FF2373CF5A005348A3 /* TentJoinView.swift in Sources */,
+				4C92D77A2355860A00646CFB /* GalleryView.swift in Sources */,
+				4CFA82FF2373CF5A005348A3 /* JoinView.swift in Sources */,
 				4CFA83122373DA63005348A3 /* TentManagement.swift in Sources */,
-				905B580F23D4FD5D00D114F3 /* TentInfoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

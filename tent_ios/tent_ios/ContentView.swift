@@ -109,7 +109,7 @@ struct ContentView: View {
                                 
                                 HStack(spacing:60){
                                     
-                                    NavigationLink(destination: TentContentView().environmentObject(tentContent)){
+                                    NavigationLink(destination: GalleryView().environmentObject(tentContent)){
                                             Image("gallery")
                                                 .resizable()
                                                 .frame(width: 50, height: 50)
@@ -168,7 +168,7 @@ struct ContentView: View {
                     
                     if(self.showTentJoin){
                         BlurContainer{
-                            TentJoinView(locationManager: self.locationManager, backTap:{
+                            JoinView(locationManager: self.locationManager, backTap:{
                                 withAnimation{
                                     self.showTentJoin.toggle()
                                 }
@@ -182,7 +182,7 @@ struct ContentView: View {
                     
                     if(self.showTentCreate){
                         BlurContainer{
-                            TentCreationView(locationManager: self.locationManager, backTap:{
+                            CreationView(locationManager: self.locationManager, backTap:{
                                 withAnimation{
                                     self.showTentCreate.toggle()
                                 }
