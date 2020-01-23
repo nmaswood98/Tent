@@ -77,9 +77,17 @@ struct CreationView: View {
                     .frame(width: 300)
                     .padding(.bottom,50)
                 
-                Button(action:{self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, displayAlert:self.$showAlert, loadingAlert: self.$showLoading, completion: {status in
+                Button(action:{
+                    self.showLoading = true;
+                    self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, completion: {status in
+                    //self.showAlert
+                    //self.loadingAlert
+                    self.showLoading = false;
                     if(status){
                         self.backTap()
+                    }
+                    else{
+                        self.showAlert = true;
                     }
                 })}){
                     Text("Build a new Tent")

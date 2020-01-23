@@ -70,7 +70,9 @@ struct JoinView: View {
                 }
                 
                 TextField("Code", text:self.$code,onCommit: {
-                    self.tentManagement.submitCode(value: self.code, location: self.locationManager.currentLocation, config:self.tentConfig, displayAlert:self.$showAlert, loadingAlert: self.$showLoading, completion: { status in
+                    self.showLoading = true;
+                    self.tentManagement.submitCode(value: self.code, location: self.locationManager.currentLocation, config:self.tentConfig, completion: { status in
+                        self.showLoading = false;
                             if (status){
                                 print("Completed")
                                 UIApplication.shared.endEditing()
@@ -78,6 +80,7 @@ struct JoinView: View {
                                 
                             }
                             else{
+                                self.showAlert = true;
                                 print("Completed but failed")
                                 self.shouldOpenKeyboard = true
                                 self.code = ""
