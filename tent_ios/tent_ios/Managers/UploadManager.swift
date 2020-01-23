@@ -36,7 +36,7 @@ class UploadManager {
         }
         
         let imagePath = storage.reference().child("\(tConfig.name)/" + name + ".png")
-
+        
         _ = imagePath.putData(data, metadata: nil) { (metadata, error) in
             guard metadata != nil else { return }
             
@@ -53,5 +53,5 @@ class UploadManager {
         }
         db.collection("Tents").document(tConfig.name).collection("Images").document(name).setData(data)
     }
-        
+    
 }

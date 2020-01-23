@@ -18,16 +18,16 @@ struct GalleryView: View {
             ForEach(tentContent.rows) { row in
                 HStack(alignment: .center) {
                     ForEach(row.cells) { cell in
-                            KFImage(URL(string: cell.imageURL)!)
-                              .placeholder {
+                        KFImage(URL(string: cell.imageURL)!)
+                            .placeholder {
                                 EmptyView()
-                                }
-                            .resizable()
-                            .scaledToFit()
+                        }
+                        .resizable()
+                        .scaledToFit()
                     }
                 }
             }
-        
+            
         }
     }
     

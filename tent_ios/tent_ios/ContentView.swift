@@ -27,14 +27,14 @@ struct ContentView: View {
     @State var expandMenu = false
     @State var showLoading = true
     
-        var body: some View {
+    var body: some View {
+        
+        LoadingView() {
             
-            LoadingView() {
-
             NavigationView{
                 ZStack(alignment: .center){
                     
-
+                    
                     CameraView(camera: self.camera, color: UIColor.red)
                         .edgesIgnoringSafeArea(.all)
                     
@@ -42,15 +42,15 @@ struct ContentView: View {
                     
                     VStack{
                         Spacer()
-                    
-                            Button(action:{
-                                withAnimation{
-                                    self.showTentJoin.toggle();
-                                }
-                            }){
-                                Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
-                                    .foregroundColor(.green)
+                        
+                        Button(action:{
+                            withAnimation{
+                                self.showTentJoin.toggle();
                             }
+                        }){
+                            Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
+                                .foregroundColor(.green)
+                        }
                         
                         ZStack{
                             BlurView(style: .dark)
@@ -58,15 +58,15 @@ struct ContentView: View {
                             
                             VStack{
                                 Spacer()
-                            
-
+                                
+                                
                                 if(self.expandMenu){
                                     Spacer()
                                     HStack(spacing:10){
                                         Spacer()
                                         
-                                    
-                                                  
+                                        
+                                        
                                         NavigationLink(destination: InfoView())
                                         {
                                             
@@ -74,7 +74,7 @@ struct ContentView: View {
                                                 Rectangle()
                                                     .fill(Color.green)
                                                     .cornerRadius(30)
-                                            
+                                                
                                                 Text("Tents")
                                                     .foregroundColor(.white)
                                             }
@@ -88,14 +88,14 @@ struct ContentView: View {
                                                 self.showTentJoin.toggle()
                                             }
                                         })
-                                     
+                                        
                                         MenuButton(text:"Create", action:{
                                             withAnimation{
                                                 self.showTentCreate.toggle()
                                             }
                                         })
-
-
+                                        
+                                        
                                         Spacer()
                                     }
                                     .frame( height: 60)
@@ -106,31 +106,31 @@ struct ContentView: View {
                                 HStack(spacing:60){
                                     
                                     NavigationLink(destination: GalleryView()){
-                                            Image("gallery")
-                                                .resizable()
-                                                .frame(width: 50, height: 50)
+                                        Image("gallery")
+                                            .resizable()
+                                            .frame(width: 50, height: 50)
                                     }
                                     .buttonStyle(PlainButtonStyle())
-
-
+                                    
+                                    
                                     Button(action:{
                                         self.takePicture()
                                         self.shouldFlash = true
                                     }){
-                                            ZStack{
-                                                Circle()
-                                                    .fill(Color.gray)
-                                                    .opacity(1)
-                                                Circle()
-                                                    .fill(Color.white)
-                                                    .opacity(1)
-                                                    .frame(width:65)
-
-                                            }
-                                            .frame(width: 75, height: 75)
-                                            .padding(.bottom, 10)
-
+                                        ZStack{
+                                            Circle()
+                                                .fill(Color.gray)
+                                                .opacity(1)
+                                            Circle()
+                                                .fill(Color.white)
+                                                .opacity(1)
+                                                .frame(width:65)
+                                            
                                         }
+                                        .frame(width: 75, height: 75)
+                                        .padding(.bottom, 10)
+                                        
+                                    }
                                     
                                     Button(action:{
                                         withAnimation{
@@ -143,12 +143,12 @@ struct ContentView: View {
                                             .padding(.top, 5)
                                     }
                                     .buttonStyle(PlainButtonStyle())
-
+                                    
                                     
                                 }.padding()
                             }
                             
-
+                            
                             
                             
                         }
@@ -157,8 +157,8 @@ struct ContentView: View {
                         .animation(.spring())
                         
                         
-
-                    
+                        
+                        
                     }
                     .edgesIgnoringSafeArea(.all)
                     
@@ -186,20 +186,20 @@ struct ContentView: View {
                         .edgesIgnoringSafeArea(.all)
                         .transition(.opacity)
                         .zIndex(1)
-
+                        
                     }
-
+                    
                 }
             }.navigationBarHidden(true)
                 .statusBar(hidden: true)
-    }
+        }
     }
     
     func takePicture(){
         camera.takePicture()
     }
     
-
+    
 }
 
 

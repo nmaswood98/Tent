@@ -34,9 +34,9 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
         deviceInput = try? AVCaptureDeviceInput(device: backCamera!)
         
         cameraOutput = AVCapturePhotoOutput()
-                
+        
         super.init()
-
+        
         guard deviceInput != nil else { return }
         
         
@@ -44,7 +44,7 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
         
         previewLayer.connection?.videoOrientation = .portrait
         previewLayer.videoGravity = .resizeAspectFill
-
+        
         captureSession.commitConfiguration()
         
         DispatchQueue.global(qos: .userInitiated).async {
@@ -76,7 +76,7 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
     
     func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
         
-       guard let imageData = photo.fileDataRepresentation()
+        guard let imageData = photo.fileDataRepresentation()
             else { return }
         
         let image = UIImage(data: imageData)
@@ -95,11 +95,11 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
         if error != nil {
-           print("We got an error")
+            print("We got an error")
         } else {
-           print("Saved to the library successfully")
-
+            print("Saved to the library successfully")
+            
         }
     }
-
+    
 }
