@@ -21,13 +21,13 @@ class TentManagement : ObservableObject {
     
     lazy var functions = Functions.functions()
     
-
+    
     init(){
     }
     
     func createTent(location:CLLocationCoordinate2D, radius: Double, config: TentConfig,completion: @escaping (Bool)->()){
         print("Creating Tent")
-    functions.httpsCallable("CreateTent").call(["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius]){ (result,error) in
+        functions.httpsCallable("CreateTent").call(["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius]){ (result,error) in
             print("Got Creation result")
             if let error = error as NSError? {
                 print(error)
@@ -51,45 +51,45 @@ class TentManagement : ObservableObject {
         print("Submitting Code")
         functions.httpsCallable("JoinTent").call(["code": value,"lat":location.latitude.radian,"long":location.longitude.radian]) { (result, error) in
             print("Got code result")
-
-          if let error = error as NSError? {
-            print(error)
-            completion(false);
-          }else
-            if let text = result?.data as? String {
-                
-                if(text == "False"){
-                    completion(false);
-                }
-                
-          }
+            
+            if let error = error as NSError? {
+                print(error)
+                completion(false);
+            }else
+                if let text = result?.data as? String {
+                    
+                    if(text == "False"){
+                        completion(false);
+                    }
+                    
+            }
             if let data = result?.data as? NSDictionary {
                 if let text = data["name"] as? String, let loc = data["Location"] as? NSDictionary {
                     if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
                         config.code =  value
                         config.tentLocation = TentLocation(lat: lat, long: long, radius: radius)
                         config.name = text
-
+                        
                         completion(true);
                         
                         print("**********************************");
                         print("**********************************");
-
+                        
                         print("**********************************");
-
+                        
                         print("**********************************");
-
+                        
                         print(TentData.getTentHistory())
                         print("**********************************");
-
+                        
                         print("**********************************");
-
+                        
                         print("**********************************");
-
+                        
                         print("**********************************");
-
+                        
                     }
-
+                    
                     print("Location: \n \(config.tentLocation)");
                 }
             }
@@ -97,6 +97,6 @@ class TentManagement : ObservableObject {
         }
     }
     
-
+    
     
 }

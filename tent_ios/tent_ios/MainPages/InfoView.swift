@@ -15,26 +15,26 @@ struct InfoView: View {
     var body: some View {
         TabView {
             ScrollView{
-            VStack{
-            ForEach(Array<TentData>(tentConfig.tentHistory.values), id:\.self){tentData in
-                TentHistoryView(code: tentData.code, tentLocation: tentData.tentLoc)
-            }
-            }
-        }
-                .tabItem {
-                    Image(systemName: "1.square.fill")
-                    Text("First")
+                VStack{
+                    ForEach(Array<TentData>(tentConfig.tentHistory.values), id:\.self){tentData in
+                        TentHistoryView(code: tentData.code, tentLocation: tentData.tentLoc)
+                    }
                 }
+            }
+            .tabItem {
+                Image(systemName: "1.square.fill")
+                Text("First")
+            }
             Text("Another Tab")
                 .tabItem {
                     Image(systemName: "2.square.fill")
                     Text("Second")
-                }
+            }
             Text("The Last Tab")
                 .tabItem {
                     Image(systemName: "3.square.fill")
                     Text("Third")
-                }
+            }
         }
         .font(.headline)
         .onAppear{

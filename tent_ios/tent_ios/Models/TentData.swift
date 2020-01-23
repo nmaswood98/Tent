@@ -9,7 +9,7 @@
 import Foundation
 
 struct TentData: Codable, Hashable {
-
+    
     
     var id: String
     var code: String
@@ -30,7 +30,7 @@ struct TentData: Codable, Hashable {
     static func getTentHistory() -> [String:TentData]?{
         if let data = UserDefaults.standard.value(forKey:"tentHistory") as? Data {
             let tentData = try? JSONDecoder().decode(Dictionary<String,TentData>.self, from: data)
-                return tentData
+            return tentData
         }
         return nil
     }

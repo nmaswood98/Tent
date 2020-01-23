@@ -4,11 +4,11 @@ import MapKit
 struct MapView2: UIViewRepresentable {
     var currentPosition: CLLocationCoordinate2D
     var circleRadius: Double
-
+    
     func makeUIView(context: Context) -> MKMapView {
         MKMapView(frame: .zero)
     }
-
+    
     func updateUIView(_ view: MKMapView, context: Context) {
         let coordinate = CLLocationCoordinate2D(
             latitude: currentPosition.latitude, longitude: currentPosition.longitude)

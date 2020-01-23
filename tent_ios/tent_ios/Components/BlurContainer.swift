@@ -10,7 +10,7 @@ import SwiftUI
 
 struct BlurContainer<Container: View>: View {
     var container: () -> Container
-
+    
     var body: some View {
         ZStack{
             BlurView(style:.dark)

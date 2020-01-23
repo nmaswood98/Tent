@@ -20,7 +20,7 @@ struct CreationView: View {
     @State private var radius: Double = 0.1
     
     @State private var shouldLoadMap: Bool = true
-
+    
     
     var backTap: () -> ()
     
@@ -66,7 +66,7 @@ struct CreationView: View {
                     
                 }
                 
-
+                
                 Text("Radius:")
                     .font(.body)
                     .foregroundColor(.green)
@@ -79,17 +79,17 @@ struct CreationView: View {
                 Button(action:{
                     self.loadingService.enableLoadingDialog()
                     self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, completion: {status in
-                    self.loadingService.disableLoadingDialog()
-                    if(status){
-                        self.backTap()
-                    }
-                    else{
-                        self.showAlert = true;
-                    }
-                })}){
-                    Text("Build a new Tent")
-                        .font(.body)
-                        .foregroundColor(.green)
+                        self.loadingService.disableLoadingDialog()
+                        if(status){
+                            self.backTap()
+                        }
+                        else{
+                            self.showAlert = true;
+                        }
+                    })}){
+                        Text("Build a new Tent")
+                            .font(.body)
+                            .foregroundColor(.green)
                 }.alert(isPresented: self.$showAlert, content: {
                     Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
                 })
@@ -98,9 +98,9 @@ struct CreationView: View {
                 
                 
             }
-        .padding(15)
+            .padding(15)
             .padding(.top,50)
-
+            
         }.onAppear{
             self.loadingService.setLoadingMessage(text: "Creating...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {

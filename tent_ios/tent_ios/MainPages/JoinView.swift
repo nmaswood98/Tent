@@ -21,7 +21,7 @@ struct JoinView: View {
     @State private var shouldOpenKeyboard: Bool = true
     
     @State private var shouldLoadMap: Bool = true
-
+    
     
     var backTap: () -> ()
     var body: some View {
@@ -70,19 +70,19 @@ struct JoinView: View {
                     self.loadingService.enableLoadingDialog()
                     self.tentManagement.submitCode(value: self.code, location: self.locationManager.currentLocation, config:self.tentConfig, completion: { status in
                         self.loadingService.disableLoadingDialog()
-                            if (status){
-                                print("Completed")
-                                UIApplication.shared.endEditing()
-                                self.backTap()
-                                
-                            }
-                            else{
-                                self.showAlert = true;
-                                print("Completed but failed")
-                                self.shouldOpenKeyboard = true
-                                self.code = ""
-                            }
-                        })
+                        if (status){
+                            print("Completed")
+                            UIApplication.shared.endEditing()
+                            self.backTap()
+                            
+                        }
+                        else{
+                            self.showAlert = true;
+                            print("Completed but failed")
+                            self.shouldOpenKeyboard = true
+                            self.code = ""
+                        }
+                    })
                     
                 })
                     .multilineTextAlignment(.center)
@@ -96,18 +96,18 @@ struct JoinView: View {
                             textField.becomeFirstResponder()
                             self.shouldOpenKeyboard = false
                         }
-                    }.alert(isPresented: self.$showAlert, content: {
-                        Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
-                    })
+                }.alert(isPresented: self.$showAlert, content: {
+                    Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
+                })
                 
                 Spacer()
-
+                
             }.padding(15)
                 .padding(.top,50)
             
             
             
-        
+            
         }.onAppear{
             self.loadingService.setLoadingMessage(text: "Joining...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01 ) {

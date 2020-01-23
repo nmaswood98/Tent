@@ -17,12 +17,12 @@ extension Double {
 
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
-
+    
     let cLocationManager = CLLocationManager()
-        
+    
     override init(){
         super.init()
-
+        
         self.cLocationManager.requestWhenInUseAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()) {

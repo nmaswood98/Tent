@@ -15,7 +15,7 @@ struct TentLocation:Codable{
     var long: Double;
     var radius: Double;
     
-     init(lat: Double?, long: Double? , radius: Double?){
+    init(lat: Double?, long: Double? , radius: Double?){
         if let l1 = lat, let l2 = long, let r = radius {
             self.lat = l1
             self.long = l2

@@ -11,7 +11,7 @@ import SwiftUI
 class LoadingViewService: ObservableObject {
     @Published var showLoadingDialog: Bool = false
     @Published var loadingMessage: String = "Loading..."
-
+    
     init(){
         
     }

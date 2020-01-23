@@ -22,7 +22,7 @@ class TentContent: ObservableObject{
     var tentName: String
     var tentConfig: TentConfig 
     var listner: ListenerRegistration?
-
+    
     init(tentConfig: TentConfig){
         self.tentConfig = tentConfig
         tentName = tentConfig.name
@@ -37,25 +37,25 @@ class TentContent: ObservableObject{
             
             snapshot.documentChanges.forEach { diff in
                 print("changes")
-                    if (diff.type == .added) {
-                        print("\(diff.document.documentID) => \(diff.document.data())")
-                        if let url = diff.document.data()["URL"] {
-                            self.addEntry(entry: url as! String)
-                        }
-                        
+                if (diff.type == .added) {
+                    print("\(diff.document.documentID) => \(diff.document.data())")
+                    if let url = diff.document.data()["URL"] {
+                        self.addEntry(entry: url as! String)
                     }
-                    if (diff.type == .modified) {
-                        print("Modified city: \(diff.document.data())")
-                    }
-                    if (diff.type == .removed) {
-                        print("Removed city: \(diff.document.data())")
-                    }
+                    
                 }
+                if (diff.type == .modified) {
+                    print("Modified city: \(diff.document.data())")
+                }
+                if (diff.type == .removed) {
+                    print("Removed city: \(diff.document.data())")
+                }
+            }
             
         }
         
         
-
+        
     }
     
     func addRow(entry1:String,entry2:String){
@@ -126,22 +126,22 @@ class TentContent: ObservableObject{
             
             snapshot.documentChanges.forEach { diff in
                 print("changes")
-                    if (diff.type == .added) {
-                        print("\(diff.document.documentID) => \(diff.document.data())")
-                        if let url = diff.document.data()["URL"] {
-                            self.addEntry(entry: url as! String)
-                        }
-                        
+                if (diff.type == .added) {
+                    print("\(diff.document.documentID) => \(diff.document.data())")
+                    if let url = diff.document.data()["URL"] {
+                        self.addEntry(entry: url as! String)
                     }
-                    if (diff.type == .modified) {
-                        print("Modified city: \(diff.document.data())")
-                    }
-                    if (diff.type == .removed) {
-                        print("Removed city: \(diff.document.data())")
-                    }
+                    
                 }
-            
+                if (diff.type == .modified) {
+                    print("Modified city: \(diff.document.data())")
+                }
+                if (diff.type == .removed) {
+                    print("Removed city: \(diff.document.data())")
+                }
             }
+            
+        }
         
     }
     

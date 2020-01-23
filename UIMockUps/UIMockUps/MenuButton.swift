@@ -24,7 +24,7 @@ struct MenuButton: View {
                     .foregroundColor(.white)
             }
         }
-
+        
     }
 }
 

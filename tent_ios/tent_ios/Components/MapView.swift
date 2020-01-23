@@ -18,7 +18,7 @@ extension GMSCircle {
             let lon = position.longitude + dx / cos(position.latitude * .pi/180)
             return CLLocationCoordinate2D(latitude: lat, longitude: lon)
         }
-
+        
         return GMSCoordinateBounds(coordinate: locationMinMax(positive: true),
                                    coordinate: locationMinMax(positive: false))
     }
@@ -33,7 +33,7 @@ struct MapView: UIViewRepresentable {
     func getZoomLevel() -> Float{
         return (Float(zoom - log(circleRadius / 5)/log(2)));
     }
-
+    
     func makeUIView(context: Context) -> GMSMapView {
         
         let camera = GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: getZoomLevel())
@@ -45,11 +45,11 @@ struct MapView: UIViewRepresentable {
         return mapView
     }
     
-
+    
     
     func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
         mapView.moveCamera(GMSCameraUpdate.setCamera(GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: getZoomLevel())))
-
+        
         mapView.clear()
         circle.radius = 100 * circleRadius
         
@@ -58,7 +58,7 @@ struct MapView: UIViewRepresentable {
         
         
     }
-
+    
 }
 
 
