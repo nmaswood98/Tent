@@ -34,16 +34,12 @@ struct ContentView: View {
 
                     CameraView(camera: camera, color: UIColor.red)
                         .edgesIgnoringSafeArea(.all)
-                        .environmentObject(tentConfig)
                     
                     CameraSnapView(shouldFlash: self.$shouldFlash)
                     
                     VStack{
                         Spacer()
-                        
-
-
-                        
+                    
                             Button(action:{
                                 withAnimation{
                                     self.showTentJoin.toggle();
@@ -109,7 +105,7 @@ struct ContentView: View {
                                 
                                 HStack(spacing:60){
                                     
-                                    NavigationLink(destination: GalleryView().environmentObject(tentContent)){
+                                    NavigationLink(destination: GalleryView()){
                                             Image("gallery")
                                                 .resizable()
                                                 .frame(width: 50, height: 50)
@@ -173,7 +169,6 @@ struct ContentView: View {
                                     self.showTentJoin.toggle()
                                 }
                             })
-                                .environmentObject(self.tentConfig)
                         }
                         .edgesIgnoringSafeArea(.all)
                         .transition(.opacity)
@@ -187,8 +182,6 @@ struct ContentView: View {
                                     self.showTentCreate.toggle()
                                 }
                             })
-                                .environmentObject(self.tentConfig)
-                            
                         }
                         .edgesIgnoringSafeArea(.all)
                         .transition(.opacity)

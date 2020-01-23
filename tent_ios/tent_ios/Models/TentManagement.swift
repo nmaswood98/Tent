@@ -75,6 +75,10 @@ class TentManagement : ObservableObject {
                     if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
                         config.tentLocation = TentLocation(lat: lat, long: long, radius: radius)
                         completion(true);
+                        
+                        let hello = TentData(code: "1234",tentLoc: TentLocation(lat: 12, long: 12, radius: 12));
+                        TentData.saveTentHistory(arr: [hello])
+                        print(TentData.getTentHistory())
                     }
 
                     print("Location: \n \(config.tentLocation)");

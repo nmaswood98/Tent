@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TentLocation{
+struct TentLocation:Codable{
     var lat: Double;
     var long: Double;
     var radius: Double;
