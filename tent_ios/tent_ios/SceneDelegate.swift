@@ -17,6 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var imageOutput: AVCapturePhotoOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
     let tentConfig = TentConfig()
+    let tentManagement: TentManagement = TentManagement()
+
 
     
     
@@ -40,6 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let contentView = ContentView(locationManager: locationManager, camera: camera)
             .environmentObject(tentConfig)
             .environmentObject(tentContent)
+            .environmentObject(tentManagement)
  
         
        // let designView = DesignView(camera: camera).environmentObject(tentConfig)

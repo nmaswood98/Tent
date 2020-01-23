@@ -13,6 +13,8 @@ struct CreationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @ObservedObject var locationManager: LocationManager
     @EnvironmentObject var tentConfig: TentConfig
+    @EnvironmentObject var tentManagement: TentManagement
+    
     @State var showAlert: Bool = false
     @State var showLoading: Bool = false
     @State private var radius: Double = 0.1
@@ -21,7 +23,6 @@ struct CreationView: View {
 
     
     var backTap: () -> ()
-    var tentManagement: TentManagement = TentManagement()
     
     var body: some View {
         ZStack{

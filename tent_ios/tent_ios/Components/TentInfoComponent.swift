@@ -15,13 +15,13 @@ struct TentHistoryView: View {
     var body: some View {
                 ZStack{
                 Rectangle()
-                    .fill(Color.white)
+                    .fill(Color.black)
                     .cornerRadius(30)
                     .shadow(radius: 4)
             VStack{
                 HStack{
                     Text("Tent: " + code)
-                        .foregroundColor(.black)
+                        .foregroundColor(.green)
                         .font(.system(size: 25))
                     Spacer()
                 }

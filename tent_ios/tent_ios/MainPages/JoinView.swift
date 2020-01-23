@@ -9,12 +9,14 @@
 import SwiftUI
 
 struct JoinView: View {
-    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode> 
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @EnvironmentObject var tentConfig: TentConfig
+    @EnvironmentObject var tentManagement: TentManagement
+    
     @ObservedObject var locationManager: LocationManager
     @State private var code: String = ""
     @State  var showAlert: Bool = false
     @State var showLoading: Bool = false
-    @EnvironmentObject var tentConfig: TentConfig
     @State private var radius: Double = 0.1
     @State private var shouldOpenKeyboard: Bool = true
     
@@ -22,7 +24,6 @@ struct JoinView: View {
 
     
     var backTap: () -> ()
-    var tentManagement: TentManagement = TentManagement()
     var body: some View {
         
         ZStack{
