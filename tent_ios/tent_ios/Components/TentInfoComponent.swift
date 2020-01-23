@@ -10,15 +10,17 @@ import SwiftUI
 import GoogleMaps
 
 struct TentHistoryView: View {
+    var code: String
+    var tentLocation: TentLocation
     var body: some View {
-        ZStack{
+                ZStack{
                 Rectangle()
                     .fill(Color.white)
                     .cornerRadius(30)
                     .shadow(radius: 4)
             VStack{
                 HStack{
-                    Text("Tent: 1234")
+                    Text("Tent: " + code)
                         .foregroundColor(.black)
                         .font(.system(size: 25))
                     Spacer()
@@ -28,7 +30,8 @@ struct TentHistoryView: View {
     
                 
                 ZStack{
-                    MapView(currentPosition: CLLocationCoordinate2D(latitude:0, longitude:0),circleRadius: 0)
+                    //(100 * (self.radius + 3))/1000
+                    MapView(currentPosition: CLLocationCoordinate2D(latitude:tentLocation.lat.degree, longitude:tentLocation.long.degree),circleRadius: (tentLocation.radius * 1000)/100, zoom:14.3)
                         .cornerRadius(30)
                 }
 
@@ -62,15 +65,3 @@ struct TentHistoryView: View {
     }
 }
 
-struct TentHistoryView_Previews: PreviewProvider {
-    static var previews: some View {
-        ZStack{
-            Color.gray
-        VStack(spacing:15){
-            TentHistoryView()
-            
-
-        }
-        }
-    }
-}

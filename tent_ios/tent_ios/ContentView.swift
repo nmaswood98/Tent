@@ -84,15 +84,12 @@ struct ContentView: View {
                                             withAnimation{
                                                 self.showTentJoin.toggle()
                                             }
-                                            self.expandMenu.toggle()
                                         })
                                      
                                         MenuButton(text:"Create", action:{
                                             withAnimation{
                                                 self.showTentCreate.toggle()
                                             }
-                                            self.expandMenu.toggle()
-                                            
                                         })
 
 

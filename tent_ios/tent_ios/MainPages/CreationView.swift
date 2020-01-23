@@ -60,7 +60,7 @@ struct CreationView: View {
                 
                 if(self.shouldLoadMap){
                     
-                    MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3)
+                    MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3,zoom:15)
                         .frame(height:300)
                         .padding(.top, 15)
                     
@@ -72,13 +72,13 @@ struct CreationView: View {
                     .foregroundColor(.green)
                     .padding(.top,10)
                 
-                Slider(value: self.$radius, in: -2...3, step: 0.01)
+                Slider(value: self.$radius, in: -2.8...3, step: 0.01)
                     .frame(width: 300)
                     .padding(.bottom,50)
                 
                 Button(action:{self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, displayAlert:self.$showAlert, loadingAlert: self.$showLoading, completion: {status in
                     if(status){
-                        self.presentationMode.wrappedValue.dismiss()
+                        self.backTap()
                     }
                 })}){
                     Text("Build a new Tent")

@@ -15,7 +15,7 @@ class TentConfig: ObservableObject{
             if let tContent = self.tentContent {
                 tContent.updateTent() // Update the tent when the name changes
                 
-                self.tentHistory[self.name] = TentData(code: self.code, tentLoc: self.tentLocation)
+                self.tentHistory[self.name] = TentData(id: self.name,code: self.code, tentLoc: self.tentLocation)
                 TentData.saveTentHistory(arr: self.tentHistory)
                 
             }
