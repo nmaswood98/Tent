@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreLocation
+
 
 struct TentLocation:Codable{
     var lat: Double;
@@ -25,5 +27,9 @@ struct TentLocation:Codable{
             self.long = 0;
             self.radius = 0;
         }
+    }
+    
+    func getCLLocationCoordinate2D() -> CLLocationCoordinate2D{
+        return CLLocationCoordinate2D(latitude: lat.degree, longitude: long.degree)
     }
 }
