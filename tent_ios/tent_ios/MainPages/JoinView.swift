@@ -62,6 +62,7 @@ struct JoinView: View {
                 
                 if(self.shouldLoadMap){
                     MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3,zoom:15)
+                        .cornerRadius(20)
                         .frame(height:300)
                         .padding(.top, 15)
                 }
