@@ -13,7 +13,7 @@ struct CreationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var locationService: LocationService
     @EnvironmentObject var tentConfig: TentConfig
-    @EnvironmentObject var tentManagement: TentManagement
+    @EnvironmentObject var tentManager: TentManager
     @EnvironmentObject var loadingService: LoadingViewService
     @EnvironmentObject var alertService: AlertService
     
@@ -79,7 +79,7 @@ struct CreationView: View {
                 
                 Button(action:{
                     self.loadingService.enableLoadingDialog()
-                    self.tentManagement.createTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, completion: {status in
+                    self.tentManager.createTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, completion: {status in
                         self.loadingService.disableLoadingDialog()
                         if(status){
                             self.backTap()

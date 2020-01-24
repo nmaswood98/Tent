@@ -1,5 +1,5 @@
 //
-//  TentManagement.swift
+//  tentManager.swift
 //  tent_ios
 //
 //  Created by Nabhan Maswood on 11/6/19.
@@ -17,7 +17,7 @@ extension UIApplication {
     }
 }
 
-class TentManagement : ObservableObject {
+class TentManager : ObservableObject {
     
     lazy var functions = Functions.functions()
     

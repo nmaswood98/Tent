@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var previewLayer: AVCaptureVideoPreviewLayer?
     
     let tentConfig = TentConfig()
-    let tentManagement: TentManagement = TentManagement()
+    let tentManager: TentManager = TentManager()
     let loadingService: LoadingViewService = LoadingViewService()
     let locationService: LocationService = LocationService()
     let alertService: AlertService = AlertService()
@@ -34,11 +34,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         // Create the SwiftUI view that provides the window contents.
         
-                
+                  
         let tentContent = TentContent(tentConfig: tentConfig)
         tentConfig.tentContent = tentContent
         
-                let uploadManager = UploadManager(tentConfig: tentConfig)
+        let uploadManager = UploadManager(tentConfig: tentConfig)
         
         let camera = Camera(uploadManager: uploadManager)
 
@@ -46,7 +46,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let contentView = ContentView(camera: camera)
             .environmentObject(tentConfig)
             .environmentObject(tentContent)
-            .environmentObject(tentManagement)
+            .environmentObject(tentManager)
             .environmentObject(loadingService)
             .environmentObject(locationService)
             .environmentObject(alertService)

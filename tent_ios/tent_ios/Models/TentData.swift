@@ -14,6 +14,7 @@ struct TentData: Codable, Hashable {
     var id: String
     var code: String
     var tentLoc: TentLocation
+    var timeJoined: TimeInterval
     
     static func == (lhs: TentData, rhs: TentData) -> Bool {
         return lhs.id == rhs.id
