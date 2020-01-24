@@ -77,7 +77,7 @@ struct TentHistoryView: View {
            
         }
 
-        .frame(width:self.expanded ? 350: 150,height:self.expanded ? 202: 100)
+        .frame(width:self.expanded ? 350: 150,height:self.expanded ? 250: 100)
 
 
     }
