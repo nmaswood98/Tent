@@ -15,10 +15,9 @@ struct InfoView: View {
     var body: some View {
         TabView {
             ScrollView{
-                VStack{
-                    Color.red
+                VStack(spacing:30){
                     ForEach(Array<TentData>(tentConfig.tentHistory.values), id:\.self){tentData in
-                        TentHistoryView(code: tentData.code, tentLocation: tentData.tentLoc)
+                        TentHistoryView(code: tentData.code, tentLocation: tentData.tentLoc, expanded: true)
                     }
                 }
             }
