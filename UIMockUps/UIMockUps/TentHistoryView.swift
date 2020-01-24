@@ -10,58 +10,63 @@ import SwiftUI
 import CoreLocation
 
 struct TentHistoryView: View {
+    @State var expanded: Bool
     var body: some View {
         ZStack{
-            Rectangle()
-                .fill(Color.white)
-                .cornerRadius(0)
-                .frame(width:35,height: 165)
-            HStack(spacing:0){
-                MapView2(currentPosition: CLLocationCoordinate2D(latitude: 40.691247, longitude: -73.632684), circleRadius: 4)
-                    .cornerRadius(20)
-                    .frame(width:162,height:202)
-                ZStack{
-                    Rectangle()
-                        .fill(Color.white)
-                    .cornerRadius(20)
-                    .frame(width:165,height: 165)
-                        .overlay(VStack{
-                            HStack{
-                                VStack{
-                                    Text("Tent: VGHD")
-                                        .padding([.top,.leading], 20)
-                                        .foregroundColor(.green)
-                                        .font(.system(size: 23))
-                                    Text("Status: Open")
-                                        .font(.system(size: 15))
-                                        .foregroundColor(.green)
-                                        .padding([.top],15)
-                                    Spacer()
-                                    ZStack{
-                                        Rectangle()
-                                            .fill(Color.blue)
-                                        Text("Join")
-                                            .foregroundColor(.white)
-                                            .font(.system(size: 15))
-                                    }
-                                    .frame(width:100,height:30)
-                                    .cornerRadius(20)
-                                    
-                                }
-                                Spacer()
-                            }
-                            Spacer()
-                        })
-                    
-                    
-
-
+            MapView2(currentPosition: CLLocationCoordinate2D(latitude: 40.691247, longitude: -73.632684), circleRadius: 4)
+            .cornerRadius(20)
+            .onTapGesture {
+                withAnimation{
+                    self.expanded.toggle();
                 }
-
-                
             }
             
+            VStack{
+                HStack{
+                    ZStack{
+                          Rectangle()
+                              .fill(Color.green)
+                          Text("Tent: 1234")
+                              .foregroundColor(.white)
+                              .font(.system(size: 20))
+                      }
+                    .frame(width:120,height:30)
+                      .cornerRadius(5)
+                      .padding(.leading,15)
+                      .padding([.top],10)
+                    Spacer()
+                }
+                if(self.expanded){
+                    Spacer()
+
+                    HStack{
+                        Spacer()
+                         Button(action:{
+
+                             
+                         }){
+                             ZStack{
+                                 Rectangle()
+                                     .fill(Color.blue)
+                                 Text("Join")
+                                     .foregroundColor(.white)
+                                     .font(.system(size: 15))
+                             }
+                             .frame(width:100,height:30)
+                             .cornerRadius(20)
+                             
+                         }
+                          .padding(.trailing,15)
+                          .padding([.bottom],10)
+                    }
+                }
+            }
+
+           
         }
+
+        .frame(width:self.expanded ? 300: 150,height:self.expanded ? 202: 100)
+
 
     }
 }
@@ -72,8 +77,12 @@ struct TentHistoryView_Previews: PreviewProvider {
             Color.gray
 
         VStack(spacing:15){
-            TentHistoryView().offset(x: 0, y: 56)
+            ZStack{
+                TentHistoryView(expanded: true).padding(.leading, 160)
 
+                TentHistoryView(expanded: false).padding(.leading, -160)
+
+            }
                      //  TentHistoryView()
 
                       // TentHistoryView()
