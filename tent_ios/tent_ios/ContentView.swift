@@ -16,6 +16,7 @@ struct ContentView: View {
     
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var tentContent: TentContent
+    @EnvironmentObject var alertService: AlertService
     
     @State var temp = false
     @State var showTentJoin = false
@@ -192,6 +193,9 @@ struct ContentView: View {
             }.navigationBarHidden(true)
                 .statusBar(hidden: true)
         }
+        .alert(isPresented: self.$alertService.showAlert, content: {
+            Alert(title: Text(self.alertService.title), message: Text(self.alertService.message), dismissButton: .default(Text(self.alertService.buttonText)))
+        })
     }
     
     func takePicture(){

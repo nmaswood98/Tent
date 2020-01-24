@@ -16,10 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var captureSession: AVCaptureSession?
     var imageOutput: AVCapturePhotoOutput?
     var previewLayer: AVCaptureVideoPreviewLayer?
+    
     let tentConfig = TentConfig()
     let tentManagement: TentManagement = TentManagement()
     let loadingService: LoadingViewService = LoadingViewService()
-    let locationService = LocationService()
+    let locationService: LocationService = LocationService()
+    let alertService: AlertService = AlertService()
 
 
 
@@ -47,6 +49,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(tentManagement)
             .environmentObject(loadingService)
             .environmentObject(locationService)
+            .environmentObject(alertService)
  
         
        // let designView = DesignView(camera: camera).environmentObject(tentConfig)
