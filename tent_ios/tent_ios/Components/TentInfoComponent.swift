@@ -20,7 +20,8 @@ struct TentHistoryView: View {
 
     var body: some View {
         ZStack{
-            MapView(currentPosition: self.tentLocation.getCLLocationCoordinate2D() ,circleRadius: (tentLocation.radius * 1000)/100, zoom:14.3)
+            
+            MapView(currentPosition: self.tentLocation.getCLLocationCoordinate2D() ,circleRadius: tentLocation.getRadiusToDisplayOnMap(), zoom:14.3)
                 .cornerRadius(30)
             .onTapGesture {
                 withAnimation{
@@ -76,7 +77,6 @@ struct TentHistoryView: View {
 
            
         }
-
         .frame(width:self.expanded ? 350: 150,height:self.expanded ? 250: 100)
 
 

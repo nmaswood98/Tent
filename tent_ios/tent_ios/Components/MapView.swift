@@ -42,6 +42,9 @@ struct MapView: UIViewRepresentable {
         mapView.settings.zoomGestures = false
         mapView.settings.consumesGesturesInView = false
         mapView.moveCamera(GMSCameraUpdate.setCamera(GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: getZoomLevel())))
+        
+
+        
         return mapView
     }
     
@@ -55,6 +58,14 @@ struct MapView: UIViewRepresentable {
         
         circle.position = currentPosition
         circle.map = mapView
+        
+        let position = CLLocationCoordinate2D(latitude: currentPosition.latitude, longitude: currentPosition.longitude)
+        let marker = GMSMarker(position: position)
+        let imag = UIImage(named: "locationMarker")
+        marker.icon = UIImage(named: "locationMarker")
+        
+        marker.title = "Hello World"
+        marker.map = mapView
         
         
     }
