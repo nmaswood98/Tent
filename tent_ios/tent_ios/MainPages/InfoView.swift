@@ -16,11 +16,13 @@ struct InfoView: View {
         TabView {
             ScrollView{
                 VStack{
+                    Color.red
                     ForEach(Array<TentData>(tentConfig.tentHistory.values), id:\.self){tentData in
                         TentHistoryView(code: tentData.code, tentLocation: tentData.tentLoc)
                     }
                 }
             }
+            .edgesIgnoringSafeArea(.all)
             .tabItem {
                 Image(systemName: "1.square.fill")
                 Text("First")

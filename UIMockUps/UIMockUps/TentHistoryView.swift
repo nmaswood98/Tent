@@ -16,8 +16,7 @@ struct TentHistoryView: View {
                     .cornerRadius(30)
                     .shadow(radius: 4)
             
-                MapView()
-                    .cornerRadius(30)
+           
                          
             VStack{
                 ZStack{
