@@ -12,7 +12,6 @@ import AVFoundation
 
 struct ContentView: View {
     
-    let locationManager: LocationManager
     let camera : Camera
     
     @EnvironmentObject var tentConfig: TentConfig
@@ -164,7 +163,7 @@ struct ContentView: View {
                     
                     if(self.showTentJoin){
                         BlurContainer{
-                            JoinView(locationManager: self.locationManager, backTap:{
+                            JoinView(backTap:{
                                 withAnimation{
                                     self.showTentJoin.toggle()
                                 }
@@ -177,7 +176,7 @@ struct ContentView: View {
                     
                     if(self.showTentCreate){
                         BlurContainer{
-                            CreationView(locationManager: self.locationManager, backTap:{
+                            CreationView(backTap:{
                                 withAnimation{
                                     self.showTentCreate.toggle()
                                 }

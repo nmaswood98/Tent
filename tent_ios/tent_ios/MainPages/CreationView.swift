@@ -11,7 +11,7 @@ import CoreLocation
 
 struct CreationView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @ObservedObject var locationManager: LocationManager
+    @EnvironmentObject var locationService: LocationService
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var tentManagement: TentManagement
     @EnvironmentObject var loadingService: LoadingViewService
@@ -60,7 +60,7 @@ struct CreationView: View {
                 
                 if(self.shouldLoadMap){
                     
-                    MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3,zoom:15)
+                    MapView(centerPosition: self.locationService.currentLocation, circleRadius: self.radius + 3,zoom:15)
                         .cornerRadius(20)
                         .frame(height:300)
                         .padding(.top, 15)
@@ -79,7 +79,7 @@ struct CreationView: View {
                 
                 Button(action:{
                     self.loadingService.enableLoadingDialog()
-                    self.tentManagement.createTent(location: self.locationManager.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, completion: {status in
+                    self.tentManagement.createTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, completion: {status in
                         self.loadingService.disableLoadingDialog()
                         if(status){
                             self.backTap()

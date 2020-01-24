@@ -1,5 +1,5 @@
 //
-//  LocationManager.swift
+//  locationService.swift
 //  tent_ios
 //
 //  Created by Nabhan Maswood on 11/10/19.
@@ -15,7 +15,7 @@ extension Double {
     var degree: Double { return Double(self) * 180 / .pi}
 }
 
-class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate{
+class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
     
     let cLocationManager = CLLocationManager()

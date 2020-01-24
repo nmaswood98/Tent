@@ -8,6 +8,7 @@
 
 import SwiftUI
 import GoogleMaps
+import CoreLocation
 
 extension GMSCircle {
     func bounds () -> GMSCoordinateBounds {
@@ -25,10 +26,15 @@ extension GMSCircle {
 }
 
 struct MapView: UIViewRepresentable {
-    var currentPosition: CLLocationCoordinate2D
+    @EnvironmentObject var locationService: LocationService
+    var centerPosition: CLLocationCoordinate2D
     var circleRadius: Double
     var zoom: Double
     var circle : GMSCircle = GMSCircle()
+    let marker = GMSMarker()
+    let markerImage = UIImage(named: "locationMarker")
+
+
     
     func getZoomLevel() -> Float{
         return (Float(zoom - log(circleRadius / 5)/log(2)));
@@ -36,12 +42,15 @@ struct MapView: UIViewRepresentable {
     
     func makeUIView(context: Context) -> GMSMapView {
         
-        let camera = GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: getZoomLevel())
+        let camera = GMSCameraPosition.camera(withLatitude: centerPosition.latitude, longitude: centerPosition.longitude, zoom: getZoomLevel())
         let mapView = GMSMapView.map(withFrame: CGRect.zero, camera: camera)
+        
+
         mapView.settings.scrollGestures = false
         mapView.settings.zoomGestures = false
         mapView.settings.consumesGesturesInView = false
-        mapView.moveCamera(GMSCameraUpdate.setCamera(GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: getZoomLevel())))
+        mapView.moveCamera(GMSCameraUpdate.setCamera(GMSCameraPosition.camera(withLatitude: centerPosition.latitude, longitude: centerPosition.longitude, zoom: getZoomLevel())))
+
         
 
         
@@ -51,20 +60,16 @@ struct MapView: UIViewRepresentable {
     
     
     func updateUIView(_ mapView: GMSMapView, context: Self.Context) {
-        mapView.moveCamera(GMSCameraUpdate.setCamera(GMSCameraPosition.camera(withLatitude: currentPosition.latitude, longitude: currentPosition.longitude, zoom: getZoomLevel())))
+        mapView.moveCamera(GMSCameraUpdate.setCamera(GMSCameraPosition.camera(withLatitude: centerPosition.latitude, longitude: centerPosition.longitude, zoom: getZoomLevel())))
         
         mapView.clear()
         circle.radius = 100 * circleRadius
         
-        circle.position = currentPosition
+        circle.position = centerPosition
         circle.map = mapView
         
-        let position = CLLocationCoordinate2D(latitude: currentPosition.latitude, longitude: currentPosition.longitude)
-        let marker = GMSMarker(position: position)
-        let imag = UIImage(named: "locationMarker")
-        marker.icon = UIImage(named: "locationMarker")
-        
-        marker.title = "Hello World"
+        marker.position = self.locationService.currentLocation
+        marker.icon = self.markerImage
         marker.map = mapView
         
         

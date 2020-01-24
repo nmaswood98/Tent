@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let tentConfig = TentConfig()
     let tentManagement: TentManagement = TentManagement()
     let loadingService: LoadingViewService = LoadingViewService()
+    let locationService = LocationService()
+
 
 
     
@@ -34,17 +36,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let tentContent = TentContent(tentConfig: tentConfig)
         tentConfig.tentContent = tentContent
         
-        let locationManager = LocationManager()
-        let uploadManager = UploadManager(tentConfig: tentConfig)
+                let uploadManager = UploadManager(tentConfig: tentConfig)
         
         let camera = Camera(uploadManager: uploadManager)
 
         
-        let contentView = ContentView(locationManager: locationManager, camera: camera)
+        let contentView = ContentView(camera: camera)
             .environmentObject(tentConfig)
             .environmentObject(tentContent)
             .environmentObject(tentManagement)
             .environmentObject(loadingService)
+            .environmentObject(locationService)
  
         
        // let designView = DesignView(camera: camera).environmentObject(tentConfig)
