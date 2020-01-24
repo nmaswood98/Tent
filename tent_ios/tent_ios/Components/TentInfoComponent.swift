@@ -11,7 +11,7 @@ import GoogleMaps
 
 struct TentHistoryView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
-    @EnvironmentObject var tentManagment: TentManagement
+    @EnvironmentObject var tentManager: TentManager
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var loadingService: LoadingViewService
     @EnvironmentObject var locationService: LocationService
@@ -54,7 +54,7 @@ struct TentHistoryView: View {
                          Button(action:{
                             self.loadingService.enableLoadingDialog()
                             
-                            self.tentManagment.submitCode(value: self.code, location: self.locationService.currentLocation, config: self.tentConfig, completion: {value in
+                            self.tentManager.submitCode(value: self.code, location: self.locationService.currentLocation, config: self.tentConfig, completion: {value in
                                 self.loadingService.disableLoadingDialog()
                                 if(value){
                                     self.presentationMode.wrappedValue.dismiss()

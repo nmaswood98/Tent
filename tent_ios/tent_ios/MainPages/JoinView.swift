@@ -11,7 +11,7 @@ import SwiftUI
 struct JoinView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var tentConfig: TentConfig
-    @EnvironmentObject var tentManagement: TentManagement
+    @EnvironmentObject var tentManager: TentManager
     @EnvironmentObject var loadingService: LoadingViewService
     @EnvironmentObject var locationService: LocationService
     @EnvironmentObject var alertService: AlertService
@@ -69,7 +69,7 @@ struct JoinView: View {
                 
                 TextField("Code", text:self.$code,onCommit: {
                     self.loadingService.enableLoadingDialog()
-                    self.tentManagement.submitCode(value: self.code, location: self.locationService.currentLocation, config:self.tentConfig, completion: { status in
+                    self.tentManager.submitCode(value: self.code, location: self.locationService.currentLocation, config:self.tentConfig, completion: { status in
                         self.loadingService.disableLoadingDialog()
                         if (status){
                             print("Completed")
