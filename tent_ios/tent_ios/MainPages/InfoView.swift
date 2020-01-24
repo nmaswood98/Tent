@@ -12,8 +12,20 @@ struct InfoView: View {
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var loadingService: LoadingViewService
     
+    init() {
+        //Use this if NavigationBarTitle is with Large Font
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+
+        //Use this if NavigationBarTitle is with displayMode = .inline
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
+    }
+    
     var body: some View {
-        TabView {
+        
+        
+        
+        ZStack{
+            Color.white.edgesIgnoringSafeArea(.all)
             ScrollView{
                 VStack(spacing:30){
                     ForEach(Array<TentData>(tentConfig.tentHistory.values), id:\.self){tentData in
@@ -21,26 +33,12 @@ struct InfoView: View {
                     }
                 }
             }
-            .edgesIgnoringSafeArea(.all)
-            .tabItem {
-                Image(systemName: "1.square.fill")
-                Text("First")
-            }
-            Text("Another Tab")
-                .tabItem {
-                    Image(systemName: "2.square.fill")
-                    Text("Second")
-            }
-            Text("The Last Tab")
-                .tabItem {
-                    Image(systemName: "3.square.fill")
-                    Text("Third")
+            .navigationBarTitle(Text("Tent History").foregroundColor(Color.black), displayMode: .inline)
+            .onAppear{
+                self.loadingService.setLoadingMessage(text: "Joining...")
             }
         }
-        .font(.headline)
-        .onAppear{
-            self.loadingService.setLoadingMessage(text: "Joining...")
-        }
+
     }
 }
 

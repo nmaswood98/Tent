@@ -61,7 +61,7 @@ struct JoinView: View {
                 }
                 
                 if(self.shouldLoadMap){
-                    MapView(currentPosition: self.locationManager.currentLocation, circleRadius: self.radius + 3,zoom:15)
+                    MapView(currentPosition: self.tentConfig.tentLocation.getCLLocationCoordinate2D(), circleRadius: self.tentConfig.tentLocation.getRadiusToDisplayOnMap(),zoom:15)
                         .cornerRadius(20)
                         .frame(height:300)
                         .padding(.top, 15)

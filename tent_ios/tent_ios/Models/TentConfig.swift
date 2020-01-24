@@ -33,6 +33,9 @@ class TentConfig: ObservableObject{
         
         if let tHistory = TentData.getTentHistory() {
             self.tentHistory = tHistory
+            if(self.name != "DefaultTent"){
+                self.tentLocation = self.tentHistory[self.name]?.tentLoc ?? TentLocation(lat: 0, long: 0, radius: 0);
+            }
         }
         else{
             self.tentHistory = [:]

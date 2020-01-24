@@ -32,4 +32,8 @@ struct TentLocation:Codable{
     func getCLLocationCoordinate2D() -> CLLocationCoordinate2D{
         return CLLocationCoordinate2D(latitude: lat.degree, longitude: long.degree)
     }
+    
+    func getRadiusToDisplayOnMap() -> Double{
+        return (self.radius * 1000)/100
+    }
 }
