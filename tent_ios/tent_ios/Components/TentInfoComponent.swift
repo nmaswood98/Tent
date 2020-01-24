@@ -14,6 +14,7 @@ struct TentHistoryView: View {
     @EnvironmentObject var tentManagment: TentManagement
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var loadingService: LoadingViewService
+    @EnvironmentObject var locationService: LocationService
     var code: String
     var tentLocation: TentLocation
     @State var expanded: Bool
@@ -52,9 +53,15 @@ struct TentHistoryView: View {
                          Button(action:{
                             self.loadingService.enableLoadingDialog()
                             
-                            self.tentManagment.submitCode(value: self.code, location: self.tentLocation.getCLLocationCoordinate2D(), config: self.tentConfig, completion: {value in
+                            self.tentManagment.submitCode(value: self.code, location: self.locationService.currentLocation, config: self.tentConfig, completion: {value in
                                 self.loadingService.disableLoadingDialog()
-                                self.presentationMode.wrappedValue.dismiss()
+                                if(value){
+                                    self.presentationMode.wrappedValue.dismiss()
+
+                                }
+                                else{
+                                    
+                                }
                             })
                              
                          }){

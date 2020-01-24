@@ -36,6 +36,7 @@
 		9045E4DA23D9735B00CE5618 /* MapView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D923D9735B00CE5618 /* MapView2.swift */; };
 		9072821A23D69AD40091BE14 /* TentInfoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072821923D69AD40091BE14 /* TentInfoComponent.swift */; };
 		9072823723D6B2D30091BE14 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072823623D6B2D30091BE14 /* InfoView.swift */; };
+		90A4CC4123DAF42700F049F1 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4CC4023DAF42700F049F1 /* AlertService.swift */; };
 		90BC414B23DADDF400C3FA41 /* noLabels.json in Resources */ = {isa = PBXBuildFile; fileRef = 90BC414A23DADDF400C3FA41 /* noLabels.json */; };
 		90E60D1423811D4A00C6E502 /* DesignView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D1323811D4A00C6E502 /* DesignView.swift */; };
 		90E60D30238122E900C6E502 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D2F238122E900C6E502 /* BlurView.swift */; };
@@ -218,6 +219,7 @@
 		9045E4D923D9735B00CE5618 /* MapView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView2.swift; path = ../../../UIMockUps/UIMockUps/MapView2.swift; sourceTree = "<group>"; };
 		9072821923D69AD40091BE14 /* TentInfoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentInfoComponent.swift; sourceTree = "<group>"; };
 		9072823623D6B2D30091BE14 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		90A4CC4023DAF42700F049F1 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		90BC414A23DADDF400C3FA41 /* noLabels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = noLabels.json; sourceTree = "<group>"; };
 		90E60D1323811D4A00C6E502 /* DesignView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignView.swift; sourceTree = "<group>"; };
 		90E60D2F238122E900C6E502 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
@@ -312,6 +314,7 @@
 			isa = PBXGroup;
 			children = (
 				4C28D26B2377E89D00C1B8BF /* LocationService.swift */,
+				90A4CC4023DAF42700F049F1 /* AlertService.swift */,
 				4C0F619E2353EF1D00A56D14 /* UploadManager.swift */,
 			);
 			path = Managers;
@@ -688,6 +691,7 @@
 				4C28D26C2377E89D00C1B8BF /* LocationService.swift in Sources */,
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
 				9045E4D823D961AA00CE5618 /* TentData.swift in Sources */,
+				90A4CC4123DAF42700F049F1 /* AlertService.swift in Sources */,
 				90E60D30238122E900C6E502 /* BlurView.swift in Sources */,
 				9045E4DA23D9735B00CE5618 /* MapView2.swift in Sources */,
 				90F9983A23D423C300B4C2C6 /* BlurContainer.swift in Sources */,
