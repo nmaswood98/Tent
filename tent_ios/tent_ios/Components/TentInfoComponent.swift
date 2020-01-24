@@ -15,6 +15,7 @@ struct TentHistoryView: View {
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var loadingService: LoadingViewService
     @EnvironmentObject var locationService: LocationService
+    @EnvironmentObject var alertService: AlertService
     var code: String
     var tentLocation: TentLocation
     @State var expanded: Bool
@@ -60,7 +61,7 @@ struct TentHistoryView: View {
 
                                 }
                                 else{
-                                    
+                                    self.alertService.sendAlert(title: "Invaild Code", message: "This Isn't a valid code", buttonText: "Ok")
                                 }
                             })
                              

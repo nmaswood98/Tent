@@ -15,8 +15,8 @@ struct CreationView: View {
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var tentManagement: TentManagement
     @EnvironmentObject var loadingService: LoadingViewService
+    @EnvironmentObject var alertService: AlertService
     
-    @State var showAlert: Bool = false
     @State private var radius: Double = 0.1
     
     @State private var shouldLoadMap: Bool = true
@@ -85,15 +85,13 @@ struct CreationView: View {
                             self.backTap()
                         }
                         else{
-                            self.showAlert = true;
+                            self.alertService.sendAlert(title: "Tent Creation", message: "Was unable to create a tent", buttonText: "Ok")
                         }
                     })}){
                         Text("Build a new Tent")
                             .font(.body)
                             .foregroundColor(.green)
-                }.alert(isPresented: self.$showAlert, content: {
-                    Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
-                })
+                }
                 
                 Spacer()
                 
