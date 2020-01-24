@@ -7,46 +7,62 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct TentHistoryView: View {
     var body: some View {
         ZStack{
-                Rectangle()
-                    .fill(Color.white)
-                    .cornerRadius(30)
-                    .shadow(radius: 4)
-            
-           
-                         
-            VStack{
+            Rectangle()
+                .fill(Color.white)
+                .cornerRadius(0)
+                .frame(width:35,height: 165)
+            HStack(spacing:0){
+                MapView2(currentPosition: CLLocationCoordinate2D(latitude: 40.691247, longitude: -73.632684), circleRadius: 4)
+                    .cornerRadius(20)
+                    .frame(width:162,height:202)
                 ZStack{
                     Rectangle()
-                        .fill(Color.blue)
-                        .frame(width:80,height:40)
-                        .cornerRadius(5)
-                    Text("1234")
-                        .foregroundColor(.white)
-                        .font(.system(size: 25))
-                }
-
-
-            }
-            
-            
-            
-            VStack{
-                Spacer()
-                HStack{
-                    Spacer()
+                        .fill(Color.white)
+                    .cornerRadius(20)
+                    .frame(width:165,height: 165)
+                        .overlay(VStack{
+                            HStack{
+                                VStack{
+                                    Text("Tent: VGHD")
+                                        .padding([.top,.leading], 20)
+                                        .foregroundColor(.green)
+                                        .font(.system(size: 23))
+                                    Text("Status: Open")
+                                        .font(.system(size: 15))
+                                        .foregroundColor(.green)
+                                        .padding([.top],15)
+                                    Spacer()
+                                    ZStack{
+                                        Rectangle()
+                                            .fill(Color.blue)
+                                        Text("Join")
+                                            .foregroundColor(.white)
+                                            .font(.system(size: 15))
+                                    }
+                                    .frame(width:100,height:30)
+                                    .cornerRadius(20)
+                                    
+                                }
+                                Spacer()
+                            }
+                            Spacer()
+                        })
+                    
                     
 
-                    }
-                    .padding(.trailing,15)
-                    .padding([.bottom],10)
+
+                }
+
+                
             }
             
         }
-        .frame(width:150,height: 150)
+
     }
 }
 
@@ -54,24 +70,20 @@ struct TentHistoryView_Previews: PreviewProvider {
     static var previews: some View {
         ZStack{
             Color.gray
+
         VStack(spacing:15){
-            HStack(spacing:15){
-                TentHistoryView()
-                TentHistoryView()
+            TentHistoryView().offset(x: 0, y: 56)
 
-            }
-            HStack(spacing:15){
-                TentHistoryView()
-                TentHistoryView()
+                     //  TentHistoryView()
 
-            }
-            HStack(spacing:15){
-                TentHistoryView()
-                TentHistoryView()
-
-            }
+                      // TentHistoryView()
 
         }
-        }
+            Image("redtent")
+            .resizable()
+                .imageScale(.large)
+                .edgesIgnoringSafeArea(.all)
+                .opacity(0)
+        }.edgesIgnoringSafeArea(.all)
     }
 }
