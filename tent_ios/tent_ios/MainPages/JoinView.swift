@@ -14,9 +14,9 @@ struct JoinView: View {
     @EnvironmentObject var tentManagement: TentManagement
     @EnvironmentObject var loadingService: LoadingViewService
     @EnvironmentObject var locationService: LocationService
+    @EnvironmentObject var alertService: AlertService
     
     @State private var code: String = ""
-    @State  var showAlert: Bool = false
     @State private var radius: Double = 0.1
     @State private var shouldOpenKeyboard: Bool = true
     
@@ -78,7 +78,7 @@ struct JoinView: View {
                             
                         }
                         else{
-                            self.showAlert = true;
+                            self.alertService.sendAlert(title: "Invalid Code", message: "This is an Invalid Code", buttonText: "Ok")
                             print("Completed but failed")
                             self.shouldOpenKeyboard = true
                             self.code = ""
@@ -97,9 +97,7 @@ struct JoinView: View {
                             textField.becomeFirstResponder()
                             self.shouldOpenKeyboard = false
                         }
-                }.alert(isPresented: self.$showAlert, content: {
-                    Alert(title: Text("Invaild Code"), message: Text("This Isn't a valid code"), dismissButton: .default(Text("Ok!")))
-                })
+                }
                 
                 Spacer()
                 
