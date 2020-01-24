@@ -37,9 +37,7 @@ class TentManager : ObservableObject {
             
             if let data = result?.data as? NSDictionary {
                 if let code = data["code"] as? String, let name = data["name"] as? String {
-                    config.code = code
-                    config.tentLocation = TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius)
-                    config.name = name
+                    config.setTent(code: code, name: name, loc: TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius))
                     completion(true);
                 }
             }
@@ -66,27 +64,10 @@ class TentManager : ObservableObject {
             if let data = result?.data as? NSDictionary {
                 if let text = data["name"] as? String, let loc = data["Location"] as? NSDictionary {
                     if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
-                        config.code =  value
-                        config.tentLocation = TentLocation(lat: lat, long: long, radius: radius)
-                        config.name = text
+                        
+                        config.setTent(code: value, name: text, loc: TentLocation(lat: lat, long: long, radius: radius))
                         
                         completion(true);
-                        
-                        print("**********************************");
-                        print("**********************************");
-                        
-                        print("**********************************");
-                        
-                        print("**********************************");
-                        
-                        print(TentData.getTentHistory())
-                        print("**********************************");
-                        
-                        print("**********************************");
-                        
-                        print("**********************************");
-                        
-                        print("**********************************");
                         
                     }
                     

@@ -18,11 +18,12 @@ extension Double {
 class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
     
+    var tentConfig: TentConfig
     let cLocationManager = CLLocationManager()
     
-    override init(){
+    init(tentConfig: TentConfig){
+        self.tentConfig = tentConfig
         super.init()
-        
         self.cLocationManager.requestWhenInUseAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()) {

@@ -44,6 +44,13 @@ class TentConfig: ObservableObject{
     
     var tentContent: TentContent? = nil
     
+    func setTent(code: String, name: String, loc: TentLocation){
+        self.code = code
+        self.tentLocation = loc
+        self.name = name
+
+    }
+    
     func persistData(){
         UserDefaults.standard.set(self.code, forKey: "tentCode")
         UserDefaults.standard.set(self.name, forKey: "tentName")
