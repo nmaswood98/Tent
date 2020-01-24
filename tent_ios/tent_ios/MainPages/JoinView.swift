@@ -13,8 +13,8 @@ struct JoinView: View {
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var tentManagement: TentManagement
     @EnvironmentObject var loadingService: LoadingViewService
+    @EnvironmentObject var locationService: LocationService
     
-    @ObservedObject var locationManager: LocationManager
     @State private var code: String = ""
     @State  var showAlert: Bool = false
     @State private var radius: Double = 0.1
@@ -61,7 +61,7 @@ struct JoinView: View {
                 }
                 
                 if(self.shouldLoadMap){
-                    MapView(currentPosition: self.tentConfig.tentLocation.getCLLocationCoordinate2D(), circleRadius: self.tentConfig.tentLocation.getRadiusToDisplayOnMap(),zoom:15)
+                    MapView(centerPosition: self.tentConfig.tentLocation.getCLLocationCoordinate2D(), circleRadius: self.tentConfig.tentLocation.getRadiusToDisplayOnMap(),zoom:15)
                         .cornerRadius(20)
                         .frame(height:300)
                         .padding(.top, 15)
@@ -69,7 +69,7 @@ struct JoinView: View {
                 
                 TextField("Code", text:self.$code,onCommit: {
                     self.loadingService.enableLoadingDialog()
-                    self.tentManagement.submitCode(value: self.code, location: self.locationManager.currentLocation, config:self.tentConfig, completion: { status in
+                    self.tentManagement.submitCode(value: self.code, location: self.locationService.currentLocation, config:self.tentConfig, completion: { status in
                         self.loadingService.disableLoadingDialog()
                         if (status){
                             print("Completed")
