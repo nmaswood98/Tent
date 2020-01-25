@@ -10,18 +10,7 @@ import Foundation
 import SwiftUI
 
 class TentConfig: ObservableObject{
-    @Published var name: String = "DefaultTent" { // Last property to always get set
-        didSet{
-            if let tContent = self.tentContent {
-                tContent.updateTent() // Update the tent when the name changes
-                
-                self.tentHistory[self.name] = TentData(id: self.name,code: self.code, tentLoc: self.tentLocation, timeJoined: Date().timeIntervalSince1970)
-                TentData.saveTentHistory(arr: self.tentHistory)
-                
-            }
-        }
-    }
-    
+    @Published var name: String = "DefaultTent"
     @Published var code: String = ""
     
     var tentLocation: TentLocation = TentLocation(lat: 0, long: 0, radius: 0)
@@ -48,7 +37,23 @@ class TentConfig: ObservableObject{
         self.code = code
         self.tentLocation = loc
         self.name = name
+        
+        if let tContent = self.tentContent {
+            tContent.updateTent() // Update the tent when the name changes
+            
+            self.tentHistory[self.name] = TentData(id: self.name,code: self.code, tentLoc: self.tentLocation, timeJoined: Date().timeIntervalSince1970)
+            TentData.saveTentHistory(arr: self.tentHistory)
+            
+        }
 
+    }
+    
+    
+    
+    func leaveTent(){
+        self.code = ""
+        self.name = "DefaultTent"
+        self.tentLocation = TentLocation(lat: 0, long: 0, radius: 0)
     }
     
     func persistData(){

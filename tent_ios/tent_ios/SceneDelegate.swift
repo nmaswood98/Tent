@@ -41,7 +41,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let camera = Camera(uploadManager: uploadManager)
         
-        let locationService: LocationService = LocationService(tentConfig: tentConfig)
+        let locationService: LocationService = LocationService(tentConfig: tentConfig,alertService: alertService)
 
 
         
