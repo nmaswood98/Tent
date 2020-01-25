@@ -13,13 +13,7 @@ struct TentHistoryView: View {
     @State var expanded: Bool
     var body: some View {
         ZStack{
-            MapView2(currentPosition: CLLocationCoordinate2D(latitude: 40.691247, longitude: -73.632684), circleRadius: 4)
-            .cornerRadius(20)
-            .onTapGesture {
-                withAnimation{
-                    self.expanded.toggle();
-                }
-            }
+
             
             VStack{
                 HStack{

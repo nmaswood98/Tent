@@ -54,6 +54,11 @@ class TentConfig: ObservableObject{
         self.code = ""
         self.name = "DefaultTent"
         self.tentLocation = TentLocation(lat: 0, long: 0, radius: 0)
+
+        if let tContent = self.tentContent {
+            tContent.updateTent() // Update the tent when the name changes
+        }
+        
     }
     
     func persistData(){

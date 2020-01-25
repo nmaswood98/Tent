@@ -43,6 +43,7 @@ class UploadManager {
             imagePath.downloadURL { (url, error) in
                 guard let downloadURL = url else { return }
                 self.addImageToTent(name: name, data: ["URL":downloadURL.absoluteString,"userID":self.userID])
+                
             }
         }
     }
