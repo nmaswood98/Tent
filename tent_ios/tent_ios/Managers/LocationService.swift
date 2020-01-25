@@ -17,12 +17,13 @@ extension Double {
 
 class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate{
     @Published var currentLocation: CLLocationCoordinate2D = CLLocationCoordinate2D()
-    
     var tentConfig: TentConfig
+    var alertService: AlertService
     let cLocationManager = CLLocationManager()
     
-    init(tentConfig: TentConfig){
+    init(tentConfig: TentConfig, alertService: AlertService){
         self.tentConfig = tentConfig
+        self.alertService = alertService
         super.init()
         self.cLocationManager.requestWhenInUseAuthorization()
         
@@ -44,5 +45,10 @@ class LocationService: NSObject, ObservableObject, CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         currentLocation = manager.location!.coordinate
+        if(self.tentConfig.code != "" && !self.tentConfig.tentLocation.islocationWithinTent(location: currentLocation)){
+            self.tentConfig.leaveTent()
+            self.alertService.sendAlert(title: "Not in tent", message: "You left the tent location", buttonText: "Ok")
+        }
+
     }
 }
