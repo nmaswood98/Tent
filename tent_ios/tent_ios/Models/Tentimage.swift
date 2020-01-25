@@ -7,9 +7,56 @@
 //
 
 import Foundation
+import SwiftUI
+import Kingfisher
+import KingfisherSwiftUI
 
-struct TentImage: Identifiable{
+class TentImage: ObservableObject, Identifiable{
     let id = UUID()
     let timeCreated: TimeInterval
-    var imageURL: String
+    @Published var imageURL: String
+    @Published var valid: Bool = false
+    
+    init(timeCreated: TimeInterval, imageURL: String){
+        self.timeCreated = timeCreated
+        self.imageURL = imageURL
+        self.valid = true
+        
+    }
+    
+    init(timeCreated: TimeInterval, image: UIImage?){
+        self.timeCreated = timeCreated
+        self.imageURL = UUID().uuidString
+        
+        if let img = image{
+            let cache = ImageCache.default
+            cache.store(img, forKey: self.imageURL)
+            self.valid = true
+        }
+        else{
+            self.valid = false
+        }
+
+    }
+    
+    func changeImageURL(newURL: String){
+        let cache = ImageCache.default
+        if(cache.isCached(forKey:self.imageURL)){
+            cache.retrieveImage(forKey: self.imageURL) { result in
+                switch result {
+                case .success(let value):
+                    cache.removeImage(forKey: self.imageURL)
+                    if let img = value.image{
+                        cache.store(img, forKey: newURL)
+                        self.imageURL = newURL
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
+        
+    }
+    
+    
 }

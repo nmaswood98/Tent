@@ -16,7 +16,7 @@ class TentGallery: ObservableObject{
     
     
     func addImage(image: UIImage){
-        imageList.append(TentImage(timeCreated: Date().timeIntervalSince1970, imageURL: ""))
+      //  imageList.append(TentImage(timeCreated: Date().timeIntervalSince1970, imageURL: ""))
     }
 
 }

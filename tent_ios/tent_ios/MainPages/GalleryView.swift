@@ -15,7 +15,18 @@ struct GalleryView: View {
     
     var body: some View {
         List {
-            KFImage(source: UIImage(named: ""))
+            ForEach(tentContent.rows) { row in
+                HStack(alignment: .center) {
+                    ForEach(row.cells) { cell in
+                        KFImage(URL(string: cell.imageURL)!)
+                            .placeholder {
+                                EmptyView()
+                        }
+                        .resizable()
+                        .scaledToFit()
+                    }
+                }
+            }
             
         }
     }
