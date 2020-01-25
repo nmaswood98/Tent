@@ -16,13 +16,13 @@ struct TentHistoryView: View {
     @EnvironmentObject var loadingService: LoadingViewService
     @EnvironmentObject var locationService: LocationService
     @EnvironmentObject var alertService: AlertService
+    
+    @State var insideTent: Bool = true
     var code: String
     var tentLocation: TentLocation
     @State var expanded: Bool
-
     var body: some View {
         ZStack{
-            
             MapView(centerPosition: self.tentLocation.getCLLocationCoordinate2D() ,circleRadius: tentLocation.getRadiusToDisplayOnMap(), zoom:14.3)
                 .cornerRadius(30)
             .onTapGesture {
@@ -35,7 +35,7 @@ struct TentHistoryView: View {
                 HStack{
                     ZStack{
                           Rectangle()
-                              .fill(Color.green)
+                            .fill(self.tentLocation.islocationWithinTent(location: self.locationService.currentLocation) ? Color.green : Color.red)
                           Text("Tent: " + code)
                               .foregroundColor(.white)
                               .font(.system(size: 20))
@@ -52,6 +52,10 @@ struct TentHistoryView: View {
                     HStack{
                         Spacer()
                          Button(action:{
+                            if(!self.tentLocation.islocationWithinTent(location: self.locationService.currentLocation)){
+                                self.alertService.sendAlert(title: "Can't Enter", message: "You are not inside the tent", buttonText: "Ok")
+                                return;
+                            }
                             self.loadingService.enableLoadingDialog()
                             
                             self.tentManager.submitCode(value: self.code, location: self.locationService.currentLocation, config: self.tentConfig, completion: {value in
@@ -86,6 +90,8 @@ struct TentHistoryView: View {
            
         }
         .frame(width:self.expanded ? 350: 150,height:self.expanded ? 250: 100)
+
+
 
 
     }
