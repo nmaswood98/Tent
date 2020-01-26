@@ -12,12 +12,13 @@ import Kingfisher
 import KingfisherSwiftUI
 
 class TentImage: ObservableObject, Identifiable{
-    let id = UUID()
+    var id = UUID()
     let timeCreated: TimeInterval
     @Published var imageURL: String
     @Published var valid: Bool = false
     
-    init(timeCreated: TimeInterval, imageURL: String){
+    init(id:UUID,timeCreated: TimeInterval, imageURL: String){
+        self.id = id
         self.timeCreated = timeCreated
         self.imageURL = imageURL
         self.valid = true
@@ -77,7 +78,7 @@ class TentImage: ObservableObject, Identifiable{
         }
         
         let resource = ImageResource(downloadURL: url)
-        
+        print("DOWNLODING IMAGE AHHHHHH");
         KingfisherManager.shared.retrieveImage(with: resource, options: nil, progressBlock: nil) { result in
             switch result {
             case .success(_):

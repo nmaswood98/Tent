@@ -14,7 +14,8 @@ import FirebaseFirestore
 
 class TentGallery: ObservableObject{
     @Published var columns: [Column] = [Column(images: []),Column(images: [])]
-    private var imageList: [TentImage] = [] // All images including ones that are not downloaded yet
+    @Published private var imageList: [TentImage] = [] // All images including ones that are not downloaded yet
+    private var tentIds: [String: Bool] = [:]
     
     let db = Firestore.firestore()
     var tentName: String
@@ -39,8 +40,7 @@ class TentGallery: ObservableObject{
             return
         }
         
-        self.columns = [Column(images: []),Column(images: [])]
-        self.imageList = []
+        self.clearImagesAndViews()
         tentName = tentConfig.name
         
         listner!.remove()
@@ -62,7 +62,7 @@ class TentGallery: ObservableObject{
                     print("\(diff.document.documentID) => \(diff.document.data())")
                     if let url = diff.document.data()["URL"] {
                         
-                        let tentImage = TentImage(timeCreated: Date().timeIntervalSince1970, imageURL: url as! String )
+                        let tentImage = TentImage(id:UUID(uuidString: diff.document.documentID) ?? UUID(),timeCreated: Date().timeIntervalSince1970, imageURL: url as! String )
                         tentImage.downloadImage{
                             result in
                             if (result){
@@ -88,9 +88,19 @@ class TentGallery: ObservableObject{
         
     }
     
+    func clearImagesAndViews(){
+        self.columns = [Column(images: []),Column(images: [])]
+        self.imageList = []
+        self.tentIds = [:]
+    }
+    
     func addImage(image: TentImage){
-        imageList.insert(image, at: 0)
-        self.arrangeImages()
+        if(tentIds[image.id.uuidString] == nil){
+            imageList.insert(image, at: 0)
+            
+            tentIds[image.id.uuidString] = true
+            self.arrangeImages()
+        }
     }
     
     func arrangeImages(){
@@ -99,8 +109,8 @@ class TentGallery: ObservableObject{
             return tentImage1.timeCreated > tentImage2.timeCreated
         }
         
-        
         self.columns = [Column(images: []),Column(images: [])]
+        
         var count = 0
         for image in imageList{
             if(count % 2 == 0){
