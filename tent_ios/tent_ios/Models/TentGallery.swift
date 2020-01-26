@@ -11,9 +11,10 @@ import SwiftUI
 import Kingfisher
 import FirebaseFirestore
 
+
 class TentGallery: ObservableObject{
-    var imagesToDisplay: [[TentImage]] = [] // All images
-    var imageList: [TentImage] = [] // All images including ones that are not downloaded yet
+    @Published var columns: [Column] = [Column(images: []),Column(images: [])]
+    private var imageList: [TentImage] = [] // All images including ones that are not downloaded yet
     
     let db = Firestore.firestore()
     var tentName: String
@@ -38,6 +39,8 @@ class TentGallery: ObservableObject{
             return
         }
         
+        self.columns = [Column(images: []),Column(images: [])]
+        self.imageList = []
         tentName = tentConfig.name
         
         listner!.remove()
@@ -93,22 +96,28 @@ class TentGallery: ObservableObject{
     func arrangeImages(){
         self.imageList.sort{
             tentImage1, tentImage2 in
-            return tentImage1.timeCreated < tentImage2.timeCreated
+            return tentImage1.timeCreated > tentImage2.timeCreated
         }
         
-        var newEntry: [TentImage] = []
+        
+        self.columns = [Column(images: []),Column(images: [])]
+        var count = 0
         for image in imageList{
-            if(newEntry.count == 0){
-                newEntry.append(image)
-                imagesToDisplay.append(newEntry)
+            if(count % 2 == 0){
+                self.columns[0].images.append(image)
             }
             else{
-                newEntry.append(image)
-                newEntry = []
+                self.columns[1].images.append(image)
             }
+            count += 1
         }
         
     }
 
+}
+
+struct Column: Identifiable{
+    let id = UUID()
+    var images: [TentImage]
 }
 

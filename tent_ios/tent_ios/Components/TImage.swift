@@ -13,6 +13,8 @@ struct TImage: View {
     var tentImage: TentImage
     var body: some View {
         KFImage(URL(string: tentImage.imageURL))
+            .resizable()
+            .scaledToFit().cornerRadius(20)
     }
 }
 

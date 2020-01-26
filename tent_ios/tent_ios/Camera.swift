@@ -19,9 +19,11 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
     let deviceInput: AVCaptureDeviceInput?
     
     let uploadManager: UploadManager
+    let tentGallery: TentGallery
     
-    init(uploadManager: UploadManager){
+    init(uploadManager: UploadManager, tentGallery: TentGallery){
         
+        self.tentGallery = tentGallery
         self.uploadManager = uploadManager
         
         captureSession = AVCaptureSession()
@@ -82,7 +84,7 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
         let image = UIImage(data: imageData)
         
         uploadManager.uploadImage(name: UUID().uuidString, image: rotateImage(image: image!)!)
-        
+        self.tentGallery.addImage(image: TentImage(timeCreated: Date().timeIntervalSince1970, image: rotateImage(image: image!)!))
         UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         print("Captured Image")
         

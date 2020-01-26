@@ -15,7 +15,6 @@ struct ContentView: View {
     let camera : Camera
     
     @EnvironmentObject var tentConfig: TentConfig
-    @EnvironmentObject var tentContent: TentContent
     @EnvironmentObject var alertService: AlertService
     
     @State var temp = false
