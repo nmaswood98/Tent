@@ -15,6 +15,7 @@ struct MapView2: UIViewRepresentable {
         let span = MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
         let region = MKCoordinateRegion(center: coordinate, span: span)
         view.layoutMargins.bottom = -100
+        view.mapType = .mutedStandard
         view.setRegion(region, animated: true)
     }
 }
