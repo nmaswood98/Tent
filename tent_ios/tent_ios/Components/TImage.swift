@@ -10,11 +10,22 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct TImage: View {
+    @State var showImageExpanded = false
     var tentImage: TentImage
     var body: some View {
+        
         KFImage(URL(string: tentImage.imageURL))
             .resizable()
-            .scaledToFit().cornerRadius(20)
+            .scaledToFit()
+            .cornerRadius(20)
+            .sheet(isPresented: $showImageExpanded){
+                KFImage(URL(string: self.tentImage.imageURL))
+                    .resizable()
+                    .scaledToFit()
+        }
+            .onTapGesture {
+                self.showImageExpanded = true
+        }
     }
 }
 

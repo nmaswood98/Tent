@@ -12,10 +12,16 @@ import KingfisherSwiftUI
 
 struct GalleryView: View {
     @EnvironmentObject var tentGallery: TentGallery
+    @EnvironmentObject var tentConfig: TentConfig
     
     var body: some View {
         ZStack{
             Color.white.edgesIgnoringSafeArea(.all)
+            VStack{
+            HStack{
+                Text("Tent: " + tentConfig.code).foregroundColor(.green).font(.system(size: 25))
+                Spacer()
+            }.padding(.leading,30)
         ScrollView{
         HStack(spacing:30.0){
             Spacer()
@@ -31,6 +37,7 @@ struct GalleryView: View {
             Spacer()
         }
     }
+        }
     }
     }
     
