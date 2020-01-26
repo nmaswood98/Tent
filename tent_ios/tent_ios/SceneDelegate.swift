@@ -34,12 +34,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Create the SwiftUI view that provides the window contents.
         
                   
-        let tentContent = TentContent(tentConfig: tentConfig)
-        tentConfig.tentContent = tentContent
+       // let tentContent = TentContent(tentConfig: tentConfig)
+       // tentConfig.tentContent = tentContent
+        
+        let tentGallery = TentGallery(tentConfig: tentConfig)
+        tentConfig.tentGallery = tentGallery
         
         let uploadManager = UploadManager(tentConfig: tentConfig)
         
-        let camera = Camera(uploadManager: uploadManager)
+        let camera = Camera(uploadManager: uploadManager, tentGallery: tentGallery)
         
         let locationService: LocationService = LocationService(tentConfig: tentConfig,alertService: alertService)
 
@@ -47,14 +50,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let contentView = ContentView(camera: camera)
             .environmentObject(tentConfig)
-            .environmentObject(tentContent)
             .environmentObject(tentManager)
+            .environmentObject(tentGallery)
             .environmentObject(loadingService)
             .environmentObject(locationService)
             .environmentObject(alertService)
         
-        let image = UIImage(named: "sampleImage")
-        let tImage =  TImage(tentImage: TentImage(timeCreated: Date().timeIntervalSince1970,image:image))
+        // let image = UIImage(named: "sampleImage")
+       // let tImage =  TImage(tentImage: TentImage(timeCreated: Date().timeIntervalSince1970,image:image))
  
         
        // let designView = DesignView(camera: camera).environmentObject(tentConfig)
@@ -62,7 +65,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: tImage)
+            window.rootViewController = UIHostingController(rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }

@@ -11,24 +11,27 @@ import SwiftUI
 import KingfisherSwiftUI
 
 struct GalleryView: View {
-    @EnvironmentObject var tentContent: TentContent
+    @EnvironmentObject var tentGallery: TentGallery
     
     var body: some View {
-        List {
-            ForEach(tentContent.rows) { row in
-                HStack(alignment: .center) {
-                    ForEach(row.cells) { cell in
-                        KFImage(URL(string: cell.imageURL)!)
-                            .placeholder {
-                                EmptyView()
-                        }
-                        .resizable()
-                        .scaledToFit()
+        ZStack{
+            Color.white.edgesIgnoringSafeArea(.all)
+        ScrollView{
+        HStack(spacing:30.0){
+            Spacer()
+            ForEach(tentGallery.columns) { columns in
+                VStack( spacing: 30.0) {
+                    ForEach(columns.images) { item in
+                        TImage(tentImage: item)
+                            .frame(height:300)
                     }
+                    Spacer()
                 }
             }
-            
+            Spacer()
         }
+    }
+    }
     }
     
 }

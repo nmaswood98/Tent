@@ -31,15 +31,15 @@ class TentConfig: ObservableObject{
         }
     }
     
-    var tentContent: TentContent? = nil
+    var tentGallery: TentGallery? = nil
     
     func setTent(code: String, name: String, loc: TentLocation){
         self.code = code
         self.tentLocation = loc
         self.name = name
         
-        if let tContent = self.tentContent {
-            tContent.updateTent() // Update the tent when the name changes
+        if let tGallery = self.tentGallery {
+            tGallery.removeListnerAndUpdateTent()
             
             self.tentHistory[self.name] = TentData(id: self.name,code: self.code, tentLoc: self.tentLocation, timeJoined: Date().timeIntervalSince1970)
             TentData.saveTentHistory(arr: self.tentHistory)
@@ -55,8 +55,8 @@ class TentConfig: ObservableObject{
         self.name = "DefaultTent"
         self.tentLocation = TentLocation(lat: 0, long: 0, radius: 0)
 
-        if let tContent = self.tentContent {
-            tContent.updateTent() // Update the tent when the name changes
+        if let tGallery = self.tentGallery {
+            tGallery.removeListnerAndUpdateTent()
         }
         
     }
