@@ -22,7 +22,7 @@ class UploadManager {
         userID = Auth.auth().currentUser!.uid
     }
     
-    func uploadImage(name:String, image: UIImage){
+    func uploadImage(name:String, image: UIImage, gotDownloadURL: @escaping (String) -> Void){
         
         guard let tConfig = tentConfig else {
             return
@@ -43,7 +43,7 @@ class UploadManager {
             imagePath.downloadURL { (url, error) in
                 guard let downloadURL = url else { return }
                 self.addImageToTent(name: name, data: ["URL":downloadURL.absoluteString,"userID":self.userID])
-                
+                gotDownloadURL(downloadURL.absoluteString)
             }
         }
     }
