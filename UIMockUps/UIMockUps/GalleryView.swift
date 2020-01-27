@@ -12,30 +12,32 @@ import CoreLocation
 struct GalleryView: View {
     var contentArr: [[String]] = [["Hello","My"],["Name","Nabhan"]]
     var heightArr: [[CGFloat]] = [[200,100],[200,200]]
+    @State var cameraMode: Bool = true
     var body: some View {
-        VStack{
-            HStack{
-                Text("Tent 1234").foregroundColor(.green).font(.system(size: 25))
-                Spacer()
-            }.padding(.leading,30)
-                .padding(.top,50)
-            ScrollView{
-
-                if(contentArr.count > 0){
-                    ZStack{
-                        Color.white
-                    ColumnStack(rows: contentArr.count, columns: contentArr[0].count, rowSpacing: 30, columnSpacing: 30){row,col in
+        ZStack{
+            VStack{
+                HStack{
+                    Spacer()
+                    Button(action:{
+                        print("Hi")
+                    }){
                         ZStack{
-                            Rectangle().fill(Color.blue).frame(height:self.heightArr[row][col]).cornerRadius(20)
-                            Text(self.contentArr[row][col])
+                            Rectangle()
+                                .fill(self.cameraMode ? Color.green : Color.red)
+                            Text(self.cameraMode ? "Camera" : "Draw")
+                                .foregroundColor(.white)
+                                .font(.system(size: 18))
                         }
-                    }.padding(.top,20)
-                    }.cornerRadius(30)
+                        .frame(width:80,height:30)
+                        .cornerRadius(5)
+                    }
+                    .padding(.top,50)
+                    .padding(.trailing,10)
                 }
-            }
-            Spacer()
+                Spacer()
+            }.edgesIgnoringSafeArea(.all)
         }
-
+        
     }
 }
 
