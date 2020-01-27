@@ -18,12 +18,12 @@ struct ContentView: View {
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var alertService: AlertService
     
-    @State var temp = false
+    @State var cameraMode = true
+    
     @State var showTentJoin = false
     @State var showTentCreate = false
     @State var open = false
     @State var shouldFlash = false
-    
     @State var expandMenu = false
     @State var showLoading = true
     
@@ -34,15 +34,50 @@ struct ContentView: View {
             NavigationView{
                 ZStack(alignment: .center){
                     
-                    
                     CameraView(camera: self.camera, color: UIColor.red)
-                        .edgesIgnoringSafeArea(.all)
+                            .edgesIgnoringSafeArea(.all)
                     
-                    CanvasView(canvas: self.canvas).edgesIgnoringSafeArea(.all)
-                    
+                    if(!self.cameraMode){
+                        CanvasView(canvas: self.canvas).edgesIgnoringSafeArea(.all)
+                            .onAppear{
+                                print("HIIIIIIII")
+                        }
+                    }
+
                     CameraSnapView(shouldFlash: self.$shouldFlash)
                     
                     VStack{
+                        HStack{
+                            Spacer()
+                            Button(action:{
+                                self.cameraMode.toggle()
+                            }){
+                                ZStack{
+                                    Rectangle()
+                                        .fill(self.cameraMode ? Color.green : Color.red)
+                                        .cornerRadius(5)
+                                        .padding(.trailing, 10)
+                                        .padding(.top, 60)
+                                        
+
+                                    Text(self.cameraMode ? "Camera" : "Draw")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 20))
+                                        .padding(.trailing, 10)
+                                        .padding(.top,60)
+                                }
+                                .frame(width:90,height:30)
+                            }
+                        }
+                        Spacer()
+                    }.edgesIgnoringSafeArea(.all)
+                    
+      
+                    VStack{
+
+                        
+
+                        
                         Spacer()
                         
                         Button(action:{
@@ -201,7 +236,12 @@ struct ContentView: View {
     }
     
     func takePicture(){
-        canvas.takePicture()
+        if(self.cameraMode){
+            camera.takePicture()
+        }
+        else{
+            canvas.takePicture()
+        }
     }
     
     
