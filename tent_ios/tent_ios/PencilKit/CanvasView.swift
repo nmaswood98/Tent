@@ -17,10 +17,25 @@ struct CanvasView: UIViewRepresentable {
         canvasView.backgroundColor = UIColor.white
         canvasView.tool = PKInkingTool(.pen, color: UIColor.blue)
         canvas.canvasView = canvasView
+        
+        if let window = UIApplication.shared.windows.last, let toolPicker = PKToolPicker.shared(for: window) {
+              toolPicker.setVisible(true, forFirstResponder: canvasView)
+              toolPicker.addObserver(canvasView)
+            window.frame(forAlignmentRect: CGRect(x: 100, y: 1, width: 100, height: 100))
+              canvasView.becomeFirstResponder()
+           }
+
+        
+        
         return canvasView;
     }
     
     func updateUIView(_ uiView: PKCanvasView, context: UIViewRepresentableContext<CanvasView>) {
+        
+
+    
+        
+
     }
 }
 

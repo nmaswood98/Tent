@@ -47,7 +47,28 @@ struct ContentView: View {
                     CameraSnapView(shouldFlash: self.$shouldFlash)
                     
                     VStack{
+                        Spacer()
+
                         HStack{
+                            Button(action:{
+                                self.cameraMode.toggle()
+                            }){
+                                ZStack{
+                                    Rectangle()
+                                        .fill(self.cameraMode ? Color.green : Color.red)
+                                        .cornerRadius(5)
+                                        .padding(.leading, 10)
+                                        .padding(.top, 60)
+                                        
+
+                                    Text(self.cameraMode ? "Camera" : "Draw")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 20))
+                                        .padding(.leading, 10)
+                                        .padding(.top,60)
+                                }
+                                .frame(width:90,height:30)
+                            }
                             Spacer()
                             Button(action:{
                                 self.cameraMode.toggle()
@@ -56,7 +77,7 @@ struct ContentView: View {
                                     Rectangle()
                                         .fill(self.cameraMode ? Color.green : Color.red)
                                         .cornerRadius(5)
-                                        .padding(.trailing, 10)
+                                        .padding(.trailing, 1)
                                         .padding(.top, 60)
                                         
 
@@ -69,8 +90,9 @@ struct ContentView: View {
                                 .frame(width:90,height:30)
                             }
                         }
-                        Spacer()
-                    }.edgesIgnoringSafeArea(.all)
+                
+                    }.offset(x: 0, y: -130)
+                        .opacity(0)
                     
       
                     VStack{
@@ -80,14 +102,61 @@ struct ContentView: View {
                         
                         Spacer()
                         
-                        Button(action:{
-                            withAnimation{
-                                self.showTentJoin.toggle();
+                        HStack{
+                            Spacer()
+                            Button(action:{
+                                self.cameraMode.toggle()
+                            }){
+                                ZStack{
+                                    Rectangle()
+                                        .fill(self.cameraMode ? Color.green : Color.red)
+                                        .cornerRadius(5)
+                                        
+
+                                    Text(self.cameraMode ? "Camera" : "Draw")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                .frame(width:60,height:20)
+                            }.padding(.top,5)
+                            Spacer()
+                            Button(action:{
+                                withAnimation{
+                                    self.showTentJoin.toggle();
+                                }
+                            }){
+                                Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
+                                    .foregroundColor(.green)
+                                    .font(.system(size:25))
                             }
-                        }){
-                            Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
-                                .foregroundColor(.green)
+                            Spacer()
+                            Button(action:{
+                                self.cameraMode.toggle()
+                            }){
+                                ZStack{
+                                    Rectangle()
+                                        .fill(Color.blue)
+                                        .cornerRadius(5)
+                                        
+
+                                    Text(self.cameraMode ? "Flip" : "Tools")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                .frame(width:60,height:20)
+                            }.padding(.top,15)
+                            Spacer()
+                            
+                            
                         }
+                        
+                        
+
+
+
+                        
+                        
+
                         
                         ZStack{
                             BlurView(style: .dark)
