@@ -104,6 +104,7 @@ class TentGallery: ObservableObject{
     }
     
     func arrangeImages(){
+        print("Arranging ITem")
         self.imageList.sort{
             tentImage1, tentImage2 in
             return tentImage1.timeCreated > tentImage2.timeCreated

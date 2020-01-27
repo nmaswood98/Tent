@@ -18,27 +18,28 @@ struct GalleryView: View {
         ZStack{
             Color.white.edgesIgnoringSafeArea(.all)
             VStack{
-            HStack{
-                Text("Tent: " + tentConfig.code).foregroundColor(.green).font(.system(size: 25))
-                Spacer()
-            }.padding(.leading,30)
-        ScrollView{
-        HStack(spacing:30.0){
-            Spacer()
-            ForEach(tentGallery.columns) { columns in
-                VStack( spacing: 30.0) {
-                    ForEach(columns.images) { item in
-                        TImage(tentImage: item)
-                            .frame(height:300)
-                    }
+                HStack{
+                    Text("Tent: " + tentConfig.code).foregroundColor(.green).font(.system(size: 25))
                     Spacer()
+                }.padding(.leading,30)
+                ScrollView{
+                    HStack(spacing:30.0){
+                        Spacer()
+                        ForEach(tentGallery.columns) { columns in
+                            VStack( spacing: 30.0) {
+                                ForEach(columns.images) { item in
+                                    TImage(tentImage: item)
+                                        .frame(height:300)
+                                }
+                                Spacer()
+                            }
+                        }
+                        Spacer()
+                    }
                 }
+                Spacer()
             }
-            Spacer()
         }
-    }
-        }
-    }
     }
     
 }
