@@ -44,17 +44,20 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let camera = Camera(uploadManager: uploadManager, tentGallery: tentGallery)
         
+        let canvas = Canvas(uploadManager: uploadManager, tentGallery: tentGallery)
+        
         let locationService: LocationService = LocationService(tentConfig: tentConfig,alertService: alertService)
 
 
         
-        let contentView = ContentView(camera: camera)
+        let contentView = ContentView(camera: camera, canvas: canvas)
             .environmentObject(tentConfig)
             .environmentObject(tentManager)
             .environmentObject(tentGallery)
             .environmentObject(loadingService)
             .environmentObject(locationService)
             .environmentObject(alertService)
+        
         
         // let image = UIImage(named: "sampleImage")
        // let tImage =  TImage(tentImage: TentImage(timeCreated: Date().timeIntervalSince1970,image:image))

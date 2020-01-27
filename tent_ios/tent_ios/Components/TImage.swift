@@ -18,10 +18,15 @@ struct TImage: View {
             .resizable()
             .scaledToFit()
             .cornerRadius(20)
+        .overlay(RoundedRectangle(cornerRadius: 20)
+            .stroke(Color.black, lineWidth: 0.5))
             .sheet(isPresented: $showImageExpanded){
+                ZStack{
+                Color.white.edgesIgnoringSafeArea(.all)
                 KFImage(URL(string: self.tentImage.imageURL))
                     .resizable()
                     .scaledToFit()
+                }
         }
             .onTapGesture {
                 self.showImageExpanded = true
