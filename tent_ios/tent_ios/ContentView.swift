@@ -13,6 +13,7 @@ import AVFoundation
 struct ContentView: View {
     
     let camera : Camera
+    let canvas : Canvas
     
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var alertService: AlertService
@@ -36,6 +37,8 @@ struct ContentView: View {
                     
                     CameraView(camera: self.camera, color: UIColor.red)
                         .edgesIgnoringSafeArea(.all)
+                    
+                    CanvasView(canvas: self.canvas).edgesIgnoringSafeArea(.all)
                     
                     CameraSnapView(shouldFlash: self.$shouldFlash)
                     
@@ -198,7 +201,7 @@ struct ContentView: View {
     }
     
     func takePicture(){
-        camera.takePicture()
+        canvas.takePicture()
     }
     
     
