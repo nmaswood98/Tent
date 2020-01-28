@@ -21,6 +21,8 @@ struct ContentView: View {
     @State var cameraMode = true
     
     @State var showTentJoin = false
+    @State var showToolPicker = false
+    
     @State var showTentCreate = false
     @State var open = false
     @State var shouldFlash = false
@@ -46,48 +48,72 @@ struct ContentView: View {
 
                     CameraSnapView(shouldFlash: self.$shouldFlash)
                     
+
+                        
                     VStack{
+
+                        
+
+                        
+                        Spacer()
+                        
                         HStack{
                             Spacer()
                             Button(action:{
                                 self.cameraMode.toggle()
+                                if(self.cameraMode){
+                                    self.showToolPicker = false
+                                }
                             }){
                                 ZStack{
                                     Rectangle()
-                                        .fill(self.cameraMode ? Color.green : Color.red)
+                                        .fill(self.cameraMode ? Color.red : Color.green)
                                         .cornerRadius(5)
-                                        .padding(.trailing, 10)
-                                        .padding(.top, 60)
                                         
 
-                                    Text(self.cameraMode ? "Camera" : "Draw")
+                                    Text(self.cameraMode ? "Draw" : "Camera")
                                         .foregroundColor(.white)
-                                        .font(.system(size: 20))
-                                        .padding(.trailing, 10)
-                                        .padding(.top,60)
+                                        .font(.system(size: 15))
                                 }
-                                .frame(width:90,height:30)
-                            }
+                                .frame(width:60,height:20)
+                            }.padding(.top,15)
+                            Spacer()
+                            Button(action:{
+                                withAnimation{
+                                    self.showTentJoin.toggle();
+                                }
+                            }){
+                                Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
+                                    .foregroundColor(.green)
+                                    .font(.system(size:25))
+                            }.disabled(!(!self.showToolPicker || self.cameraMode))
+    
+                            Spacer()
+                            Button(action:self.secondaryFeatureButton){
+                                ZStack{
+                                    Rectangle()
+                                        .fill(Color.blue)
+                                        .cornerRadius(5)
+                                        
+
+                                    Text(self.cameraMode ? "Flip" : "Tools")
+                                        .foregroundColor(.white)
+                                        .font(.system(size: 15))
+                                }
+                                .frame(width:60,height:20)
+                            }.padding(.top,15)
+                            Spacer()
+                            
+                            
                         }
-                        Spacer()
-                    }.edgesIgnoringSafeArea(.all)
-                    
-      
-                    VStack{
+                        
+                        
+
+
 
                         
+                        
 
-                        
-                        Spacer()
-                        
-                        Button(action:{
-                            withAnimation{
-                                self.showTentJoin.toggle();
-                            }
-                        }){
-                            Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
-                                .foregroundColor(.green)
-                        }
                         
                         ZStack{
                             BlurView(style: .dark)
@@ -183,6 +209,7 @@ struct ContentView: View {
                                     
                                     
                                 }.padding()
+                                    .opacity(self.showToolPicker ? 0 : 1)
                             }
                             
                             
@@ -233,6 +260,9 @@ struct ContentView: View {
         .alert(isPresented: self.$alertService.showAlert, content: {
             Alert(title: Text(self.alertService.title), message: Text(self.alertService.message), dismissButton: .default(Text(self.alertService.buttonText)))
         })
+            .onAppear{
+                print("HELLO")
+        }
     }
     
     func takePicture(){
@@ -241,6 +271,12 @@ struct ContentView: View {
         }
         else{
             canvas.takePicture()
+        }
+    }
+    
+    func secondaryFeatureButton(){
+        if(!self.cameraMode){
+            self.showToolPicker = self.canvas.toggleTools()
         }
     }
     
