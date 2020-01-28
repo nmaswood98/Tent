@@ -21,6 +21,8 @@ struct ContentView: View {
     @State var cameraMode = true
     
     @State var showTentJoin = false
+    @State var showToolPicker = false
+    
     @State var showTentCreate = false
     @State var open = false
     @State var shouldFlash = false
@@ -46,55 +48,8 @@ struct ContentView: View {
 
                     CameraSnapView(shouldFlash: self.$shouldFlash)
                     
-                    VStack{
-                        Spacer()
 
-                        HStack{
-                            Button(action:{
-                                self.cameraMode.toggle()
-                            }){
-                                ZStack{
-                                    Rectangle()
-                                        .fill(self.cameraMode ? Color.green : Color.red)
-                                        .cornerRadius(5)
-                                        .padding(.leading, 10)
-                                        .padding(.top, 60)
-                                        
-
-                                    Text(self.cameraMode ? "Camera" : "Draw")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 20))
-                                        .padding(.leading, 10)
-                                        .padding(.top,60)
-                                }
-                                .frame(width:90,height:30)
-                            }
-                            Spacer()
-                            Button(action:{
-                                self.cameraMode.toggle()
-                            }){
-                                ZStack{
-                                    Rectangle()
-                                        .fill(self.cameraMode ? Color.green : Color.red)
-                                        .cornerRadius(5)
-                                        .padding(.trailing, 1)
-                                        .padding(.top, 60)
-                                        
-
-                                    Text(self.cameraMode ? "Camera" : "Draw")
-                                        .foregroundColor(.white)
-                                        .font(.system(size: 20))
-                                        .padding(.trailing, 10)
-                                        .padding(.top,60)
-                                }
-                                .frame(width:90,height:30)
-                            }
-                        }
-                
-                    }.offset(x: 0, y: -130)
-                        .opacity(0)
-                    
-      
+                        
                     VStack{
 
                         
@@ -106,19 +61,22 @@ struct ContentView: View {
                             Spacer()
                             Button(action:{
                                 self.cameraMode.toggle()
+                                if(self.cameraMode){
+                                    self.showToolPicker = false
+                                }
                             }){
                                 ZStack{
                                     Rectangle()
-                                        .fill(self.cameraMode ? Color.green : Color.red)
+                                        .fill(self.cameraMode ? Color.red : Color.green)
                                         .cornerRadius(5)
                                         
 
-                                    Text(self.cameraMode ? "Camera" : "Draw")
+                                    Text(self.cameraMode ? "Draw" : "Camera")
                                         .foregroundColor(.white)
                                         .font(.system(size: 15))
                                 }
                                 .frame(width:60,height:20)
-                            }.padding(.top,5)
+                            }.padding(.top,15)
                             Spacer()
                             Button(action:{
                                 withAnimation{
@@ -128,11 +86,10 @@ struct ContentView: View {
                                 Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
                                     .foregroundColor(.green)
                                     .font(.system(size:25))
-                            }
+                            }.disabled(!(!self.showToolPicker || self.cameraMode))
+    
                             Spacer()
-                            Button(action:{
-                                self.cameraMode.toggle()
-                            }){
+                            Button(action:self.secondaryFeatureButton){
                                 ZStack{
                                     Rectangle()
                                         .fill(Color.blue)
@@ -252,6 +209,7 @@ struct ContentView: View {
                                     
                                     
                                 }.padding()
+                                    .opacity(self.showToolPicker ? 0 : 1)
                             }
                             
                             
@@ -302,6 +260,9 @@ struct ContentView: View {
         .alert(isPresented: self.$alertService.showAlert, content: {
             Alert(title: Text(self.alertService.title), message: Text(self.alertService.message), dismissButton: .default(Text(self.alertService.buttonText)))
         })
+            .onAppear{
+                print("HELLO")
+        }
     }
     
     func takePicture(){
@@ -310,6 +271,12 @@ struct ContentView: View {
         }
         else{
             canvas.takePicture()
+        }
+    }
+    
+    func secondaryFeatureButton(){
+        if(!self.cameraMode){
+            self.showToolPicker = self.canvas.toggleTools()
         }
     }
     

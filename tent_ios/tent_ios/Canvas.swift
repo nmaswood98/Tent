@@ -12,6 +12,7 @@ import AVFoundation
 
 class Canvas: NSObject,AVCapturePhotoCaptureDelegate {
     var canvasView: PKCanvasView?
+    var toolPicker: PKToolPicker?
     
     let uploadManager: UploadManager
     let tentGallery: TentGallery
@@ -38,6 +39,17 @@ class Canvas: NSObject,AVCapturePhotoCaptureDelegate {
             self.tentGallery.addImage(image:tentImage)
         }
 
+    }
+    
+    func toggleTools() -> Bool{
+        if let tPicker = toolPicker, let canvas = canvasView{
+            if(tPicker.isVisible == false){
+                canvas.becomeFirstResponder()
+            }
+            tPicker.setVisible(!tPicker.isVisible, forFirstResponder: canvas)
+            return tPicker.isVisible
+        }
+        return false
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {
