@@ -42,7 +42,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let uploadManager = UploadManager(tentConfig: tentConfig)
         
-        let camera = Camera(uploadManager: uploadManager, tentGallery: tentGallery)
+        let cameraKit = CameraKit(uploadManager: uploadManager, tentGallery: tentGallery)
         
         let canvas = Canvas(uploadManager: uploadManager, tentGallery: tentGallery)
         
@@ -50,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
         
-        let contentView = ContentView(camera: camera, canvas: canvas)
+        let contentView = ContentView(cameraKit: cameraKit, canvas: canvas)
             .environmentObject(tentConfig)
             .environmentObject(tentManager)
             .environmentObject(tentGallery)

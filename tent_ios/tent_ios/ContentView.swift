@@ -12,7 +12,7 @@ import AVFoundation
 
 struct ContentView: View {
     
-    let camera : Camera
+    let cameraKit: CameraKit
     let canvas : Canvas
     
     @EnvironmentObject var tentConfig: TentConfig
@@ -36,8 +36,7 @@ struct ContentView: View {
             NavigationView{
                 ZStack(alignment: .center){
                     
-                    CameraView(camera: self.camera, color: UIColor.red)
-                            .edgesIgnoringSafeArea(.all)
+                    CameraKitView(cameraKit: self.cameraKit).edgesIgnoringSafeArea(.all)
                     
                     if(!self.cameraMode){
                         CanvasView(canvas: self.canvas).edgesIgnoringSafeArea(.all)
@@ -267,7 +266,7 @@ struct ContentView: View {
     
     func takePicture(){
         if(self.cameraMode){
-            camera.takePicture()
+            cameraKit.takePicture()
         }
         else{
             canvas.takePicture()

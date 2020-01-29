@@ -17,5 +17,6 @@ target 'tent_ios' do
   pod 'GooglePlaces'
 
   pod "Introspect"
+  pod "CameraKit-iOS"
 
 end
