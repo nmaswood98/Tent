@@ -25,9 +25,6 @@ class CameraKit: NSObject, AVCapturePhotoCaptureDelegate  {
         
         super.init()
         
-        
-        
-        
     }
     
 
@@ -43,27 +40,8 @@ class CameraKit: NSObject, AVCapturePhotoCaptureDelegate  {
         return copy
     }
     
-    /*
-    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
-        
-        guard let imageData = photo.fileDataRepresentation()
-            else { return }
-        
-        let image = UIImage(data: imageData)
-        let tentImage = TentImage(timeCreated: Date().timeIntervalSince1970, image: rotateImage(image: image!)!)
-        uploadManager.uploadImage(name: tentImage.id.uuidString, image: rotateImage(image: image!)!){
-            downloadURL in
-            tentImage.changeImageURL(newURL: downloadURL)
-        }
-        self.tentGallery.addImage(image:tentImage)
-        
-        UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
-        print("Captured Image")
-        
-    }
-    */
+
     func takePicture(){
-        let settings2 = AVCapturePhotoSettings(format: [AVVideoCodecKey: AVVideoCodecType.jpeg])
         DispatchQueue.global(qos: .background).async {
 
         self.photoSession.capture({ (image, settings) in
@@ -87,6 +65,10 @@ class CameraKit: NSObject, AVCapturePhotoCaptureDelegate  {
         }
         
         //cameraOutput.capturePhoto(with: settings, delegate: self)
+    }
+    
+    func switchCamera(){
+        self.photoSession.togglePosition()
     }
     
     @objc func image(_ image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: UnsafeRawPointer) {

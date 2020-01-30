@@ -15,13 +15,12 @@ struct CameraKitView: UIViewRepresentable {
     
     let cameraKit: CameraKit
     func makeUIView(context: Context) -> CKFPreviewView {
-        let nativeView = UIView(frame: .zero)
         
         let previewView = CKFPreviewView(frame: CGRect(x: 0, y: 0, width: 100, height: 600 ))
             
         previewView.session = self.cameraKit.photoSession
         previewView.previewLayer?.videoGravity = .resizeAspectFill
-
+        previewView.autorotate = true
         return previewView
     }
     func updateUIView(_ uiView: CKFPreviewView, context: UIViewRepresentableContext<CameraKitView>) {

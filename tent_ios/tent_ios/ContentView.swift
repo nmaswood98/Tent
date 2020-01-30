@@ -277,6 +277,9 @@ struct ContentView: View {
         if(!self.cameraMode){
             self.showToolPicker = self.canvas.toggleTools()
         }
+        else{
+            self.cameraKit.switchCamera()
+        }
     }
     
     
