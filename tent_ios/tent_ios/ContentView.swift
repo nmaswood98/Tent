@@ -85,6 +85,7 @@ struct ContentView: View {
                                 Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
                                     .foregroundColor(.green)
                                     .font(.system(size:25))
+                                    .multilineTextAlignment(.center)
                             }.disabled(!(!self.showToolPicker || self.cameraMode))
     
                             Spacer()
@@ -129,7 +130,7 @@ struct ContentView: View {
                                         
                                         
                                         
-                                        NavigationLink(destination: InfoView())
+                                        NavigationLink(destination: PublicTentView())
                                         {
                                             
                                             ZStack{

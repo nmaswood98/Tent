@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let tentManager: TentManager = TentManager()
     let loadingService: LoadingViewService = LoadingViewService()
     let alertService: AlertService = AlertService()
+    let publicTents: PublicTents = PublicTents()
 
 
 
@@ -57,6 +58,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             .environmentObject(loadingService)
             .environmentObject(locationService)
             .environmentObject(alertService)
+            .environmentObject(publicTents)
         
         
         // let image = UIImage(named: "sampleImage")
