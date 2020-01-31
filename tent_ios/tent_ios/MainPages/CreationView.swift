@@ -46,7 +46,7 @@ struct CreationView: View {
                 }
                 Spacer()
             }.padding()
-                
+            
             
             VStack{
                 Spacer().frame(height: 30)
@@ -76,53 +76,53 @@ struct CreationView: View {
                             .tag($0)
                     }
                 }.pickerStyle(SegmentedPickerStyle())
-                   
+                
                 
                 
                 VStack{
                     Spacer().frame(height:30)
                     Section(header:Text("Tent Name:").foregroundColor(Color.green)){
-                         TextField("Enter your name", text: $name).textFieldStyle(RoundedBorderTextFieldStyle())
-                     }.opacity(self.showNameSelection ? 1 : 0 )
+                        TextField("Enter your name", text: $name).textFieldStyle(RoundedBorderTextFieldStyle())
+                    }.opacity(self.showNameSelection ? 1 : 0 )
                     Spacer().frame(height: 20)
                     Section(header:Text(" Tent Radius:").foregroundColor(Color.green)){
                         Slider(value: self.$radius, in: -2.8...3, step: 0.01)
                     }
-                      .offset(x: 0, y: self.showNameSelection ? 0 : -45)
+                    .offset(x: 0, y: self.showNameSelection ? 0 : -45)
                     Spacer().frame(height:30)
                     Button(action:{
                         self.loadingService.enableLoadingDialog()
                         self.tentManager.createTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, completion: {status in
-                        self.loadingService.disableLoadingDialog()
-                        if(status){
-                            self.backTap()
-                        }
-                        else{
-                            self.alertService.sendAlert(title: "Tent Creation", message: "Was unable to create a tent", buttonText: "Ok")
-                        }
-                    })}){
-                          ZStack{
-                              Rectangle()
-                                .fill(Color.green)
-                                  .cornerRadius(5)
-                                  
-
-                              Text("Create Tent")
-                                  .foregroundColor(.white)
-                                  .font(.system(size: 20))
-                          }
-                          .frame(width:160,height:30)
+                            self.loadingService.disableLoadingDialog()
+                            if(status){
+                                self.backTap()
+                            }
+                            else{
+                                self.alertService.sendAlert(title: "Tent Creation", message: "Was unable to create a tent", buttonText: "Ok")
+                            }
+                        })}){
+                            ZStack{
+                                Rectangle()
+                                    .fill(Color.green)
+                                    .cornerRadius(5)
+                                
+                                
+                                Text("Create Tent")
+                                    .foregroundColor(.white)
+                                    .font(.system(size: 20))
+                            }
+                            .frame(width:160,height:30)
                     }
                 }
                 .padding([.leading,.trailing])
                 
-
-
+                
+                
                 
                 
                 
             }.padding()
-
+            
             
         }.onAppear{
             self.loadingService.setLoadingMessage(text: "Creating...")
@@ -140,10 +140,10 @@ struct CreationView: View {
             withAnimation{
                 self.showNameSelection = (value == 0 ) ? false : true
             }
-
+            
         }
         .frame(width:UIScreen.main.bounds.size.width,height:UIScreen.main.bounds.size.height)
-
+        
     }
 }
 
