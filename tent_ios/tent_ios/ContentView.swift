@@ -82,7 +82,7 @@ struct ContentView: View {
                                     self.showTentJoin.toggle();
                                 }
                             }){
-                                Text((self.tentConfig.code == "") ? "Tent" : "Tent: \(self.tentConfig.code)")
+                                Text((self.tentConfig.code == "") ? "Tent" : self.tentConfig.isPublic ? self.tentConfig.publicName : ("Tent: \(self.tentConfig.code)"))
                                     .foregroundColor(.green)
                                     .font(.system(size:25))
                                     .multilineTextAlignment(.center)

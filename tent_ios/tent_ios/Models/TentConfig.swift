@@ -12,6 +12,8 @@ import SwiftUI
 class TentConfig: ObservableObject{
     @Published var name: String = "DefaultTent"
     @Published var code: String = ""
+    @Published var isPublic: Bool = false
+    @Published var publicName: String = ""
     
     var tentLocation: TentLocation = TentLocation(lat: 0, long: 0, radius: 0)
     var tentHistory: [String:TentData]
@@ -37,10 +39,11 @@ class TentConfig: ObservableObject{
         self.code = code
         self.tentLocation = loc
         self.name = id
-        
+        self.publicName = name
+        self.isPublic = isPublic
         if let tGallery = self.tentGallery {
             tGallery.removeListnerAndUpdateTent()
-            
+    
             self.tentHistory[self.name] = TentData(id: self.name,code: self.code, name: name, type: isPublic ? "public" : "private", tentLoc: self.tentLocation, timeJoined: Date().timeIntervalSince1970)
             TentData.saveTentHistory(arr: self.tentHistory)
             
