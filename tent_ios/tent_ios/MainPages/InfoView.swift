@@ -9,38 +9,37 @@
 import SwiftUI
 
 struct InfoView: View {
-    @EnvironmentObject var tentConfig: TentConfig
-    @EnvironmentObject var loadingService: LoadingViewService
-    
-    init() {
-        //Use this if NavigationBarTitle is with Large Font
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
 
-        //Use this if NavigationBarTitle is with displayMode = .inline
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
-    }
+    @State var navigationBarTitle: String = "Tents Near You"
     
     var body: some View {
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.green]
         
-        
-        
-        ZStack{
+        return ZStack{
             Color.white.edgesIgnoringSafeArea(.all)
-            ScrollView{
-                VStack(spacing:30){
-                    Spacer().frame(height:1)
-                    ForEach(Array<TentData>(tentConfig.tentHistory.values).sorted(by: { (data1, data2) -> Bool in
-                        return data1.timeJoined > data2.timeJoined
-                    }), id:\.self){tentData in
-                        TentHistoryView(name: tentData.name, code: tentData.code, tentLocation: tentData.tentLoc, expanded: true)
-                    }
+
+            TabView {
+                
+                PublicTentView()
+                    .tabItem {
+                        Image(systemName: "1.square.fill")
+                        Text("Public Tents")
+                }.onAppear{
+                    self.navigationBarTitle = "Tents Near You"
                 }
+                HistoryView()
+                    .tabItem {
+                        Image(systemName: "2.square.fill")
+                        Text("Tent History")
+                }.onAppear{
+                    self.navigationBarTitle = "Tent History"
+                }
+
             }
-            .navigationBarTitle(Text("Tent History").foregroundColor(Color.white), displayMode: .inline)
-            .onAppear{
-                self.loadingService.setLoadingMessage(text: "Joining...")
-            }
-        }
+        }.navigationBarTitle(Text(self.navigationBarTitle).foregroundColor(Color.green))
+            .navigationBarHidden(false)
+           .accentColor(Color.green)
+
 
     }
 }

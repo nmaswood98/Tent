@@ -17,11 +17,6 @@ struct PublicTentView: View {
 
     
     init() {
-        //Use this if NavigationBarTitle is with Large Font
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-
-        //Use this if NavigationBarTitle is with displayMode = .inline
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
     }
     
     var body: some View {
@@ -40,7 +35,7 @@ struct PublicTentView: View {
                     }
                 }
             }
-            .navigationBarTitle(Text("Public Tents").foregroundColor(Color.white), displayMode: .inline)
+            .navigationBarTitle(Text("Tents Near You").foregroundColor(Color.white), displayMode: .inline)
             .onAppear{
                 self.loadingService.setLoadingMessage(text: "Joining...")
             }

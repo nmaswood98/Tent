@@ -13,11 +13,6 @@ struct HistoryView: View {
     @EnvironmentObject var loadingService: LoadingViewService
     
     init() {
-        //Use this if NavigationBarTitle is with Large Font
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
-
-        //Use this if NavigationBarTitle is with displayMode = .inline
-        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.black]
     }
     
     var body: some View {

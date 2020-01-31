@@ -130,7 +130,7 @@ struct ContentView: View {
                                         
                                         
                                         
-                                        NavigationLink(destination: PublicTentView())
+                                        NavigationLink(destination: InfoView())
                                         {
                                             
                                             ZStack{
