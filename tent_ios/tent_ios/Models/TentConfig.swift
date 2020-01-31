@@ -33,15 +33,15 @@ class TentConfig: ObservableObject{
     
     var tentGallery: TentGallery? = nil
     
-    func setTent(code: String, name: String, loc: TentLocation){
+    func setTent(code: String, id: String, name: String = "", isPublic: Bool = false, loc: TentLocation){
         self.code = code
         self.tentLocation = loc
-        self.name = name
+        self.name = id
         
         if let tGallery = self.tentGallery {
             tGallery.removeListnerAndUpdateTent()
             
-            self.tentHistory[self.name] = TentData(id: self.name,code: self.code, tentLoc: self.tentLocation, timeJoined: Date().timeIntervalSince1970)
+            self.tentHistory[self.name] = TentData(id: self.name,code: self.code, name: name, type: isPublic ? "public" : "private", tentLoc: self.tentLocation, timeJoined: Date().timeIntervalSince1970)
             TentData.saveTentHistory(arr: self.tentHistory)
             
         }

@@ -13,6 +13,8 @@ struct TentData: Codable, Hashable {
     
     var id: String
     var code: String
+    var name: String = ""
+    var type: String = "private"
     var tentLoc: TentLocation
     var timeJoined: TimeInterval
     

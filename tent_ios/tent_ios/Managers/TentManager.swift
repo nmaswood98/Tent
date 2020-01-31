@@ -36,8 +36,8 @@ class TentManager : ObservableObject {
             
             
             if let data = result?.data as? NSDictionary {
-                if let code = data["code"] as? String, let name = data["id"] as? String {
-                    config.setTent(code: code, name: name, loc: TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius))
+                if let code = data["code"] as? String, let id = data["id"] as? String {
+                    config.setTent(code: code, id: id, name: name, isPublic: isPublic, loc: TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius))
                     completion(true);
                 }
             }
@@ -45,7 +45,7 @@ class TentManager : ObservableObject {
         }
     }
     
-    func submitCode(value: String, location: CLLocationCoordinate2D, config: TentConfig, completion: @escaping (Bool)->()){
+    func submitCode(value: String, location: CLLocationCoordinate2D, name: String = "", config: TentConfig, completion: @escaping (Bool)->()){
         print("Submitting Code")
         functions.httpsCallable("JoinTent").call(["code": value,"lat":location.latitude.radian,"long":location.longitude.radian]) { (result, error) in
             print("Got code result")
@@ -65,7 +65,7 @@ class TentManager : ObservableObject {
                 if let text = data["name"] as? String, let loc = data["Location"] as? NSDictionary {
                     if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
                         
-                        config.setTent(code: value, name: text, loc: TentLocation(lat: lat, long: long, radius: radius))
+                        config.setTent(code: value, id: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius))
                         
                         completion(true);
                         
