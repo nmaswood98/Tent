@@ -22,8 +22,9 @@ struct CreationView: View {
     @State private var shouldLoadMap: Bool = true
     
     @State var typeSelected = 0
-    @State var showNameSelection = false
+    @State var isPublic = false
     @State var name = ""
+    @State var keyboardOffset: CGFloat = 0
     var tentTypes = ["Private","Public"]
     
     
@@ -83,16 +84,16 @@ struct CreationView: View {
                     Spacer().frame(height:30)
                     Section(header:Text("Tent Name:").foregroundColor(Color.green)){
                         TextField("Enter your name", text: $name).textFieldStyle(RoundedBorderTextFieldStyle())
-                    }.opacity(self.showNameSelection ? 1 : 0 )
+                    }.opacity(self.isPublic ? 1 : 0 )
                     Spacer().frame(height: 20)
                     Section(header:Text(" Tent Radius:").foregroundColor(Color.green)){
                         Slider(value: self.$radius, in: -2.8...3, step: 0.01)
                     }
-                    .offset(x: 0, y: self.showNameSelection ? 0 : -45)
+                    .offset(x: 0, y: self.isPublic ? 0 : -45)
                     Spacer().frame(height:30)
                     Button(action:{
                         self.loadingService.enableLoadingDialog()
-                        self.tentManager.createTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, config: self.tentConfig, completion: {status in
+                        self.tentManager.createTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, isPublic: self.isPublic, name:self.name, config: self.tentConfig, completion: {status in
                             self.loadingService.disableLoadingDialog()
                             if(status){
                                 self.backTap()
@@ -122,28 +123,53 @@ struct CreationView: View {
                 
                 
             }.padding()
+
             
             
-        }.onAppear{
+        }.offset(y: -self.keyboardOffset).onAppear{
             self.loadingService.setLoadingMessage(text: "Creating...")
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
                 self.radius = 0
             }
             
-            let greenColor = UIColor(red: 102/256, green: 209/256, blue: 103/256, alpha: 1)
-            UISegmentedControl.appearance().selectedSegmentTintColor = greenColor
-            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
-            UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: greenColor], for: .normal)
+            self.enableKeyboardOffset()
+            self.setUpSegementedControl()
             
             
         }.onReceive([self.typeSelected].publisher.first()) { (value) in
             withAnimation{
-                self.showNameSelection = (value == 0 ) ? false : true
+                self.isPublic = (value == 0 ) ? false : true
             }
             
         }
         .frame(width:UIScreen.main.bounds.size.width,height:UIScreen.main.bounds.size.height)
         
+    }
+    
+    func setUpSegementedControl(){
+        let greenColor = UIColor(red: 102/256, green: 209/256, blue: 103/256, alpha: 1)
+        UISegmentedControl.appearance().selectedSegmentTintColor = greenColor
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: greenColor], for: .normal)
+    }
+    
+    func enableKeyboardOffset(){
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main){
+            notification in
+            let value = notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! CGRect
+            withAnimation{
+                self.keyboardOffset = value.height / 2
+
+            }
+        }
+        
+        NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main){
+            notification in
+            withAnimation{
+            self.keyboardOffset = 0
+            }
+            
+        }
     }
 }
 
