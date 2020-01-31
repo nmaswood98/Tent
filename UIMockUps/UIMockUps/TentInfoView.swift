@@ -82,7 +82,7 @@ struct TentInfoView: View {
                           Spacer()
 
                              
-                          Button(action:{
+                        Button(action:{
 
                           }){
                               ZStack{
@@ -96,7 +96,7 @@ struct TentInfoView: View {
                                       .font(.system(size: 20))
                               }
                               .frame(width:160,height:30)
-                          }.padding(.top,5)
+                        }.padding(.top,5)
 
                           
 
@@ -112,7 +112,8 @@ struct TentInfoView: View {
                 
             }
             .padding(15)
-            .padding(.top,50)
+            .padding(.top)
+            
             
         }
         .onAppear{

@@ -27,7 +27,7 @@ class TentManager : ObservableObject {
     
     func createTent(location:CLLocationCoordinate2D, radius: Double, config: TentConfig,completion: @escaping (Bool)->()){
         print("Creating Tent")
-        functions.httpsCallable("CreateTent").call(["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius]){ (result,error) in
+        functions.httpsCallable("CreateTent").call(["newTentLoc":["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius],"public":false,"tentName":""]){ (result,error) in
             print("Got Creation result")
             if let error = error as NSError? {
                 print(error)
@@ -36,7 +36,7 @@ class TentManager : ObservableObject {
             
             
             if let data = result?.data as? NSDictionary {
-                if let code = data["code"] as? String, let name = data["name"] as? String {
+                if let code = data["code"] as? String, let name = data["id"] as? String {
                     config.setTent(code: code, name: name, loc: TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius))
                     completion(true);
                 }
