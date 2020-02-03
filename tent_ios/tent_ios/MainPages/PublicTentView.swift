@@ -35,13 +35,13 @@ struct PublicTentView: View {
                     }
                 }
             }
-            .navigationBarTitle(Text("Tents Near You").foregroundColor(Color.white), displayMode: .inline)
             .onAppear{
                 self.loadingService.setLoadingMessage(text: "Joining...")
             }
         }.onAppear{
             self.publicTents.refreshTents()
-        }
+        }.navigationBarTitle("Hello", displayMode: .automatic)
+           
 
     }
 }

@@ -254,7 +254,7 @@ struct ContentView: View {
                     }
                     
                 }
-            }.navigationBarHidden(true)
+            }.navigationBarHidden(false)
                 .statusBar(hidden: true)
         }
         .alert(isPresented: self.$alertService.showAlert, content: {
@@ -262,7 +262,7 @@ struct ContentView: View {
         })
             .onAppear{
                 print("HELLO")
-        }
+        }.environment(\.colorScheme, .light)
     }
     
     func takePicture(){

@@ -31,7 +31,6 @@ struct HistoryView: View {
                     }
                 }
             }
-            .navigationBarTitle(Text("Tent History").foregroundColor(Color.white), displayMode: .inline)
             .onAppear{
                 self.loadingService.setLoadingMessage(text: "Joining...")
             }

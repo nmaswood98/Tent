@@ -9,16 +9,21 @@
 import SwiftUI
 
 struct InfoView: View {
-
+    
     @State var navigationBarTitle: String = "Tents Near You"
     
+    init(){
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.black]
+    }
+    
     var body: some View {
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.green]
         
         return ZStack{
             Color.white.edgesIgnoringSafeArea(.all)
-
+            
+            
             TabView {
+                
                 
                 PublicTentView()
                     .tabItem {
@@ -26,21 +31,25 @@ struct InfoView: View {
                         Text("Public Tents")
                 }.onAppear{
                     self.navigationBarTitle = "Tents Near You"
+                }.onDisappear{
+                    self.navigationBarTitle = "Tent History"
                 }
                 HistoryView()
                     .tabItem {
                         Image(systemName: "2.square.fill")
                         Text("Tent History")
-                }.onAppear{
-                    self.navigationBarTitle = "Tent History"
                 }
-
+                
             }
-        }.navigationBarTitle(Text(self.navigationBarTitle).foregroundColor(Color.green))
+            
+            
+            
+            
+        }.navigationBarTitle(Text(self.navigationBarTitle), displayMode: .automatic)
             .navigationBarHidden(false)
-           .accentColor(Color.green)
-
-
+            .accentColor(Color.green)
+        
+        
     }
 }
 
