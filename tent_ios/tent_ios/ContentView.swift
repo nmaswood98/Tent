@@ -253,16 +253,17 @@ struct ContentView: View {
                         
                     }
                     
-                }
+                }.environment(\.colorScheme, .dark)
             }.navigationBarHidden(false)
                 .statusBar(hidden: true)
+            .environment(\.colorScheme, .light)
         }
         .alert(isPresented: self.$alertService.showAlert, content: {
             Alert(title: Text(self.alertService.title), message: Text(self.alertService.message), dismissButton: .default(Text(self.alertService.buttonText)))
         })
             .onAppear{
                 print("HELLO")
-        }.environment(\.colorScheme, .light)
+        }
     }
     
     func takePicture(){

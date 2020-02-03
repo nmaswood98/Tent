@@ -19,7 +19,9 @@ class PublicTents: ObservableObject{
     
     let db = Firestore.firestore()
     var listner: ListenerRegistration?
-    init(){
+    var locationService: LocationService
+    init(locService: LocationService){
+        self.locationService = locService
         self.refreshTents()
     }
     
@@ -40,10 +42,11 @@ class PublicTents: ObservableObject{
                     if let name = diff.document.data()["name"] as? String, let code = diff.document.data()["code"] as? String, let loc = diff.document.data()["Location"] as? [String: Double] {
                         let tentLoc = TentLocation(lat: loc["lat"], long: loc["long"], radius: loc["radius"])
                         let tentData = TentData(id: diff.document.documentID, code: code, name: name, type: "public", tentLoc: tentLoc, timeJoined: Date().timeIntervalSince1970)
-                        self.tents[diff.document.documentID] = tentData
-                        print(self.tents)
+                        if(tentLoc.islocationWithinTent(location: self.locationService.currentLocation)){
+                            self.tents[diff.document.documentID] = tentData
+                            print(self.tents)
 
-                        
+                        }
                     }
                 }
                 if (diff.type == .modified) {

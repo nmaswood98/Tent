@@ -21,8 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let tentManager: TentManager = TentManager()
     let loadingService: LoadingViewService = LoadingViewService()
     let alertService: AlertService = AlertService()
-    let publicTents: PublicTents = PublicTents()
-
+    
 
 
     
@@ -49,6 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let locationService: LocationService = LocationService(tentConfig: tentConfig,alertService: alertService)
 
+        let publicTents: PublicTents = PublicTents(locService: locationService)
 
         
         let contentView = ContentView(cameraKit: cameraKit, canvas: canvas)

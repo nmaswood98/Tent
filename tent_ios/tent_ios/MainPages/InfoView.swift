@@ -50,6 +50,8 @@ struct InfoView: View {
             .accentColor(Color.green)
         
         
+        
+        
     }
 }
 
