@@ -1,6 +1,5 @@
 # Tent
-Possible Names: SnapTent , PictoTent , CapTent
-An app that allows image capture synchronization based on location. 
+An app that allows users to share drawings and images captured within the "tent" which is just a location with a radius. 
 
 ## Trello Board
 
