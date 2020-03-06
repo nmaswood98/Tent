@@ -117,10 +117,42 @@ class TentManager : ObservableObject {
                     
             }
             if let data = result?.data as? NSDictionary {
-                if let text = data["id"] as? String, let loc = data["Location"] as? NSDictionary {
+
+                if let isGooglePhotos = data["googlePhotos"] as? Bool, let text = data["id"] as? String, let loc = data["Location"] as? NSDictionary {
                     if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
-                        
-                        config.setTent(code: value, id: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius))
+                        if isGooglePhotos{
+                            if let shareToken = data["shareToken"] as? String {
+                                print(shareToken)
+                                
+                                GPhotosApi.sharedAlbums.get(token: shareToken) { (albumOptional) in
+                                    guard let album = albumOptional else {
+                                        completion(false);
+                                        return;
+                                    }
+                                    guard let shareInfo = album.shareInfo else {
+                                        completion(false);
+                                        return;
+                                    }
+                                    guard let isJoined = shareInfo.isJoined else {
+                                        completion(false);
+                                        return;
+                                    }
+                                    
+                                    if isJoined {
+                                        config.setTent(code: value, id: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius), isGPhotos: true)
+                                        completion(true);
+                                    }
+                                    else{
+                                        completion(false);
+                                    }
+                                
+                                }
+                            }
+                                
+                        }
+                        else{
+                            config.setTent(code: value, id: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius))
+                        }
                         
                         completion(true);
                         
