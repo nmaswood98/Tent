@@ -34,7 +34,7 @@ function doTentsOverlap(tent1, tent2) {
 exports.createGooglePhotosTent = functions.https.onCall((data, context) => {
   return new Promise(async (resolve, reject) => {
     let newTentLoc = data.newTentLoc;
-    let shareToke = data.shareToken;
+    let shareToken = data.shareToken;
     let tentName = data.tentName;
     let tentID = uuid();
     let code = ""; let needNewCode = true; let tentReference = null;
@@ -68,9 +68,10 @@ exports.createGooglePhotosTent = functions.https.onCall((data, context) => {
           long: newTentLoc.long,
           radius: newTentLoc.radius
         },
-        name: tentID,
-        googlePhotos: true,
-        shareToken: shareToken
+        id: tentID,
+        name: tentName,
+        shareToken: shareToken,
+        googlePhotos: true
       })
       .then(function (docRef) {
         resolve({ code: code, id: tentID, public: false });

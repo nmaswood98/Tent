@@ -62,8 +62,35 @@ class TentManager : ObservableObject {
                 if(shareInfo.isJoined ?? false && shareInfo.isOwned ?? false){
                     print(shareInfo.shareableUrl)
                     print(shareInfo.shareToken)
-                    completion(true,"");
+                    
 
+                    
+                    self.functions.httpsCallable("CreateGooglePhotosTent").call(["newTentLoc":["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius],"shareToken":shareInfo.shareToken,"tentName":name]){ (result,error) in
+                        print("Got Creation result")
+                        if let error = error as NSError? {
+                            print(error)
+                            completion(false, "Error creating database entry");
+                        }
+                        
+                        
+                        if let data = result?.data as? NSDictionary {
+                            if let code = data["code"] as? String, let id = data["id"] as? String {
+                                config.setTent(code: code, id: id, name: name, isPublic: false, loc: TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius),isGPhotos: true)
+                                completion(true, "")
+                            }
+                            else{
+                                completion(false,"Error at code optional unwrapping")
+                            }
+                        }
+                        else{
+                            completion(false,"Error at data result in call")
+                        }
+                        
+                    }
+                    
+                    
+                    
+                
                 }
                 else{
                     completion(false,"Error Shared Album isJoined or isOwned is false");

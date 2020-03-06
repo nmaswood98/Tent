@@ -68,7 +68,8 @@ exports.createTent = functions.https.onCall((data, context) => {
           long: newTentLoc.long,
           radius: newTentLoc.radius
         },
-        name: tentID,
+        id: tentID,
+        name: (publicTent) ? tentName : "NO NAME"
       })
       .then(function (docRef) {
 
