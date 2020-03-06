@@ -26,6 +26,7 @@ struct TentData: Codable, Hashable {
         hasher.combine(self.id)
     }
     
+    
     static func saveTentHistory(arr: [String:TentData]){
         UserDefaults.standard.set(try? JSONEncoder().encode(arr), forKey:"tentHistory")
     }

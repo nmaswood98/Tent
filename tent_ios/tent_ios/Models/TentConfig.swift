@@ -14,6 +14,7 @@ class TentConfig: ObservableObject{
     @Published var code: String = ""
     @Published var isPublic: Bool = false
     @Published var publicName: String = ""
+    @Published var isGPhotos: Bool = false
     
     var tentLocation: TentLocation = TentLocation(lat: 0, long: 0, radius: 0)
     var tentHistory: [String:TentData]
@@ -35,12 +36,13 @@ class TentConfig: ObservableObject{
     
     var tentGallery: TentGallery? = nil
     
-    func setTent(code: String, id: String, name: String = "", isPublic: Bool = false, loc: TentLocation){
+    func setTent(code: String, id: String, name: String = "", isPublic: Bool = false, loc: TentLocation, isGPhotos: Bool = false){
         self.code = code
         self.tentLocation = loc
         self.name = id
         self.publicName = name
         self.isPublic = isPublic
+        self.isGPhotos = isGPhotos
         if let tGallery = self.tentGallery {
             tGallery.removeListnerAndUpdateTent()
     

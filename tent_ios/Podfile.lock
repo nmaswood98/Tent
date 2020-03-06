@@ -1,4 +1,10 @@
 PODS:
+  - Alamofire (4.9.1)
+  - AppAuth (1.3.0):
+    - AppAuth/Core (= 1.3.0)
+    - AppAuth/ExternalUserAgent (= 1.3.0)
+  - AppAuth/Core (1.3.0)
+  - AppAuth/ExternalUserAgent (1.3.0)
   - BoringSSL-GRPC (0.0.3):
     - BoringSSL-GRPC/Implementation (= 0.0.3)
     - BoringSSL-GRPC/Interface (= 0.0.3)
@@ -114,6 +120,11 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.2.5):
     - GoogleUtilities/Logger
+  - GPhotos (0.5.1):
+    - AppAuth (~> 1.0)
+    - GTMAppAuth (~> 1.0.0)
+    - Moya (~> 13.0)
+    - ObjectMapper (~> 3.4)
   - "gRPC-C++ (0.0.9)":
     - "gRPC-C++/Implementation (= 0.0.9)"
     - "gRPC-C++/Interface (= 0.0.9)"
@@ -130,15 +141,29 @@ PODS:
     - gRPC-Core/Interface (= 1.21.0)
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
+  - GTMAppAuth (1.0.0):
+    - AppAuth/Core (~> 1.0)
+    - GTMSessionFetcher (~> 1.1)
+  - GTMSessionFetcher (1.2.2):
+    - GTMSessionFetcher/Full (= 1.2.2)
   - GTMSessionFetcher/Core (1.2.2)
+  - GTMSessionFetcher/Full (1.2.2):
+    - GTMSessionFetcher/Core (= 1.2.2)
   - Introspect (0.0.6)
   - leveldb-library (1.22)
+  - Moya (13.0.1):
+    - Moya/Core (= 13.0.1)
+  - Moya/Core (13.0.1):
+    - Alamofire (~> 4.1)
+    - Result (~> 4.1)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - ObjectMapper (3.5.1)
   - Protobuf (3.9.0)
+  - Result (4.1.0)
 
 DEPENDENCIES:
   - CameraKit-iOS
@@ -149,10 +174,13 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleMaps
   - GooglePlaces
+  - GPhotos (from `https://github.com/nmaswood98/GPhotos.git`)
   - Introspect
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - AppAuth
     - BoringSSL-GRPC
     - CameraKit-iOS
     - Firebase
@@ -174,13 +202,28 @@ SPEC REPOS:
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
+    - GTMAppAuth
     - GTMSessionFetcher
     - Introspect
     - leveldb-library
+    - Moya
     - nanopb
+    - ObjectMapper
     - Protobuf
+    - Result
+
+EXTERNAL SOURCES:
+  GPhotos:
+    :git: https://github.com/nmaswood98/GPhotos.git
+
+CHECKOUT OPTIONS:
+  GPhotos:
+    :commit: e702031a576af33fb4259792d2216ad5e28f1a65
+    :git: https://github.com/nmaswood98/GPhotos.git
 
 SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AppAuth: 73574f3013a1e65b9601a3ddc8b3158cce68c09d
   BoringSSL-GRPC: db8764df3204ccea016e1c8dd15d9a9ad63ff318
   CameraKit-iOS: 7a8aeb4b6ac93c59088ada934efb6010ed2394c1
   Firebase: 291d7b0a7b393f252358083b5d224884126fa46d
@@ -200,14 +243,19 @@ SPEC CHECKSUMS:
   GoogleMaps: 67f4a604f80dd6a22d09c2a507a3a395b9f23060
   GooglePlaces: 7547289e3fffc8980f4a027be99888e29d59b15d
   GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
+  GPhotos: 2fa0838b8f2297a465d59b5876385fb2334d791e
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
+  GTMAppAuth: 4deac854479704f348309e7b66189e604cf5e01e
   GTMSessionFetcher: 61bb0f61a4cb560030f1222021178008a5727a23
   Introspect: 3575a13dbece038e564e4375eeac2117e64a0242
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  Moya: f4a4b80ff2f8a4ffc208dfb31cd91636622fee6e
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
+  Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
 
-PODFILE CHECKSUM: 3d364a2c4fa6b477b1d2c7085c461a0ab9f0c8a4
+PODFILE CHECKSUM: 73ad8956e71dda7b71a4060c7d291c66336c8839
 
 COCOAPODS: 1.8.4

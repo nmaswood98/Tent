@@ -31,10 +31,10 @@ function doTentsOverlap(tent1, tent2) {
 
 }
 
-exports.createTent = functions.https.onCall((data, context) => {
+exports.createGooglePhotosTent = functions.https.onCall((data, context) => {
   return new Promise(async (resolve, reject) => {
     let newTentLoc = data.newTentLoc;
-    let publicTent = data.public;
+    let shareToke = data.shareToken;
     let tentName = data.tentName;
     let tentID = uuid();
     let code = ""; let needNewCode = true; let tentReference = null;
@@ -69,25 +69,11 @@ exports.createTent = functions.https.onCall((data, context) => {
           radius: newTentLoc.radius
         },
         name: tentID,
+        googlePhotos: true,
+        shareToken: shareToken
       })
       .then(function (docRef) {
-
-        if (publicTent) {
-          db.collection("PublicTents").doc(tentID).set({
-            Location: {
-              lat: newTentLoc.lat,
-              long: newTentLoc.long,
-              radius: newTentLoc.radius
-            },
-            name: tentName,
-            code: code
-          }).then(function (ref) {
-            resolve({ code: code, id: tentID, public: true });
-          });
-        }
-        else {
-          resolve({ code: code, id: tentID, public: false });
-        }
+        resolve({ code: code, id: tentID, public: false });
       })
       .catch(function (error) {
         reject("Could not create the tent");

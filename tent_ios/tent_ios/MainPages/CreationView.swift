@@ -23,9 +23,10 @@ struct CreationView: View {
     
     @State var typeSelected = 0
     @State var isPublic = false
+    @State var isGPhotos = false
     @State var name = ""
     @State var keyboardOffset: CGFloat = 0
-    var tentTypes = ["Private","Public"]
+    var tentTypes = ["Google Photos","Private","Public"]
     
     
     var backTap: () -> ()
@@ -93,15 +94,26 @@ struct CreationView: View {
                     Spacer().frame(height:30)
                     Button(action:{
                         self.loadingService.enableLoadingDialog()
-                        self.tentManager.createTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, isPublic: self.isPublic, name:self.name, config: self.tentConfig, completion: {status in
-                            self.loadingService.disableLoadingDialog()
-                            if(status){
-                                self.backTap()
-                            }
-                            else{
-                                self.alertService.sendAlert(title: "Tent Creation", message: "Was unable to create a tent", buttonText: "Ok")
-                            }
-                        })}){
+                        if(self.isGPhotos){
+                            self.tentManager.createGooglePhotosTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, name:self.name, config: self.tentConfig,completion: {
+                                status, err in
+                                self.loadingService.disableLoadingDialog()
+                            })
+                        }
+                        else{
+                            self.tentManager.createTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, isPublic: self.isPublic, name:self.name, config: self.tentConfig, completion: {status in
+                                self.loadingService.disableLoadingDialog()
+                                if(status){
+                                    self.backTap()
+                                }
+                                else{
+                                    self.alertService.sendAlert(title: "Tent Creation", message: "Was unable to create a tent", buttonText: "Ok")
+                                }
+                            })
+                        }
+
+                        
+                    }){
                             ZStack{
                                 Rectangle()
                                     .fill(Color.green)
@@ -138,7 +150,8 @@ struct CreationView: View {
             
         }.onReceive([self.typeSelected].publisher.first()) { (value) in
             withAnimation{
-                self.isPublic = (value == 0 ) ? false : true
+                self.isPublic = (value == 1 ) ? false : true
+                self.isGPhotos = (value == 0) ? true : false
             }
             
         }

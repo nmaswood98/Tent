@@ -10,6 +10,7 @@ import Foundation
 import FirebaseFunctions
 import SwiftUI
 import CoreLocation
+import GPhotos
 
 extension UIApplication {
     func endEditing() {
@@ -45,6 +46,33 @@ class TentManager : ObservableObject {
         }
     }
     
+    func createGooglePhotosTent( location: CLLocationCoordinate2D,radius: Double, name: String, config: TentConfig, completion: @escaping (Bool,String)->()){
+        print("Creating Google Photos Tent")
+        
+        GPhotosApi.albums.create(title: name) { (albumOptional) in
+            guard let album = albumOptional else {
+                completion(false,"Error Creating Album")
+                return;
+            }
+            GPhotosApi.albums.share(id: album.id) { (shareInfoOptional) in
+                guard let shareInfo = shareInfoOptional else {
+                    completion(false, "Error Sharing Album")
+                    return;
+                }
+                if(shareInfo.isJoined ?? false && shareInfo.isOwned ?? false){
+                    print(shareInfo.shareableUrl)
+                    print(shareInfo.shareToken)
+                    completion(true,"");
+
+                }
+                else{
+                    completion(false,"Error Shared Album isJoined or isOwned is false");
+                }
+                
+            }
+        }
+            }
+    
     func submitCode(value: String, location: CLLocationCoordinate2D, name: String = "", config: TentConfig, completion: @escaping (Bool)->()){
         print("Submitting Code")
         functions.httpsCallable("JoinTent").call(["code": value,"lat":location.latitude.radian,"long":location.longitude.radian]) { (result, error) in
@@ -62,7 +90,7 @@ class TentManager : ObservableObject {
                     
             }
             if let data = result?.data as? NSDictionary {
-                if let text = data["name"] as? String, let loc = data["Location"] as? NSDictionary {
+                if let text = data["id"] as? String, let loc = data["Location"] as? NSDictionary {
                     if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
                         
                         config.setTent(code: value, id: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius))

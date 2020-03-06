@@ -50,7 +50,7 @@ class TentGallery: ObservableObject{
     }
     
     func updateTent(){
-        self.listner = db.collection("Tents").document(tentName).collection("Images").addSnapshotListener { querySnapshot, err in
+        self.listner = db.collection("Tents").document(tentName).collection("Images").limit(to: 15).addSnapshotListener { querySnapshot, err in
             guard let snapshot = querySnapshot else {
                 print("Error fetching snapshots: \(err!)")
                 return
