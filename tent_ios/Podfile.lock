@@ -218,7 +218,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   GPhotos:
-    :commit: e702031a576af33fb4259792d2216ad5e28f1a65
+    :commit: bf6b3370399fc5b4bdfbfdc6869c0bbd6cd3bd0f
     :git: https://github.com/nmaswood98/GPhotos.git
 
 SPEC CHECKSUMS:

@@ -98,6 +98,13 @@ struct CreationView: View {
                             self.tentManager.createGooglePhotosTent(location: self.locationService.currentLocation, radius: (100 * (self.radius + 3))/1000, name:self.name, config: self.tentConfig,completion: {
                                 status, err in
                                 self.loadingService.disableLoadingDialog()
+                                if(status){
+                                    self.backTap()
+                                }
+                                else{
+                                    self.alertService.sendAlert(title: "Tent Creation", message: "Was unable to create a tent", buttonText: "Ok")
+                                }
+                                
                             })
                         }
                         else{

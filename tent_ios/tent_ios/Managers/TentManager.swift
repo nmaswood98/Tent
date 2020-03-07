@@ -62,10 +62,8 @@ class TentManager : ObservableObject {
                 if(shareInfo.isJoined ?? false && shareInfo.isOwned ?? false){
                     print(shareInfo.shareableUrl)
                     print(shareInfo.shareToken)
-                    
-
-                    
-                    self.functions.httpsCallable("CreateGooglePhotosTent").call(["newTentLoc":["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius],"shareToken":shareInfo.shareToken,"tentName":name]){ (result,error) in
+                                        
+                    self.functions.httpsCallable("CreateGooglePhotosTent").call(["newTentLoc":["lat":location.latitude.radian,"long":location.longitude.radian,"radius":radius],"shareToken":shareInfo.shareToken,"albumID":album.id,"tentName":name]){ (result,error) in
                         print("Got Creation result")
                         if let error = error as NSError? {
                             print(error)
@@ -141,6 +139,7 @@ class TentManager : ObservableObject {
                                     if isJoined {
                                         config.setTent(code: value, id: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius), isGPhotos: true)
                                         completion(true);
+                                        
                                     }
                                     else{
                                         completion(false);
@@ -152,9 +151,10 @@ class TentManager : ObservableObject {
                         }
                         else{
                             config.setTent(code: value, id: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius))
+                            completion(true);
                         }
                         
-                        completion(true);
+                        
                         
                     }
                     
