@@ -100,6 +100,7 @@ class TentGallery: ObservableObject{
             
             tentIds[image.id.uuidString] = true
             self.arrangeImages()
+            
         }
     }
     

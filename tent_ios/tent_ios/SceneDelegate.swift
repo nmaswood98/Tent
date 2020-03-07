@@ -42,6 +42,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let uploadManager = UploadManager(tentConfig: tentConfig)
         
+        let imageUploadQueue = ImageUploadQueue(uploadManager: uploadManager, tentConfig: tentConfig)
+        
         let cameraKit = CameraKit(uploadManager: uploadManager, tentGallery: tentGallery)
         
         let canvas = Canvas(uploadManager: uploadManager, tentGallery: tentGallery)

@@ -18,8 +18,23 @@ struct TImage: View {
             .resizable()
             .scaledToFit()
             .cornerRadius(20)
-        .overlay(RoundedRectangle(cornerRadius: 20)
-            .stroke(Color.black, lineWidth: 0.5))
+        .overlay(
+            ZStack{
+                VStack{
+                    HStack{
+                        Spacer()
+                        Circle()
+                            .fill(tentImage.uploaded ? Color.clear : Color.red)
+                        .frame(width: 20, height: 20)
+                        .padding()
+                    }
+                    Spacer()
+                }
+
+                RoundedRectangle(cornerRadius: 20)
+                .stroke(Color.black, lineWidth: 0.5)
+            }
+        )
             .sheet(isPresented: $showImageExpanded){
                 ZStack{
                 Color.white.edgesIgnoringSafeArea(.all)

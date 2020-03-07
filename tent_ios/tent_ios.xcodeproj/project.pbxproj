@@ -37,6 +37,7 @@
 		902D79EC23E4AC8A004CAE00 /* PublicTents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D79EB23E4AC8A004CAE00 /* PublicTents.swift */; };
 		9045E4D823D961AA00CE5618 /* TentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D723D961AA00CE5618 /* TentData.swift */; };
 		9045E4DA23D9735B00CE5618 /* MapView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D923D9735B00CE5618 /* MapView2.swift */; };
+		9053E36524134BF4008BE1C9 /* ImageUploadQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053E36424134BF4008BE1C9 /* ImageUploadQueue.swift */; };
 		906BEE2223E14CA1008CB805 /* CameraKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BEE2123E14CA1008CB805 /* CameraKit.swift */; };
 		906BEE4223E14D1B008CB805 /* CameraKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BEE4123E14D1B008CB805 /* CameraKitView.swift */; };
 		9072821A23D69AD40091BE14 /* TentInfoComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9072821923D69AD40091BE14 /* TentInfoComponent.swift */; };
@@ -196,6 +197,55 @@
 			remoteGlobalIDString = D0A70003FD5E49B30CA83DAAFE03116B;
 			remoteInfo = Introspect;
 		};
+		9053E38924134BF5008BE1C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 5D797E9A5C5782CE845840781FA1CC81;
+			remoteInfo = Alamofire;
+		};
+		9053E38B24134BF5008BE1C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3FD1B4C1246D643E9476438C28048FA8;
+			remoteInfo = AppAuth;
+		};
+		9053E38D24134BF5008BE1C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = F9D08A14C3F11692CDB30EF54475B163;
+			remoteInfo = GPhotos;
+		};
+		9053E38F24134BF5008BE1C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6FD122EA0AB9AB2A8FFA5F676C795DF0;
+			remoteInfo = GTMAppAuth;
+		};
+		9053E39124134BF5008BE1C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3756A9BBE41ABEE8DCBF5BCA6972C4DA;
+			remoteInfo = Moya;
+		};
+		9053E39324134BF5008BE1C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B9084FE779702931E8DF1D00A2D725FB;
+			remoteInfo = ObjectMapper;
+		};
+		9053E39524134BF5008BE1C9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0461B3F80FC05957690727254D64DB36;
+			remoteInfo = Result;
+		};
 		906BEE3F23E14CA2008CB805 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
@@ -238,6 +288,7 @@
 		902D79EB23E4AC8A004CAE00 /* PublicTents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTents.swift; sourceTree = "<group>"; };
 		9045E4D723D961AA00CE5618 /* TentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentData.swift; sourceTree = "<group>"; };
 		9045E4D923D9735B00CE5618 /* MapView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView2.swift; path = ../../../UIMockUps/UIMockUps/MapView2.swift; sourceTree = "<group>"; };
+		9053E36424134BF4008BE1C9 /* ImageUploadQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadQueue.swift; sourceTree = "<group>"; };
 		906BEE2123E14CA1008CB805 /* CameraKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraKit.swift; sourceTree = "<group>"; };
 		906BEE4123E14D1B008CB805 /* CameraKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraKitView.swift; sourceTree = "<group>"; };
 		9072821923D69AD40091BE14 /* TentInfoComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentInfoComponent.swift; sourceTree = "<group>"; };
@@ -292,6 +343,8 @@
 		4C0F61A123543DE100A56D14 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				9053E38A24134BF5008BE1C9 /* Alamofire.framework */,
+				9053E38C24134BF5008BE1C9 /* AppAuth.framework */,
 				4C0F61B423543DE100A56D14 /* openssl_grpc.framework */,
 				906BEE4023E14CA2008CB805 /* CameraKit_iOS.framework */,
 				4C0F61B623543DE100A56D14 /* FirebaseAuth.framework */,
@@ -304,15 +357,20 @@
 				4C0F61C023543DE100A56D14 /* GoogleDataTransport.framework */,
 				4CFA832B2373DA63005348A3 /* GoogleDataTransportCCTSupport.framework */,
 				4C0F61C223543DE100A56D14 /* GoogleUtilities.framework */,
+				9053E38E24134BF5008BE1C9 /* GPhotos.framework */,
 				4C0F61C423543DE100A56D14 /* grpcpp.framework */,
 				4C0F61C623543DE100A56D14 /* gRPCCertificates-Cpp.bundle */,
 				4C0F61C823543DE100A56D14 /* grpc.framework */,
+				9053E39024134BF5008BE1C9 /* GTMAppAuth.framework */,
 				4C0F61CA23543DE100A56D14 /* GTMSessionFetcher.framework */,
 				901B865D23C801760095C0F8 /* Introspect.framework */,
 				4C0F61CC23543DE100A56D14 /* leveldb.framework */,
+				9053E39224134BF5008BE1C9 /* Moya.framework */,
 				4C0F61CE23543DE100A56D14 /* nanopb.framework */,
+				9053E39424134BF5008BE1C9 /* ObjectMapper.framework */,
 				4C0F61D023543DE100A56D14 /* Pods_tent_ios.framework */,
 				4C0F61D223543DE100A56D14 /* Protobuf.framework */,
+				9053E39624134BF5008BE1C9 /* Result.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -352,6 +410,7 @@
 				90EA973323D98CF600FFBEF4 /* LoadingViewService.swift */,
 				90A4CC4023DAF42700F049F1 /* AlertService.swift */,
 				4C0F619E2353EF1D00A56D14 /* UploadManager.swift */,
+				9053E36424134BF4008BE1C9 /* ImageUploadQueue.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -652,6 +711,55 @@
 			remoteRef = 901B865C23C801760095C0F8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		9053E38A24134BF5008BE1C9 /* Alamofire.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Alamofire.framework;
+			remoteRef = 9053E38924134BF5008BE1C9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9053E38C24134BF5008BE1C9 /* AppAuth.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = AppAuth.framework;
+			remoteRef = 9053E38B24134BF5008BE1C9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9053E38E24134BF5008BE1C9 /* GPhotos.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GPhotos.framework;
+			remoteRef = 9053E38D24134BF5008BE1C9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9053E39024134BF5008BE1C9 /* GTMAppAuth.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = GTMAppAuth.framework;
+			remoteRef = 9053E38F24134BF5008BE1C9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9053E39224134BF5008BE1C9 /* Moya.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Moya.framework;
+			remoteRef = 9053E39124134BF5008BE1C9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9053E39424134BF5008BE1C9 /* ObjectMapper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ObjectMapper.framework;
+			remoteRef = 9053E39324134BF5008BE1C9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		9053E39624134BF5008BE1C9 /* Result.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Result.framework;
+			remoteRef = 9053E39524134BF5008BE1C9 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		906BEE4023E14CA2008CB805 /* CameraKit_iOS.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -753,6 +861,7 @@
 				9045E4D823D961AA00CE5618 /* TentData.swift in Sources */,
 				90A4CC4123DAF42700F049F1 /* AlertService.swift in Sources */,
 				906BEE2223E14CA1008CB805 /* CameraKit.swift in Sources */,
+				9053E36524134BF4008BE1C9 /* ImageUploadQueue.swift in Sources */,
 				90E60D30238122E900C6E502 /* BlurView.swift in Sources */,
 				9045E4DA23D9735B00CE5618 /* MapView2.swift in Sources */,
 				90F9983A23D423C300B4C2C6 /* BlurContainer.swift in Sources */,

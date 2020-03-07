@@ -16,20 +16,22 @@ class TentImage: ObservableObject, Identifiable{
     let timeCreated: TimeInterval
     @Published var imageURL: String
     @Published var valid: Bool = false
+    @Published var uploaded: Bool = false
     
-    init(id:UUID,timeCreated: TimeInterval, imageURL: String){
+    init(id:UUID,timeCreated: TimeInterval, imageURL: String, uploaded: Bool = true){
         self.id = id
         self.timeCreated = timeCreated
         self.imageURL = imageURL
         self.valid = true
+        self.uploaded = uploaded
         
     }
     
     // Passed UIImage, generates random imageURL id and stores the image in the cache under the imageURL
-    init(timeCreated: TimeInterval, image: UIImage?){
+    init(timeCreated: TimeInterval, image: UIImage?, uploaded: Bool = false){
         self.timeCreated = timeCreated
         self.imageURL = UUID().uuidString
-        
+        self.uploaded = uploaded
         if let img = image{
             let cache = ImageCache.default
             cache.store(img, forKey: self.imageURL)
@@ -89,6 +91,10 @@ class TentImage: ObservableObject, Identifiable{
                 completion(false)
             }
         }
+    }
+    
+    func setUploadStatus(uploadStatus: Bool){
+        self.uploaded = uploadStatus
     }
     
 }
