@@ -23,7 +23,7 @@ class UploadManager {
         userID = Auth.auth().currentUser!.uid
     }
     
-    func uploadImage(name:String, image: UIImage, gotDownloadURL: @escaping (String) -> Void){
+    func uploadImage(name:String, image: UIImage, completedUpload: @escaping (String) -> Void){
         
     
         guard let tConfig = tentConfig else {
@@ -39,15 +39,15 @@ class UploadManager {
         
         if tConfig.isGPhotos {
             print("Is Google photos")
-            self.uploadToGooglePhotosTent(image: image, name: name, configName: tConfig.name, gotDownloadURL: gotDownloadURL)
+            self.uploadToGooglePhotosTent(image: image, name: name, configName: tConfig.name, completedUpload: completedUpload)
         }
         else{
             print("Not Google Photos")
-            self.uploadToPureTent(data: data, name: name, configName: tConfig.name, gotDownloadURL: gotDownloadURL)
+            self.uploadToPureTent(data: data, name: name, configName: tConfig.name, completedUpload: completedUpload)
         }
     }
     // MediaItemsBatchCreate.NewMediaItemResult
-    func uploadToGooglePhotosTent(image: UIImage, name: String, configName: String, gotDownloadURL: @escaping (String) -> Void){
+    func uploadToGooglePhotosTent(image: UIImage, name: String, configName: String, completedUpload: @escaping (String) -> Void){
         guard let tConfig = tentConfig else {
             return;
         }
@@ -58,7 +58,7 @@ class UploadManager {
                     // Handle ERror
                     return;
                 }
-                
+                completedUpload("GooglePhotosComplete");
                 
                 
             }
@@ -68,7 +68,7 @@ class UploadManager {
         }
     }
     
-    func uploadToPureTent(data: Data, name: String, configName: String, gotDownloadURL: @escaping (String) -> Void){
+    func uploadToPureTent(data: Data, name: String, configName: String, completedUpload: @escaping (String) -> Void){
         let imagePath = storage.reference().child("\(configName)/" + name + ".png")
         
         _ = imagePath.putData(data, metadata: nil) { (metadata, error) in
@@ -77,7 +77,7 @@ class UploadManager {
             imagePath.downloadURL { (url, error) in
                 guard let downloadURL = url else { return }
                 self.addImageToTent(name: name, data: ["URL":downloadURL.absoluteString,"userID":self.userID])
-                gotDownloadURL(downloadURL.absoluteString)
+                completedUpload(downloadURL.absoluteString)
             }
         }
     }

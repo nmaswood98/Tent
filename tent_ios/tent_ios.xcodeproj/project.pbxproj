@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E28A2B129AE26A921DC557D /* Pods_tent_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */; };
 		4C06CC9C237FA2E700201425 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06CC9B237FA2E700201425 /* LoadingView.swift */; };
 		4C06CCB2237FAC6E00201425 /* TentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06CCB1237FAC6E00201425 /* TentLocation.swift */; };
 		4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F619E2353EF1D00A56D14 /* UploadManager.swift */; };
@@ -16,8 +15,8 @@
 		4C28D26C2377E89D00C1B8BF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D26B2377E89D00C1B8BF /* LocationService.swift */; };
 		4C92D77A2355860A00646CFB /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D7792355860A00646CFB /* GalleryView.swift */; };
 		4C92D78C23558BFF00646CFB /* TentContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D78B23558BFF00646CFB /* TentContent.swift */; };
-		4C92D790235596A400646CFB /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D78F235596A400646CFB /* KingfisherSwiftUI */; };
-		4C92D792235596A400646CFB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D791235596A400646CFB /* Kingfisher */; };
+		4C92D790235596A400646CFB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D78F235596A400646CFB /* SwiftPackageProductDependency */; };
+		4C92D792235596A400646CFB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D791235596A400646CFB /* SwiftPackageProductDependency */; };
 		4C9C5B24237513C300B0C315 /* TentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C5B23237513C300B0C315 /* TentConfig.swift */; };
 		4CAC58E02353AD2100184DEE /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC58DF2353AD2100184DEE /* Camera.swift */; };
 		4CAC58E22353DE4700184DEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC58E12353DE4700184DEE /* GoogleService-Info.plist */; };
@@ -54,6 +53,7 @@
 		90E60D30238122E900C6E502 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90E60D2F238122E900C6E502 /* BlurView.swift */; };
 		90EA973423D98CF600FFBEF4 /* LoadingViewService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90EA973323D98CF600FFBEF4 /* LoadingViewService.swift */; };
 		90F9983A23D423C300B4C2C6 /* BlurContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9983923D423C300B4C2C6 /* BlurContainer.swift */; };
+		C3D9F058D71602ED66DD6976 /* Pods_tent_ios.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FAE9582492D03990F5FEAB9 /* Pods_tent_ios.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -256,7 +256,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		12D1BD8F9D8E7FE8B830FE56 /* Pods-tent_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios.debug.xcconfig"; sourceTree = "<group>"; };
+		1FAE9582492D03990F5FEAB9 /* Pods_tent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C06CC9B237FA2E700201425 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		4C06CCB1237FAC6E00201425 /* TentLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentLocation.swift; sourceTree = "<group>"; };
 		4C0F619E2353EF1D00A56D14 /* UploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadManager.swift; sourceTree = "<group>"; };
@@ -280,7 +280,6 @@
 		4CC087202352DE860086A5B0 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		4CFA82FE2373CF5A005348A3 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		4CFA83112373DA63005348A3 /* TentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentManager.swift; sourceTree = "<group>"; };
-		51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_tent_ios.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9013C01323D291630091BE73 /* MenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuButton.swift; path = ../../../UIMockUps/UIMockUps/MenuButton.swift; sourceTree = "<group>"; };
 		901B863F23C801750095C0F8 /* CameraSnapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraSnapView.swift; sourceTree = "<group>"; };
 		902D79CB23E4AB66004CAE00 /* PublicTentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTentView.swift; sourceTree = "<group>"; };
@@ -305,7 +304,8 @@
 		90E60D2F238122E900C6E502 /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 		90EA973323D98CF600FFBEF4 /* LoadingViewService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewService.swift; sourceTree = "<group>"; };
 		90F9983923D423C300B4C2C6 /* BlurContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurContainer.swift; sourceTree = "<group>"; };
-		9C2A77E255123014A3875B7C /* Pods-tent_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-tent_ios/Pods-tent_ios.release.xcconfig"; sourceTree = "<group>"; };
+		93CC675AF5CD12A118B1D383 /* Pods-tent_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.release.xcconfig"; path = "Target Support Files/Pods-tent_ios/Pods-tent_ios.release.xcconfig"; sourceTree = "<group>"; };
+		A6A2104F98235DCD4D54124F /* Pods-tent_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tent_ios.debug.xcconfig"; path = "Target Support Files/Pods-tent_ios/Pods-tent_ios.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,9 +313,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C92D792235596A400646CFB /* Kingfisher in Frameworks */,
-				4C92D790235596A400646CFB /* KingfisherSwiftUI in Frameworks */,
-				2E28A2B129AE26A921DC557D /* Pods_tent_ios.framework in Frameworks */,
+				4C92D792235596A400646CFB /* BuildFile in Frameworks */,
+				4C92D790235596A400646CFB /* BuildFile in Frameworks */,
+				C3D9F058D71602ED66DD6976 /* Pods_tent_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,8 +420,8 @@
 			children = (
 				4CC0870B2352D5070086A5B0 /* tent_ios */,
 				4CC0870A2352D5070086A5B0 /* Products */,
-				ED4AF1108802D9A97A856FFF /* Pods */,
 				8C51DB2995A13A1DBBB28C0A /* Frameworks */,
+				F0ADF77A3E0B86A6DEC44F5B /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -470,7 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				4C0F61A023543DE100A56D14 /* Pods.xcodeproj */,
-				51C3FB8191D010CACF06DC68 /* Pods_tent_ios.framework */,
+				1FAE9582492D03990F5FEAB9 /* Pods_tent_ios.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -492,13 +492,14 @@
 			path = PencilKit;
 			sourceTree = "<group>";
 		};
-		ED4AF1108802D9A97A856FFF /* Pods */ = {
+		F0ADF77A3E0B86A6DEC44F5B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				12D1BD8F9D8E7FE8B830FE56 /* Pods-tent_ios.debug.xcconfig */,
-				9C2A77E255123014A3875B7C /* Pods-tent_ios.release.xcconfig */,
+				A6A2104F98235DCD4D54124F /* Pods-tent_ios.debug.xcconfig */,
+				93CC675AF5CD12A118B1D383 /* Pods-tent_ios.release.xcconfig */,
 			);
 			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,12 +509,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4CC0871D2352D5090086A5B0 /* Build configuration list for PBXNativeTarget "tent_ios" */;
 			buildPhases = (
-				59B9686D022929C67DB971FB /* [CP] Check Pods Manifest.lock */,
+				7A57F9C4607A323DE9EB8905 /* [CP] Check Pods Manifest.lock */,
 				4CC087052352D5070086A5B0 /* Sources */,
 				4CC087062352D5070086A5B0 /* Frameworks */,
 				4CC087072352D5070086A5B0 /* Resources */,
-				C0116B47ECCAD3E76CC2CF26 /* [CP] Embed Pods Frameworks */,
-				257AF85699C8FB1101222A70 /* [CP] Copy Pods Resources */,
+				50EF8FD89C2E58AD47B2787C /* [CP] Embed Pods Frameworks */,
+				EB046F41A777D83C4FB4CB24 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -521,8 +522,8 @@
 			);
 			name = tent_ios;
 			packageProductDependencies = (
-				4C92D78F235596A400646CFB /* KingfisherSwiftUI */,
-				4C92D791235596A400646CFB /* Kingfisher */,
+				4C92D78F235596A400646CFB /* SwiftPackageProductDependency */,
+				4C92D791235596A400646CFB /* SwiftPackageProductDependency */,
 			);
 			productName = tent_ios;
 			productReference = 4CC087092352D5070086A5B0 /* tent_ios.app */;
@@ -553,7 +554,7 @@
 			);
 			mainGroup = 4CC087002352D5070086A5B0;
 			packageReferences = (
-				4C92D78E235596A400646CFB /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				4C92D78E235596A400646CFB /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = 4CC0870A2352D5070086A5B0 /* Products */;
 			projectDirPath = "";
@@ -785,24 +786,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		257AF85699C8FB1101222A70 /* [CP] Copy Pods Resources */ = {
+		50EF8FD89C2E58AD47B2787C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		59B9686D022929C67DB971FB /* [CP] Check Pods Manifest.lock */ = {
+		7A57F9C4607A323DE9EB8905 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -824,21 +825,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C0116B47ECCAD3E76CC2CF26 /* [CP] Embed Pods Frameworks */ = {
+		EB046F41A777D83C4FB4CB24 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tent_ios/Pods-tent_ios-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1020,7 +1021,7 @@
 		};
 		4CC0871E2352D5090086A5B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12D1BD8F9D8E7FE8B830FE56 /* Pods-tent_ios.debug.xcconfig */;
+			baseConfigurationReference = A6A2104F98235DCD4D54124F /* Pods-tent_ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1041,7 +1042,7 @@
 		};
 		4CC0871F2352D5090086A5B0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C2A77E255123014A3875B7C /* Pods-tent_ios.release.xcconfig */;
+			baseConfigurationReference = 93CC675AF5CD12A118B1D383 /* Pods-tent_ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -1084,7 +1085,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4C92D78E235596A400646CFB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		4C92D78E235596A400646CFB /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -1095,14 +1096,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4C92D78F235596A400646CFB /* KingfisherSwiftUI */ = {
+		4C92D78F235596A400646CFB /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C92D78E235596A400646CFB /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 4C92D78E235596A400646CFB /* RemoteSwiftPackageReference */;
 			productName = KingfisherSwiftUI;
 		};
-		4C92D791235596A400646CFB /* Kingfisher */ = {
+		4C92D791235596A400646CFB /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C92D78E235596A400646CFB /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 4C92D78E235596A400646CFB /* RemoteSwiftPackageReference */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */

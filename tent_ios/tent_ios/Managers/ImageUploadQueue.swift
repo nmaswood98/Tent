@@ -27,9 +27,16 @@ class ImageUploadQueue {
     
     func addImage(image: UIImage, tentImage: TentImage){
         imageQueue.insert(RawImage(image: image, tentImage: tentImage), at: 0)
+        self.uploadImage(image: RawImage(image: image, tentImage: tentImage))
     }
     
-    
+    func uploadImage(image: RawImage){
+        self.uploadManager.uploadImage(name: image.tentImage.id.uuidString, image: image.image){
+            downloadURL in
+            image.tentImage.setUploadStatus(uploadStatus: true)
+            image.tentImage.changeImageURL(newURL: downloadURL)
+        }
+    }
     
     
 }

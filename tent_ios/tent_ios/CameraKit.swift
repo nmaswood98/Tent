@@ -13,13 +13,13 @@ import CameraKit_iOS
 
 class CameraKit: NSObject, AVCapturePhotoCaptureDelegate  {
     
-    let uploadManager: UploadManager
+    let uploadQueue: ImageUploadQueue
     let tentGallery: TentGallery
     let photoSession: CKFPhotoSession
-    init(uploadManager: UploadManager, tentGallery: TentGallery){
+    init(uploadQueue: ImageUploadQueue, tentGallery: TentGallery){
         
         self.tentGallery = tentGallery
-        self.uploadManager = uploadManager
+        self.uploadQueue = uploadQueue
         self.photoSession = CKFPhotoSession()
         self.photoSession.session.sessionPreset = AVCaptureSession.Preset.hd1920x1080
         
@@ -48,10 +48,8 @@ class CameraKit: NSObject, AVCapturePhotoCaptureDelegate  {
             DispatchQueue.main.async {
 
                 let tentImage = TentImage(timeCreated: Date().timeIntervalSince1970, image: self.rotateImage(image: image)!)
-                self.uploadManager.uploadImage(name: tentImage.id.uuidString, image: self.rotateImage(image: image)!){
-                    downloadURL in
-                    tentImage.changeImageURL(newURL: downloadURL)
-                }
+                // Uploads image to tent
+                self.uploadQueue.addImage(image: self.rotateImage(image: image)!, tentImage: tentImage)
                 self.tentGallery.addImage(image:tentImage)
             
             
