@@ -11,7 +11,7 @@ import KingfisherSwiftUI
 
 struct TImage: View {
     @State var showImageExpanded = false
-    var tentImage: TentImage
+    @ObservedObject var tentImage: TentImage
     var body: some View {
         
         KFImage(URL(string: tentImage.imageURL))
