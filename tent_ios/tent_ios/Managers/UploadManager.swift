@@ -12,6 +12,10 @@ import FirebaseFirestore
 import FirebaseAuth
 import GPhotos
 
+enum UploadErrors {
+    case connection, size, permissions, other, none
+}
+
 class UploadManager {
     let storage = Storage.storage()
     let db = Firestore.firestore()
@@ -23,7 +27,7 @@ class UploadManager {
         userID = Auth.auth().currentUser!.uid
     }
     
-    func uploadImage(name:String, image: UIImage, completedUpload: @escaping (String) -> Void){
+    func uploadImage(name:String, image: UIImage, completedUpload: @escaping (String,UploadErrors) -> Void){
         
     
         guard let tConfig = tentConfig else {
@@ -47,7 +51,7 @@ class UploadManager {
         }
     }
     // MediaItemsBatchCreate.NewMediaItemResult
-    func uploadToGooglePhotosTent(image: UIImage, name: String, configName: String, completedUpload: @escaping (String) -> Void){
+    func uploadToGooglePhotosTent(image: UIImage, name: String, configName: String, completedUpload: @escaping (String, UploadErrors) -> Void){
         guard let tConfig = tentConfig else {
             return;
         }
@@ -55,10 +59,10 @@ class UploadManager {
             if (resultArray.count > 0){
                 let result = resultArray[0];
                 guard let statusCode = result.status?.code  else{
-                    // Handle ERror
+                    completedUpload("GooglePhotosError", UploadErrors.other)
                     return;
                 }
-                completedUpload("GooglePhotosComplete");
+                completedUpload("GooglePhotosComplete",UploadErrors.none);
                 
                 
             }
@@ -68,16 +72,19 @@ class UploadManager {
         }
     }
     
-    func uploadToPureTent(data: Data, name: String, configName: String, completedUpload: @escaping (String) -> Void){
+    func uploadToPureTent(data: Data, name: String, configName: String, completedUpload: @escaping (String,UploadErrors) -> Void){
         let imagePath = storage.reference().child("\(configName)/" + name + ".png")
         
         _ = imagePath.putData(data, metadata: nil) { (metadata, error) in
-            guard metadata != nil else { return }
+            guard metadata != nil else {
+                completedUpload("ERROR", UploadErrors.other)
+                return
+            }
             
             imagePath.downloadURL { (url, error) in
                 guard let downloadURL = url else { return }
                 self.addImageToTent(name: name, data: ["URL":downloadURL.absoluteString,"userID":self.userID])
-                completedUpload(downloadURL.absoluteString)
+                completedUpload(downloadURL.absoluteString,UploadErrors.none)
             }
         }
     }

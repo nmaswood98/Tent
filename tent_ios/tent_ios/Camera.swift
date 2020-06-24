@@ -83,10 +83,7 @@ class Camera: NSObject, AVCapturePhotoCaptureDelegate  {
         
         let image = UIImage(data: imageData)
         let tentImage = TentImage(timeCreated: Date().timeIntervalSince1970, image: rotateImage(image: image!)!)
-        uploadManager.uploadImage(name: tentImage.id.uuidString, image: rotateImage(image: image!)!){
-            downloadURL in
-            tentImage.changeImageURL(newURL: downloadURL)
-        }
+
         self.tentGallery.addImage(image:tentImage)
         
         UIImageWriteToSavedPhotosAlbum(image!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)

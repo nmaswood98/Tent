@@ -23,10 +23,14 @@ struct TImage: View {
                 VStack{
                     HStack{
                         Spacer()
-                        Circle()
-                            .fill(tentImage.uploaded ? Color.clear : Color.red)
-                        .frame(width: 20, height: 20)
-                        .padding()
+                        // Need to add animation here when uploading
+                        if(tentImage.uploaded == UploadState.uploaded){
+                            Image(systemName: "cloud")
+                                .foregroundColor(Color.white)
+                                .frame(width: 20, height: 20)
+                                .padding()
+                        }
+
                     }
                     Spacer()
                 }

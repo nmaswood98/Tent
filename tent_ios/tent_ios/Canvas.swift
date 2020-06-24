@@ -33,7 +33,7 @@ class Canvas: NSObject,AVCapturePhotoCaptureDelegate {
 
             let tentImage = TentImage(timeCreated: Date().timeIntervalSince1970, image: image)
             uploadManager.uploadImage(name: tentImage.id.uuidString, image: image){
-                downloadURL in
+                downloadURL, uploadError in
                 tentImage.changeImageURL(newURL: downloadURL)
             }
             self.tentGallery.addImage(image:tentImage)

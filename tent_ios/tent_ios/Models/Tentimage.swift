@@ -11,14 +11,18 @@ import SwiftUI
 import Kingfisher
 import KingfisherSwiftUI
 
+enum UploadState {
+    case waiting, uploading, uploaded, rejected
+}
+
 class TentImage: ObservableObject, Identifiable{
     var id = UUID()
     let timeCreated: TimeInterval
     @Published var imageURL: String
     @Published var valid: Bool = false
-    @Published var uploaded: Bool = false
+    @Published var uploaded: UploadState = UploadState.waiting
     
-    init(id:UUID,timeCreated: TimeInterval, imageURL: String, uploaded: Bool = true){
+    init(id:UUID,timeCreated: TimeInterval, imageURL: String, uploaded: UploadState = .uploaded){
         self.id = id
         self.timeCreated = timeCreated
         self.imageURL = imageURL
@@ -28,7 +32,7 @@ class TentImage: ObservableObject, Identifiable{
     }
     
     // Passed UIImage, generates random imageURL id and stores the image in the cache under the imageURL
-    init(timeCreated: TimeInterval, image: UIImage?, uploaded: Bool = false){
+    init(timeCreated: TimeInterval, image: UIImage?, uploaded: UploadState = .waiting){
         self.timeCreated = timeCreated
         self.imageURL = UUID().uuidString
         self.uploaded = uploaded
@@ -93,7 +97,7 @@ class TentImage: ObservableObject, Identifiable{
         }
     }
     
-    func setUploadStatus(uploadStatus: Bool){
+    func setUploadStatus(uploadStatus: UploadState){
         self.uploaded = uploadStatus
     }
     
