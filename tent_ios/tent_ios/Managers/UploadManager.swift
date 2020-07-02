@@ -55,10 +55,13 @@ class UploadManager {
         guard let tConfig = tentConfig else {
             return;
         }
+        print(tConfig.name)
         GPhotosApi.mediaItems.upload(images: [image], filenames: ["NewImage"],albumID: tConfig.name) { (resultArray) in
             if (resultArray.count > 0){
                 let result = resultArray[0];
-                guard let statusCode = result.status?.code  else{
+                guard result.status?.code == nil  else{
+                    print(result.status!)
+                    print(result.status?.code)
                     completedUpload("GooglePhotosError", UploadErrors.other)
                     return;
                 }

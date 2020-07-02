@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var config = Config()
         config.printLogs = false
         GPhotos.initialize(with: config)
-        
         GMSServices.provideAPIKey("GOOGLEMAPSAPIKEY")
         FirebaseApp.configure()
         

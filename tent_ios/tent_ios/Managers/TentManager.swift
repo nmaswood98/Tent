@@ -14,6 +14,7 @@ import GPhotos
 
 extension UIApplication {
     func endEditing() {
+        
         sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
     }
 }
@@ -21,9 +22,39 @@ extension UIApplication {
 class TentManager : ObservableObject {
     
     lazy var functions = Functions.functions()
+    var googlePhotosTentJoined : [String: Bool] = [:]
     
     
     init(){
+        if let oldHistory = TentManager.getGPHistory() {
+            self.googlePhotosTentJoined = oldHistory;
+        }
+        
+    }
+    
+    static func saveGPHistory(arr: [String:Bool]){
+        UserDefaults.standard.set(try? JSONEncoder().encode(arr), forKey:"googlePhotosTentDict")
+    }
+    
+    static func getGPHistory() -> [String:Bool]?{
+        if let data = UserDefaults.standard.value(forKey:"googlePhotosTentDict") as? Data {
+            let tentData = try? JSONDecoder().decode(Dictionary<String,Bool>.self, from: data)
+            return tentData
+        }
+        return nil
+    }
+    
+    func addCodeToHistory(code: String){
+        self.googlePhotosTentJoined[code] = true;
+        TentManager.saveGPHistory(arr: self.googlePhotosTentJoined);
+    }
+    
+    func removeCodeFromHistory(code: String){
+        if let oldCode = self.googlePhotosTentJoined[code] {
+            self.googlePhotosTentJoined[code] = nil;
+            TentManager.saveGPHistory(arr: self.googlePhotosTentJoined);
+        }
+        
     }
     
     func createTent(location:CLLocationCoordinate2D, radius: Double, isPublic: Bool, name:String, config: TentConfig,completion: @escaping (Bool)->()){
@@ -74,6 +105,7 @@ class TentManager : ObservableObject {
                         if let data = result?.data as? NSDictionary {
                             if let code = data["code"] as? String, let id = data["id"] as? String {
                                 config.setTent(code: code, id: id, name: name, isPublic: false, loc: TentLocation(lat: location.latitude.radian, long: location.longitude.radian, radius: radius),isGPhotos: true)
+                                self.addCodeToHistory(code: code);
                                 completion(true, "")
                             }
                             else{
@@ -97,6 +129,53 @@ class TentManager : ObservableObject {
             }
         }
             }
+    
+    func joinGooglePhotosTent(shareToken: String, completion: @escaping (Bool, String )->() ){
+        GPhotosApi.sharedAlbums.join(token: shareToken) { (albumOptional) in
+            guard let album = albumOptional else {
+                print("Failed at album, trying to get google photos tent if alrady jointed")
+                self.getGooglePhotosTent(shareToken: shareToken, completion: completion);
+                return;
+            }
+
+       
+            completion(true, album.id);
+                
+
+        
+        }
+    }
+
+    func getGooglePhotosTent(shareToken: String, completion: @escaping (Bool, String)->()){
+        GPhotosApi.sharedAlbums.get(token: shareToken) { (albumOptional) in
+            guard let album = albumOptional else {
+                print("Failed at album")
+                
+                completion(false,"Error");
+                return;
+            }
+            guard let shareInfo = album.shareInfo else {
+                 print("Failed at shareInfo")
+                completion(false,"Error");
+                return;
+            }
+            guard let isJoined = shareInfo.isJoined else {
+                print("Failed at isJoined")
+                completion(false,"Error");
+                return;
+            }
+            if isJoined {
+                completion(true, album.id);
+                
+            }
+            else{
+                print("Failed if Joined")
+                completion(false,"Error");
+            }
+        
+        }
+    }
+    
     
     func submitCode(value: String, location: CLLocationCoordinate2D, name: String = "", config: TentConfig, completion: @escaping (Bool)->()){
         print("Submitting Code")
@@ -122,29 +201,30 @@ class TentManager : ObservableObject {
                             if let shareToken = data["shareToken"] as? String {
                                 print(shareToken)
                                 
-                                GPhotosApi.sharedAlbums.get(token: shareToken) { (albumOptional) in
-                                    guard let album = albumOptional else {
-                                        completion(false);
-                                        return;
-                                    }
-                                    guard let shareInfo = album.shareInfo else {
-                                        completion(false);
-                                        return;
-                                    }
-                                    guard let isJoined = shareInfo.isJoined else {
-                                        completion(false);
-                                        return;
-                                    }
+                                if self.googlePhotosTentJoined[value] != nil {
+                                    self.getGooglePhotosTent(shareToken: shareToken){
+                                        status, googlePhotosAlbumID in
                                     
-                                    if isJoined {
-                                        config.setTent(code: value, id: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius), isGPhotos: true)
+                                        guard status == true else {
+                                            return;
+                                        }
+                                    
+                                        config.setTent(code: value, id: googlePhotosAlbumID, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius), isGPhotos: true)
                                         completion(true);
-                                        
                                     }
-                                    else{
-                                        completion(false);
+                                }
+                                else{
+                                    self.joinGooglePhotosTent(shareToken: shareToken){
+                                        status, googlePhotosAlbumID in
+                                    
+                                        guard status == true else {
+                                            return;
+                                        }
+                                    
+                                        config.setTent(code: value, id: googlePhotosAlbumID, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius), isGPhotos: true)
+                                        self.addCodeToHistory(code: value);
+                                        completion(true);
                                     }
-                                
                                 }
                             }
                                 

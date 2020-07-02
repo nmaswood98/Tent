@@ -59,6 +59,7 @@ class ImageUploadQueue {
                 
                 self.uploadImage(image: imageToUpload){
                     uploadError in
+                    print(uploadError)
                     print("Completed Upload of Image")
                     self.sequentialWait = false
                     self.runQueue()
