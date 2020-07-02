@@ -39,6 +39,9 @@ struct GalleryView: View {
                 }
                 Spacer()
             }
+        }.onAppear(){
+            print("Opened Tent Gallery")
+            self.tentGallery.updateTentFromGooglePhotos()
         }
     }
     

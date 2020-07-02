@@ -10,8 +10,13 @@ import Foundation
 import SwiftUI
 import Kingfisher
 import FirebaseFirestore
+import GPhotos
 
 
+
+// Acts differently depending on what type of tent it is
+// Google Photos Tent. When joining the tent make request to grab the first page of images. When new image added set flag and then when gallery opened get image
+// Regular tent. When joining grab first 15 images. When new image download in the background anywhere in the app. 
 class TentGallery: ObservableObject{
     @Published var columns: [Column] = [Column(images: []),Column(images: [])]
     @Published private var imageList: [TentImage] = [] // All images including ones that are not downloaded yet
@@ -30,6 +35,28 @@ class TentGallery: ObservableObject{
         self.updateTent()
     }
     
+    func updateTentFromGooglePhotos(){
+        
+        guard self.tentConfig.isGPhotos == true else {
+            print("Not Google Photos");
+            return;
+        }
+        
+        
+        
+        GPhotosApi.mediaItems.reloadSearch(with: .init(albumId: self.tentConfig.name, filters: nil)){
+            mediaItems in
+            print(mediaItems)
+            self.clearImagesAndViews();
+            for mediaItem in mediaItems {
+                if let baseURL = mediaItem.baseUrl {
+                    let downloadURL = baseURL.absoluteString + "=w288-h512";
+                    self.downloadAndAddImage(id: mediaItem.id, url: downloadURL );
+                }
+            }
+        }
+    }
+    
     func removeListnerAndUpdateTent(){
         print("Updating Tent")
         guard listner != nil else {
@@ -45,11 +72,36 @@ class TentGallery: ObservableObject{
         
         listner!.remove()
         
-        self.updateTent()
+        if(tentConfig.isGPhotos){
+            self.updateTentFromGooglePhotos()
+        }
+        else{
+            self.updateTent()
+        }
+        
+        
 
     }
     
+    func downloadAndAddImage(id: String, url: String ){
+        let tentImage = TentImage(id:UUID(uuidString: id) ?? UUID(),timeCreated: Date().timeIntervalSince1970, imageURL: url )
+        tentImage.downloadImage{
+            result in
+            if (result){
+                self.addImage(image: tentImage)
+            }
+            else{
+                print("Couldn't download the image")
+            }
+        }
+    }
+    
     func updateTent(){
+        
+        guard tentConfig.isGPhotos == false else {
+            return;
+        }
+        
         self.listner = db.collection("Tents").document(tentName).collection("Images").limit(to: 15).addSnapshotListener { querySnapshot, err in
             guard let snapshot = querySnapshot else {
                 print("Error fetching snapshots: \(err!)")
@@ -61,17 +113,8 @@ class TentGallery: ObservableObject{
                 if (diff.type == .added) {
                     print("\(diff.document.documentID) => \(diff.document.data())")
                     if let url = diff.document.data()["URL"] {
-                        
-                        let tentImage = TentImage(id:UUID(uuidString: diff.document.documentID) ?? UUID(),timeCreated: Date().timeIntervalSince1970, imageURL: url as! String )
-                        tentImage.downloadImage{
-                            result in
-                            if (result){
-                                self.addImage(image: tentImage)
-                            }
-                            else{
-                                print("Couldn't download the image")
-                            }
-                        }
+        
+                        self.downloadAndAddImage(id: diff.document.documentID, url: url as! String );
                         
                     }
                     
