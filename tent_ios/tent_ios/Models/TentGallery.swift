@@ -16,7 +16,7 @@ import GPhotos
 
 // Acts differently depending on what type of tent it is
 // Google Photos Tent. When joining the tent make request to grab the first page of images. When new image added set flag and then when gallery opened get image
-// Regular tent. When joining grab first 15 images. When new image download in the background anywhere in the app. 
+// Regular tent. When joining grab first 15 images. When new image download in the background anywhere in the app.
 class TentGallery: ObservableObject{
     @Published var columns: [Column] = [Column(images: []),Column(images: [])]
     @Published private var imageList: [TentImage] = [] // All images including ones that are not downloaded yet

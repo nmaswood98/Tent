@@ -23,6 +23,7 @@ class PublicTents: ObservableObject{
     init(locService: LocationService){
         self.locationService = locService
         self.refreshTents()
+
     }
     
     
@@ -37,12 +38,13 @@ class PublicTents: ObservableObject{
             self.tents = [:]
             snapshot.documentChanges.forEach { diff in
                 print("changes")
+
                 if (diff.type == .added) {
                     print("\(diff.document.documentID) => \(diff.document.data())")
-                    if let name = diff.document.data()["id"] as? String, let code = diff.document.data()["code"] as? String, let loc = diff.document.data()["Location"] as? [String: Double] {
+                    if let name = diff.document.data()["name"] as? String, let code = diff.document.data()["code"] as? String, let loc = diff.document.data()["Location"] as? [String: Double] {
                         let tentLoc = TentLocation(lat: loc["lat"], long: loc["long"], radius: loc["radius"])
                         let tentData = TentData(id: diff.document.documentID, code: code, name: name, type: "public", tentLoc: tentLoc, timeJoined: Date().timeIntervalSince1970)
-                        if(tentLoc.islocationWithinTent(location: self.locationService.currentLocation)){
+                        if(tentLoc.islocationWithinTent(location: self.locationService.currentLocation)){ // This line is broken
                             self.tents[diff.document.documentID] = tentData
                             print(self.tents)
 
