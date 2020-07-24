@@ -15,8 +15,8 @@
 		4C28D26C2377E89D00C1B8BF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D26B2377E89D00C1B8BF /* LocationService.swift */; };
 		4C92D77A2355860A00646CFB /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D7792355860A00646CFB /* GalleryView.swift */; };
 		4C92D78C23558BFF00646CFB /* TentContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D78B23558BFF00646CFB /* TentContent.swift */; };
-		4C92D790235596A400646CFB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D78F235596A400646CFB /* SwiftPackageProductDependency */; };
-		4C92D792235596A400646CFB /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D791235596A400646CFB /* SwiftPackageProductDependency */; };
+		4C92D790235596A400646CFB /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D78F235596A400646CFB /* KingfisherSwiftUI */; };
+		4C92D792235596A400646CFB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4C92D791235596A400646CFB /* Kingfisher */; };
 		4C9C5B24237513C300B0C315 /* TentConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C9C5B23237513C300B0C315 /* TentConfig.swift */; };
 		4CAC58E02353AD2100184DEE /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CAC58DF2353AD2100184DEE /* Camera.swift */; };
 		4CAC58E22353DE4700184DEE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4CAC58E12353DE4700184DEE /* GoogleService-Info.plist */; };
@@ -46,6 +46,8 @@
 		907CE19F23DE956D00FF2E14 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CE19E23DE956D00FF2E14 /* CanvasView.swift */; };
 		907CE1A123DE99A900FF2E14 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CE1A023DE99A900FF2E14 /* Canvas.swift */; };
 		90A4CC4123DAF42700F049F1 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4CC4023DAF42700F049F1 /* AlertService.swift */; };
+		90B6936624CA6A9500ECC857 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6936524CA6A9500ECC857 /* CustomScrollView.swift */; };
+		90B6936824CAA60600ECC857 /* ImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6936724CAA60600ECC857 /* ImageList.swift */; };
 		90BC414B23DADDF400C3FA41 /* noLabels.json in Resources */ = {isa = PBXBuildFile; fileRef = 90BC414A23DADDF400C3FA41 /* noLabels.json */; };
 		90C47F3323DC244B00B0A23D /* TentGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C47F3223DC244B00B0A23D /* TentGallery.swift */; };
 		90C47F5023DC25EC00B0A23D /* Tentimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C47F4F23DC25EC00B0A23D /* Tentimage.swift */; };
@@ -297,6 +299,8 @@
 		907CE19E23DE956D00FF2E14 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		907CE1A023DE99A900FF2E14 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		90A4CC4023DAF42700F049F1 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		90B6936524CA6A9500ECC857 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
+		90B6936724CAA60600ECC857 /* ImageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageList.swift; sourceTree = "<group>"; };
 		90BC414A23DADDF400C3FA41 /* noLabels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = noLabels.json; sourceTree = "<group>"; };
 		90C47F3223DC244B00B0A23D /* TentGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentGallery.swift; sourceTree = "<group>"; };
 		90C47F4F23DC25EC00B0A23D /* Tentimage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tentimage.swift; sourceTree = "<group>"; };
@@ -313,8 +317,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C92D792235596A400646CFB /* BuildFile in Frameworks */,
-				4C92D790235596A400646CFB /* BuildFile in Frameworks */,
+				4C92D792235596A400646CFB /* Kingfisher in Frameworks */,
+				4C92D790235596A400646CFB /* KingfisherSwiftUI in Frameworks */,
 				C3D9F058D71602ED66DD6976 /* Pods_tent_ios.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +335,7 @@
 				4C28D23F23776E6800C1B8BF /* MapView.swift */,
 				9045E4D923D9735B00CE5618 /* MapView2.swift */,
 				90C47F5123DCD9E400B0A23D /* TImage.swift */,
+				90B6936724CAA60600ECC857 /* ImageList.swift */,
 				90E60D2F238122E900C6E502 /* BlurView.swift */,
 				4C06CC9B237FA2E700201425 /* LoadingView.swift */,
 				9072821923D69AD40091BE14 /* TentInfoComponent.swift */,
@@ -442,6 +447,7 @@
 				4CAC58DF2353AD2100184DEE /* Camera.swift */,
 				907CE1A023DE99A900FF2E14 /* Canvas.swift */,
 				906BEE2123E14CA1008CB805 /* CameraKit.swift */,
+				90B6933F24CA691600ECC857 /* UIViews */,
 				907CE18223DE94E200FF2E14 /* PencilKit */,
 				907A49F623DD71E00090AD6A /* LayoutContainers */,
 				4C06CCB0237FA61300201425 /* Components */,
@@ -492,13 +498,20 @@
 			path = PencilKit;
 			sourceTree = "<group>";
 		};
+		90B6933F24CA691600ECC857 /* UIViews */ = {
+			isa = PBXGroup;
+			children = (
+				90B6936524CA6A9500ECC857 /* CustomScrollView.swift */,
+			);
+			path = UIViews;
+			sourceTree = "<group>";
+		};
 		F0ADF77A3E0B86A6DEC44F5B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				A6A2104F98235DCD4D54124F /* Pods-tent_ios.debug.xcconfig */,
 				93CC675AF5CD12A118B1D383 /* Pods-tent_ios.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -522,8 +535,8 @@
 			);
 			name = tent_ios;
 			packageProductDependencies = (
-				4C92D78F235596A400646CFB /* SwiftPackageProductDependency */,
-				4C92D791235596A400646CFB /* SwiftPackageProductDependency */,
+				4C92D78F235596A400646CFB /* KingfisherSwiftUI */,
+				4C92D791235596A400646CFB /* Kingfisher */,
 			);
 			productName = tent_ios;
 			productReference = 4CC087092352D5070086A5B0 /* tent_ios.app */;
@@ -554,7 +567,7 @@
 			);
 			mainGroup = 4CC087002352D5070086A5B0;
 			packageReferences = (
-				4C92D78E235596A400646CFB /* RemoteSwiftPackageReference */,
+				4C92D78E235596A400646CFB /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 4CC0870A2352D5070086A5B0 /* Products */;
 			projectDirPath = "";
@@ -858,11 +871,13 @@
 				90C47F3323DC244B00B0A23D /* TentGallery.swift in Sources */,
 				4C28D26C2377E89D00C1B8BF /* LocationService.swift in Sources */,
 				907A4A1423DD72000090AD6A /* ColumnStack.swift in Sources */,
+				90B6936824CAA60600ECC857 /* ImageList.swift in Sources */,
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
 				9045E4D823D961AA00CE5618 /* TentData.swift in Sources */,
 				90A4CC4123DAF42700F049F1 /* AlertService.swift in Sources */,
 				906BEE2223E14CA1008CB805 /* CameraKit.swift in Sources */,
 				9053E36524134BF4008BE1C9 /* ImageUploadQueue.swift in Sources */,
+				90B6936624CA6A9500ECC857 /* CustomScrollView.swift in Sources */,
 				90E60D30238122E900C6E502 /* BlurView.swift in Sources */,
 				9045E4DA23D9735B00CE5618 /* MapView2.swift in Sources */,
 				90F9983A23D423C300B4C2C6 /* BlurContainer.swift in Sources */,
@@ -1085,7 +1100,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		4C92D78E235596A400646CFB /* RemoteSwiftPackageReference */ = {
+		4C92D78E235596A400646CFB /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
 			requirement = {
@@ -1096,14 +1111,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		4C92D78F235596A400646CFB /* SwiftPackageProductDependency */ = {
+		4C92D78F235596A400646CFB /* KingfisherSwiftUI */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C92D78E235596A400646CFB /* RemoteSwiftPackageReference */;
+			package = 4C92D78E235596A400646CFB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = KingfisherSwiftUI;
 		};
-		4C92D791235596A400646CFB /* SwiftPackageProductDependency */ = {
+		4C92D791235596A400646CFB /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 4C92D78E235596A400646CFB /* RemoteSwiftPackageReference */;
+			package = 4C92D78E235596A400646CFB /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */

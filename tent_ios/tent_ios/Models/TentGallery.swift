@@ -31,11 +31,18 @@ class TentGallery: ObservableObject{
     init(tentConfig: TentConfig){
         self.tentConfig = tentConfig
         tentName = tentConfig.name
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadGooglePhotosTent), name: Notification.Name("ReloadGooglePhotosTent"), object: nil)
 
        
     }
     
-    func reloadGooglePhotosTent(){
+    @objc func reloadGooglePhotosTent(){
+        guard self.tentConfig.isGPhotos == true else {
+            NotificationCenter.default.post(name:Notification.Name("GPRetrievedMediaItems"), object: nil)
+            return
+        }
+        
         GPhotosApi.mediaItems.reloadSearch(with: .init(albumId: self.tentConfig.name, filters: nil)){
             mediaItems in
             print(mediaItems)
@@ -46,6 +53,7 @@ class TentGallery: ObservableObject{
                     self.downloadAndAddImage(id: mediaItem.id, url: downloadURL );
                 }
             }
+            NotificationCenter.default.post(name:Notification.Name("GPRetrievedMediaItems"), object: nil)
         }
     }
     
