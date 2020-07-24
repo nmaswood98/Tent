@@ -65,6 +65,7 @@ class UploadManager {
                     completedUpload("GooglePhotosError", UploadErrors.other)
                     return;
                 }
+                self.addImageToTent(name: name, data: ["userID":self.userID, "time": Timestamp.init().seconds])
                 completedUpload("GooglePhotosComplete",UploadErrors.none);
                 
                 
@@ -86,17 +87,24 @@ class UploadManager {
             
             imagePath.downloadURL { (url, error) in
                 guard let downloadURL = url else { return }
-                self.addImageToTent(name: name, data: ["URL":downloadURL.absoluteString,"userID":self.userID])
+                self.addImageToTent(name: name, data: ["URL":downloadURL.absoluteString,"userID":self.userID, "time": Timestamp.init().seconds])
                 completedUpload(downloadURL.absoluteString,UploadErrors.none)
             }
         }
     }
     
-    func addImageToTent(name:String, data:[String:String]){
+    func addImageToTent(name:String, data:[String:Any]){
         guard let tConfig = tentConfig else {
             return
         }
-        db.collection("Tents").document(tConfig.name).collection("Images").document(name).setData(data)
+        
+        if(tConfig.isGPhotos){
+            db.collection("Tents").document(tConfig.googlePhotosID).collection("Images").document(name).setData(data)
+        }
+        else {
+             db.collection("Tents").document(tConfig.name).collection("Images").document(name).setData(data)
+        }
+       
     }
     
 }

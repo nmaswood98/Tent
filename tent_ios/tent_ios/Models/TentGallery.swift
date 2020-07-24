@@ -32,18 +32,10 @@ class TentGallery: ObservableObject{
         self.tentConfig = tentConfig
         tentName = tentConfig.name
 
-        self.updateTent()
+       
     }
     
-    func updateTentFromGooglePhotos(){
-        
-        guard self.tentConfig.isGPhotos == true else {
-            print("Not Google Photos");
-            return;
-        }
-        
-        
-        
+    func reloadGooglePhotosTent(){
         GPhotosApi.mediaItems.reloadSearch(with: .init(albumId: self.tentConfig.name, filters: nil)){
             mediaItems in
             print(mediaItems)
@@ -57,25 +49,62 @@ class TentGallery: ObservableObject{
         }
     }
     
+    func updateTentFromGooglePhotos(){
+        
+        guard self.tentConfig.isGPhotos == true else {
+            print("Not Google Photos");
+            return;
+        }
+        
+        let currentTimeStamp = Timestamp.init().seconds
+        self.listner = db.collection("Tents").document(tentName).collection("Images").whereField("time", isGreaterThan: currentTimeStamp).addSnapshotListener { querySnapshot, err in
+            guard let snapshot = querySnapshot else {
+                print("Error fetching snapshots: \(err!)")
+                return
+            }
+            
+            snapshot.documentChanges.forEach { diff in
+                print("changes")
+                if (diff.type == .added) {
+                    print("NEW IMAGE ADDED")
+                    
+                }
+                if (diff.type == .modified) {
+                    print("Image Modified: \(diff.document.data())")
+                }
+                if (diff.type == .removed) {
+                    print("Image Removed: \(diff.document.data())")
+                }
+            }
+            self.reloadGooglePhotosTent()
+            
+        }
+        
+        
+        
+
+    }
+    
     func removeListnerAndUpdateTent(){
         print("Updating Tent")
-        guard listner != nil else {
+
+        if(tentConfig.name == tentName || tentConfig.googlePhotosID == tentName){
             return
         }
         
-        if(tentConfig.name == tentName){
-            return
+        if (listner != nil ) {
+            listner!.remove()
         }
         
         self.clearImagesAndViews()
-        tentName = tentConfig.name
         
-        listner!.remove()
         
         if(tentConfig.isGPhotos){
+            tentName = tentConfig.googlePhotosID
             self.updateTentFromGooglePhotos()
         }
         else{
+            tentName = tentConfig.name
             self.updateTent()
         }
         
@@ -97,7 +126,7 @@ class TentGallery: ObservableObject{
     }
     
     func updateTent(){
-        
+        print("THIS WILL NEVER RUN THIS WILL NEVER UN THIS WILL NEVER RUN")
         guard tentConfig.isGPhotos == false else {
             return;
         }

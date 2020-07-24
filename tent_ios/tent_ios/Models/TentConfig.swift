@@ -11,6 +11,7 @@ import SwiftUI
 
 class TentConfig: ObservableObject{
     @Published var name: String = "DefaultTent"
+    @Published var googlePhotosID = "NONE"
     @Published var code: String = ""
     @Published var isPublic: Bool = false
     @Published var publicName: String = ""
@@ -37,6 +38,7 @@ class TentConfig: ObservableObject{
     var tentGallery: TentGallery? = nil
     
     func setTent(code: String, id: String, name: String = "", isPublic: Bool = false, loc: TentLocation, isGPhotos: Bool = false){
+        self.googlePhotosID = "NONE"
         self.code = code
         self.tentLocation = loc
         self.name = id
@@ -51,6 +53,24 @@ class TentConfig: ObservableObject{
             
         }
 
+    }
+    
+    func setGooglePhotosTent(code: String, id: String, googlePhotosID: String, name: String = "", isPublic: Bool = false, loc: TentLocation){
+            self.googlePhotosID = googlePhotosID
+            self.code = code
+            self.tentLocation = loc
+            self.name = id
+            self.publicName = name
+            self.isPublic = isPublic
+            self.isGPhotos = true
+            if let tGallery = self.tentGallery {
+                tGallery.removeListnerAndUpdateTent()
+        
+                self.tentHistory[self.name] = TentData(id: self.name,code: self.code, name: name, type: isPublic ? "public" : "private", tentLoc: self.tentLocation, timeJoined: Date().timeIntervalSince1970)
+                TentData.saveTentHistory(arr: self.tentHistory)
+                
+            }
+       
     }
     
     

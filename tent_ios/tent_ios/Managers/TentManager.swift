@@ -209,7 +209,7 @@ class TentManager : ObservableObject {
                                             return;
                                         }
                                     
-                                        config.setTent(code: value, id: googlePhotosAlbumID, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius), isGPhotos: true)
+                                        config.setGooglePhotosTent(code: value,id: googlePhotosAlbumID, googlePhotosID: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius))
                                         completion(true);
                                     }
                                 }
@@ -221,7 +221,7 @@ class TentManager : ObservableObject {
                                             return;
                                         }
                                     
-                                        config.setTent(code: value, id: googlePhotosAlbumID, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius), isGPhotos: true)
+                                        config.setGooglePhotosTent(code: value,id: googlePhotosAlbumID, googlePhotosID: text, name: name, isPublic: !(name == ""), loc: TentLocation(lat: lat, long: long, radius: radius))
                                         self.addCodeToHistory(code: value);
                                         completion(true);
                                     }
