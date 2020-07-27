@@ -44,6 +44,11 @@ class TentManager : ObservableObject {
         return nil
     }
     
+    func resetGPTentHistory(){
+        self.googlePhotosTentJoined = [:]
+        TentManager.saveGPHistory(arr: [:])
+    }
+    
     func addCodeToHistory(code: String){
         self.googlePhotosTentJoined[code] = true;
         TentManager.saveGPHistory(arr: self.googlePhotosTentJoined);

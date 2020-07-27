@@ -388,9 +388,9 @@
 			isa = PBXGroup;
 			children = (
 				4C92D78B23558BFF00646CFB /* TentContent.swift */,
-				90B6938F24CE7B4D00ECC857 /* TentProfile.swift */,
 				90C47F4F23DC25EC00B0A23D /* Tentimage.swift */,
 				90C47F3223DC244B00B0A23D /* TentGallery.swift */,
+				90B6938F24CE7B4D00ECC857 /* TentProfile.swift */,
 				4C06CCB1237FAC6E00201425 /* TentLocation.swift */,
 				4C9C5B23237513C300B0C315 /* TentConfig.swift */,
 				902D79EB23E4AC8A004CAE00 /* PublicTents.swift */,

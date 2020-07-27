@@ -92,6 +92,13 @@ class TentConfig: ObservableObject{
         TentData.saveTentHistory(arr: self.tentHistory)
     }
     
+    func resetTentHistory(){
+        if(tentHistory.count > 0){
+            tentHistory = [:]
+            persistData()
+        }
+    }
+    
     
     
 }

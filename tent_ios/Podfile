@@ -15,6 +15,7 @@ target 'tent_ios' do
 
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  pod 'GoogleSignIn'
 
   pod "Introspect"
   pod "CameraKit-iOS"

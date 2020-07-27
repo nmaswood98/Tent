@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let publicTents: PublicTents = PublicTents(locService: locationService)
         
-        let tentProfile: TentProfile = TentProfile()
+        let tentProfile: TentProfile = TentProfile(tentConfig: tentConfig, tentManager: tentManager)
 
         
         let contentView = ContentView(cameraKit: cameraKit, canvas: canvas)

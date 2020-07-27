@@ -102,6 +102,10 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (3.4.0):
     - GoogleMaps/Base (= 3.4.0)
+  - GoogleSignIn (5.0.2):
+    - AppAuth (~> 1.2)
+    - GTMAppAuth (~> 1.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleUtilities/AppDelegateSwizzler (6.2.5):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -174,6 +178,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - GoogleMaps
   - GooglePlaces
+  - GoogleSignIn
   - GPhotos (from `https://github.com/nmaswood98/GPhotos.git`)
   - Introspect
 
@@ -199,6 +204,7 @@ SPEC REPOS:
     - GoogleDataTransportCCTSupport
     - GoogleMaps
     - GooglePlaces
+    - GoogleSignIn
     - GoogleUtilities
     - "gRPC-C++"
     - gRPC-Core
@@ -242,6 +248,7 @@ SPEC CHECKSUMS:
   GoogleDataTransportCCTSupport: 6b545f7149111180763dc18c6f372c963de4a310
   GoogleMaps: 67f4a604f80dd6a22d09c2a507a3a395b9f23060
   GooglePlaces: 7547289e3fffc8980f4a027be99888e29d59b15d
+  GoogleSignIn: 7137d297ddc022a7e0aa4619c86d72c909fa7213
   GoogleUtilities: e7dc37039b19df7fe543479d3e4a02ac8d11bb69
   GPhotos: 2fa0838b8f2297a465d59b5876385fb2334d791e
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
@@ -256,6 +263,6 @@ SPEC CHECKSUMS:
   Protobuf: 1097ca58584c8d9be81bfbf2c5ff5975648dd87a
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
 
-PODFILE CHECKSUM: 73ad8956e71dda7b71a4060c7d291c66336c8839
+PODFILE CHECKSUM: 7c5b05a116cb09cd5fae8f3339ee44dabf843e48
 
 COCOAPODS: 1.8.4
