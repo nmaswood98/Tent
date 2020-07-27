@@ -138,7 +138,8 @@ class TentManager : ObservableObject {
                 return;
             }
 
-       
+            print(album.title)
+            print("From a join")
             completion(true, album.id);
                 
 
@@ -164,6 +165,10 @@ class TentManager : ObservableObject {
                 completion(false,"Error");
                 return;
             }
+            
+            print(album.title)
+            print("From a Get")
+
             if isJoined {
                 completion(true, album.id);
                 
@@ -201,6 +206,7 @@ class TentManager : ObservableObject {
                             if let shareToken = data["shareToken"] as? String {
                                 print(shareToken)
                                 
+                                // Need to Error Handle here
                                 if self.googlePhotosTentJoined[value] != nil {
                                     self.getGooglePhotosTent(shareToken: shareToken){
                                         status, googlePhotosAlbumID in

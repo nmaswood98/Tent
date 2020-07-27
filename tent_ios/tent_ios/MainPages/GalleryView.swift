@@ -21,6 +21,7 @@ struct GalleryView: View {
                 HStack{
                     Text("Tent: " + tentConfig.code).foregroundColor(.green).font(.system(size: 25))
                     Spacer()
+                    
                 }.padding(.leading,30)
                 
                 CustomScrollView(numberOfItems: self.tentGallery.columns[0].images.count){
@@ -28,7 +29,19 @@ struct GalleryView: View {
                 }
                 Spacer()
             }
-        }.onAppear(){
+
+                
+        }
+        .navigationBarItems(trailing:
+            NavigationLink(destination: ProfileView()){
+                Image(systemName: "person.circle")
+                    .foregroundColor(.green)
+                    .font(.system(size: 35))
+                    .frame(width: 35, height: 35)
+            }
+            .buttonStyle(PlainButtonStyle())
+    )
+        .onAppear(){
             
            
         }

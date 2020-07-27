@@ -48,6 +48,8 @@
 		90A4CC4123DAF42700F049F1 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4CC4023DAF42700F049F1 /* AlertService.swift */; };
 		90B6936624CA6A9500ECC857 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6936524CA6A9500ECC857 /* CustomScrollView.swift */; };
 		90B6936824CAA60600ECC857 /* ImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6936724CAA60600ECC857 /* ImageList.swift */; };
+		90B6936B24CE7A4000ECC857 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6936A24CE7A4000ECC857 /* ProfileView.swift */; };
+		90B6939024CE7B4D00ECC857 /* TentProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6938F24CE7B4D00ECC857 /* TentProfile.swift */; };
 		90BC414B23DADDF400C3FA41 /* noLabels.json in Resources */ = {isa = PBXBuildFile; fileRef = 90BC414A23DADDF400C3FA41 /* noLabels.json */; };
 		90C47F3323DC244B00B0A23D /* TentGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C47F3223DC244B00B0A23D /* TentGallery.swift */; };
 		90C47F5023DC25EC00B0A23D /* Tentimage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C47F4F23DC25EC00B0A23D /* Tentimage.swift */; };
@@ -301,6 +303,8 @@
 		90A4CC4023DAF42700F049F1 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		90B6936524CA6A9500ECC857 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		90B6936724CAA60600ECC857 /* ImageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageList.swift; sourceTree = "<group>"; };
+		90B6936A24CE7A4000ECC857 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		90B6938F24CE7B4D00ECC857 /* TentProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentProfile.swift; sourceTree = "<group>"; };
 		90BC414A23DADDF400C3FA41 /* noLabels.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = noLabels.json; sourceTree = "<group>"; };
 		90C47F3223DC244B00B0A23D /* TentGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentGallery.swift; sourceTree = "<group>"; };
 		90C47F4F23DC25EC00B0A23D /* Tentimage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tentimage.swift; sourceTree = "<group>"; };
@@ -384,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				4C92D78B23558BFF00646CFB /* TentContent.swift */,
+				90B6938F24CE7B4D00ECC857 /* TentProfile.swift */,
 				90C47F4F23DC25EC00B0A23D /* Tentimage.swift */,
 				90C47F3223DC244B00B0A23D /* TentGallery.swift */,
 				4C06CCB1237FAC6E00201425 /* TentLocation.swift */,
@@ -402,6 +407,7 @@
 				902D79CB23E4AB66004CAE00 /* PublicTentView.swift */,
 				4C92D7792355860A00646CFB /* GalleryView.swift */,
 				4CFA82FE2373CF5A005348A3 /* JoinView.swift */,
+				90B6936A24CE7A4000ECC857 /* ProfileView.swift */,
 				4C28D22923776B9A00C1B8BF /* CreationView.swift */,
 			);
 			path = MainPages;
@@ -894,6 +900,7 @@
 				906BEE4223E14D1B008CB805 /* CameraKitView.swift in Sources */,
 				4CC0870F2352D5070086A5B0 /* SceneDelegate.swift in Sources */,
 				907CE1A123DE99A900FF2E14 /* Canvas.swift in Sources */,
+				90B6939024CE7B4D00ECC857 /* TentProfile.swift in Sources */,
 				4CC087112352D5070086A5B0 /* ContentView.swift in Sources */,
 				907A4A1523DD72000090AD6A /* RowStack.swift in Sources */,
 				9072823723D6B2D30091BE14 /* InfoView.swift in Sources */,
@@ -902,6 +909,7 @@
 				4C92D77A2355860A00646CFB /* GalleryView.swift in Sources */,
 				90EA973423D98CF600FFBEF4 /* LoadingViewService.swift in Sources */,
 				4CFA82FF2373CF5A005348A3 /* JoinView.swift in Sources */,
+				90B6936B24CE7A4000ECC857 /* ProfileView.swift in Sources */,
 				4CFA83122373DA63005348A3 /* TentManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
