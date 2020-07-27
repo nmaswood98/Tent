@@ -208,7 +208,7 @@ class TentManager : ObservableObject {
                 if let isGooglePhotos = data["googlePhotos"] as? Bool, let text = data["id"] as? String, let loc = data["Location"] as? NSDictionary {
                     if let lat = loc["lat"] as? Double?, let long = loc["long"] as? Double?, let radius = loc["radius"] as? Double?{
                         if isGooglePhotos{
-                            if let shareToken = data["shareToken"] as? String {
+                            if let shareToken = data["shareToken"] as? String, let name = data["name"] as? String {
                                 print(shareToken)
                                 
                                 // Need to Error Handle here

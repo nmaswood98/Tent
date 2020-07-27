@@ -65,7 +65,7 @@ struct CreationView: View {
                 
                 if(self.shouldLoadMap){
                     
-                    MapView(centerPosition: self.locationService.currentLocation, circleRadius: self.radius + 3,zoom:15)
+                    MapView2(centerPosition: self.locationService.currentLocation, circleRadius: self.radius + 3,zoom:15)
                         .cornerRadius(20)
                         .frame(height:300)
                     
