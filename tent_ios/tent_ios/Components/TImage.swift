@@ -17,7 +17,7 @@ struct TImage: View {
         KFImage(URL(string: tentImage.imageURL))
             .resizable()
             .scaledToFit()
-            .cornerRadius(20)
+            .cornerRadius(5)
         .overlay(
             ZStack{
                 VStack{
@@ -27,7 +27,7 @@ struct TImage: View {
                         if(tentImage.uploaded == UploadState.uploaded){
                             Image(systemName: "cloud")
                                 .foregroundColor(Color.white)
-                                .frame(width: 20, height: 20)
+                                .frame(width: 30, height: 20)
                                 .padding()
                         }
 
@@ -35,7 +35,7 @@ struct TImage: View {
                     Spacer()
                 }
 
-                RoundedRectangle(cornerRadius: 20)
+                RoundedRectangle(cornerRadius: 5)
                 .stroke(Color.black, lineWidth: 0.5)
             }
         )

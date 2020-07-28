@@ -1,9 +1,9 @@
 import SwiftUI
 import MapKit
 
-struct MapView2: UIViewRepresentable {
+struct MapView: UIViewRepresentable {
     func makeCoordinator() -> Coordinator {
-        return MapView2.Coordinator()
+        return MapView.Coordinator()
     }
     
     @EnvironmentObject var locationService: LocationService
@@ -23,7 +23,9 @@ struct MapView2: UIViewRepresentable {
         mapView.isZoomEnabled = false
         mapView.isScrollEnabled = false
         mapView.isUserInteractionEnabled = false
-        
+        mapView.showsUserLocation = true
+        mapView.overrideUserInterfaceStyle = .light
+        mapView.tintColor = .systemBlue
         let circle = MKCircle(center: centerPosition, radius: circleRadius * 100)
         mapView.addOverlay(circle)
         
@@ -56,7 +58,7 @@ struct MapView2: UIViewRepresentable {
         
         @objc func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             let circleRenderer = MKCircleRenderer(overlay: overlay)
-            circleRenderer.strokeColor = UIColor.red
+            circleRenderer.strokeColor = UIColor.black
             circleRenderer.lineWidth = 1.0
             return circleRenderer
         }

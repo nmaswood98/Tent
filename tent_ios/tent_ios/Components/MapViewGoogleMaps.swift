@@ -25,7 +25,7 @@ extension GMSCircle {
     }
 }
 
-struct MapView: UIViewRepresentable {
+struct MapViewGoogleMaps: UIViewRepresentable {
     @EnvironmentObject var locationService: LocationService
     var centerPosition: CLLocationCoordinate2D
     var circleRadius: Double

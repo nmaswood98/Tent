@@ -11,7 +11,7 @@
 		4C06CCB2237FAC6E00201425 /* TentLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C06CCB1237FAC6E00201425 /* TentLocation.swift */; };
 		4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0F619E2353EF1D00A56D14 /* UploadManager.swift */; };
 		4C28D22A23776B9A00C1B8BF /* CreationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D22923776B9A00C1B8BF /* CreationView.swift */; };
-		4C28D24023776E6800C1B8BF /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D23F23776E6800C1B8BF /* MapView.swift */; };
+		4C28D24023776E6800C1B8BF /* MapViewGoogleMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D23F23776E6800C1B8BF /* MapViewGoogleMaps.swift */; };
 		4C28D26C2377E89D00C1B8BF /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C28D26B2377E89D00C1B8BF /* LocationService.swift */; };
 		4C92D77A2355860A00646CFB /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D7792355860A00646CFB /* GalleryView.swift */; };
 		4C92D78C23558BFF00646CFB /* TentContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C92D78B23558BFF00646CFB /* TentContent.swift */; };
@@ -35,7 +35,7 @@
 		902D79EA23E4ABA2004CAE00 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D79E923E4ABA2004CAE00 /* HistoryView.swift */; };
 		902D79EC23E4AC8A004CAE00 /* PublicTents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D79EB23E4AC8A004CAE00 /* PublicTents.swift */; };
 		9045E4D823D961AA00CE5618 /* TentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D723D961AA00CE5618 /* TentData.swift */; };
-		9045E4DA23D9735B00CE5618 /* MapView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D923D9735B00CE5618 /* MapView2.swift */; };
+		9045E4DA23D9735B00CE5618 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D923D9735B00CE5618 /* MapView.swift */; };
 		9053E36524134BF4008BE1C9 /* ImageUploadQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053E36424134BF4008BE1C9 /* ImageUploadQueue.swift */; };
 		906BEE2223E14CA1008CB805 /* CameraKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BEE2123E14CA1008CB805 /* CameraKit.swift */; };
 		906BEE4223E14D1B008CB805 /* CameraKitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906BEE4123E14D1B008CB805 /* CameraKitView.swift */; };
@@ -266,7 +266,7 @@
 		4C0F619E2353EF1D00A56D14 /* UploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadManager.swift; sourceTree = "<group>"; };
 		4C0F61A023543DE100A56D14 /* Pods.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Pods.xcodeproj; path = Pods/Pods.xcodeproj; sourceTree = "<group>"; };
 		4C28D22923776B9A00C1B8BF /* CreationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreationView.swift; sourceTree = "<group>"; };
-		4C28D23F23776E6800C1B8BF /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		4C28D23F23776E6800C1B8BF /* MapViewGoogleMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewGoogleMaps.swift; sourceTree = "<group>"; };
 		4C28D26B2377E89D00C1B8BF /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		4C92D7792355860A00646CFB /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		4C92D78B23558BFF00646CFB /* TentContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentContent.swift; sourceTree = "<group>"; };
@@ -290,7 +290,7 @@
 		902D79E923E4ABA2004CAE00 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		902D79EB23E4AC8A004CAE00 /* PublicTents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTents.swift; sourceTree = "<group>"; };
 		9045E4D723D961AA00CE5618 /* TentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentData.swift; sourceTree = "<group>"; };
-		9045E4D923D9735B00CE5618 /* MapView2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView2.swift; path = ../../../UIMockUps/UIMockUps/MapView2.swift; sourceTree = "<group>"; };
+		9045E4D923D9735B00CE5618 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = ../../../UIMockUps/UIMockUps/MapView.swift; sourceTree = "<group>"; };
 		9053E36424134BF4008BE1C9 /* ImageUploadQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadQueue.swift; sourceTree = "<group>"; };
 		906BEE2123E14CA1008CB805 /* CameraKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraKit.swift; sourceTree = "<group>"; };
 		906BEE4123E14D1B008CB805 /* CameraKitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraKitView.swift; sourceTree = "<group>"; };
@@ -336,8 +336,8 @@
 				901B863F23C801750095C0F8 /* CameraSnapView.swift */,
 				9013C01323D291630091BE73 /* MenuButton.swift */,
 				90F9983923D423C300B4C2C6 /* BlurContainer.swift */,
-				4C28D23F23776E6800C1B8BF /* MapView.swift */,
-				9045E4D923D9735B00CE5618 /* MapView2.swift */,
+				4C28D23F23776E6800C1B8BF /* MapViewGoogleMaps.swift */,
+				9045E4D923D9735B00CE5618 /* MapView.swift */,
 				90C47F5123DCD9E400B0A23D /* TImage.swift */,
 				90B6936724CAA60600ECC857 /* ImageList.swift */,
 				90E60D2F238122E900C6E502 /* BlurView.swift */,
@@ -885,11 +885,11 @@
 				9053E36524134BF4008BE1C9 /* ImageUploadQueue.swift in Sources */,
 				90B6936624CA6A9500ECC857 /* CustomScrollView.swift in Sources */,
 				90E60D30238122E900C6E502 /* BlurView.swift in Sources */,
-				9045E4DA23D9735B00CE5618 /* MapView2.swift in Sources */,
+				9045E4DA23D9735B00CE5618 /* MapView.swift in Sources */,
 				90F9983A23D423C300B4C2C6 /* BlurContainer.swift in Sources */,
 				4CAC58E02353AD2100184DEE /* Camera.swift in Sources */,
 				902D79CC23E4AB66004CAE00 /* PublicTentView.swift in Sources */,
-				4C28D24023776E6800C1B8BF /* MapView.swift in Sources */,
+				4C28D24023776E6800C1B8BF /* MapViewGoogleMaps.swift in Sources */,
 				4C0F619F2353EF1D00A56D14 /* UploadManager.swift in Sources */,
 				4C9C5B24237513C300B0C315 /* TentConfig.swift in Sources */,
 				902D79EC23E4AC8A004CAE00 /* PublicTents.swift in Sources */,

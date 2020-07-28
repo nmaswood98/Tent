@@ -14,13 +14,13 @@ class Canvas: NSObject,AVCapturePhotoCaptureDelegate {
     var canvasView: PKCanvasView?
     var toolPicker: PKToolPicker?
     
-    let uploadManager: UploadManager
+    let uploadQueue: ImageUploadQueue
     let tentGallery: TentGallery
     
-    init(uploadManager: UploadManager, tentGallery: TentGallery){
+    init(uploadQueue: ImageUploadQueue, tentGallery: TentGallery){
         
         self.tentGallery = tentGallery
-        self.uploadManager = uploadManager
+        self.uploadQueue = uploadQueue
         
         super.init()
         
@@ -32,11 +32,10 @@ class Canvas: NSObject,AVCapturePhotoCaptureDelegate {
             UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
 
             let tentImage = TentImage(timeCreated: Date().timeIntervalSince1970, image: image)
-            uploadManager.uploadImage(name: tentImage.id.uuidString, image: image){
-                downloadURL, uploadError in
-                tentImage.changeImageURL(newURL: downloadURL)
-            }
+            // Uploads image to tent
+            self.uploadQueue.addImage(image: image, tentImage: tentImage)
             self.tentGallery.addImage(image:tentImage)
+            
         }
 
     }
