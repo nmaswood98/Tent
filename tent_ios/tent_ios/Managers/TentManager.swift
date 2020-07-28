@@ -30,6 +30,10 @@ class TentManager : ObservableObject {
             self.googlePhotosTentJoined = oldHistory;
         }
         
+        let lastTentCode = UserDefaults.standard.string(forKey: "tentCode") ?? ""
+        
+
+        
     }
     
     static func saveGPHistory(arr: [String:Bool]){

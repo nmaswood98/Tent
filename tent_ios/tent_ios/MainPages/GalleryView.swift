@@ -21,6 +21,19 @@ struct GalleryView: View {
                 HStack{
                     Text("Tent: " + tentConfig.code).foregroundColor(.green).font(.system(size: 25))
                     Spacer()
+                    ZStack{
+                        Rectangle()
+                            .fill(Color.green)
+                            .cornerRadius(5)
+                            
+
+                        Text("Manage")
+                            .foregroundColor(.white)
+                            .font(.system(size: 15))
+                    }
+                    .frame(width:60,height:20)
+                    .padding(.trailing, 20)
+                    .padding(.top,2)
                     
                 }.padding(.leading,30)
                 
@@ -40,6 +53,7 @@ struct GalleryView: View {
                     .frame(width: 35, height: 35)
             }
             .buttonStyle(PlainButtonStyle())
+            .padding(.trailing, 10)
     )
         .onAppear(){
             

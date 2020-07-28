@@ -21,8 +21,8 @@ class TentConfig: ObservableObject{
     var tentHistory: [String:TentData]
     
     init(){
-        self.code = UserDefaults.standard.string(forKey: "tentCode") ?? ""
-        self.name = UserDefaults.standard.string(forKey: "tentName") ?? "DefaultTent"
+        self.code =  ""
+        self.name = "DefaultTent"
         
         if let tHistory = TentData.getTentHistory() {
             self.tentHistory = tHistory
@@ -79,7 +79,7 @@ class TentConfig: ObservableObject{
         self.code = ""
         self.name = "DefaultTent"
         self.tentLocation = TentLocation(lat: 0, long: 0, radius: 0)
-
+        UserDefaults.standard.set(self.code, forKey: "tentCode")
         if let tGallery = self.tentGallery {
             tGallery.removeListnerAndUpdateTent()
         }
@@ -88,7 +88,6 @@ class TentConfig: ObservableObject{
     
     func persistData(){
         UserDefaults.standard.set(self.code, forKey: "tentCode")
-        UserDefaults.standard.set(self.name, forKey: "tentName")
         TentData.saveTentHistory(arr: self.tentHistory)
     }
     
