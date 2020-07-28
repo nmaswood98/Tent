@@ -21,4 +21,6 @@ target 'tent_ios' do
   pod "CameraKit-iOS"
   pod 'GPhotos', :git => 'https://github.com/nmaswood98/GPhotos.git'
 
+  pod 'BulletinBoard'
+
 end

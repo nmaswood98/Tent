@@ -9,11 +9,14 @@
 import SwiftUI
 import UIKit
 import AVFoundation
+import BLTNBoard
 
 struct ContentView: View {
     
+    
     let cameraKit: CameraKit
     let canvas : Canvas
+    let onboardingManager: OnboardingManager?
     
     @EnvironmentObject var tentConfig: TentConfig
     @EnvironmentObject var alertService: AlertService
@@ -262,7 +265,7 @@ struct ContentView: View {
             Alert(title: Text(self.alertService.title), message: Text(self.alertService.message), dismissButton: .default(Text(self.alertService.buttonText)))
         })
             .onAppear{
-                print("HELLO")
+                self.onboardingManager?.showItem()
         }
     }
     

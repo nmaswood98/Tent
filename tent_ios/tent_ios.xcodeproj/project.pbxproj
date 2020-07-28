@@ -34,6 +34,8 @@
 		902D79CC23E4AB66004CAE00 /* PublicTentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D79CB23E4AB66004CAE00 /* PublicTentView.swift */; };
 		902D79EA23E4ABA2004CAE00 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D79E923E4ABA2004CAE00 /* HistoryView.swift */; };
 		902D79EC23E4AC8A004CAE00 /* PublicTents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902D79EB23E4AC8A004CAE00 /* PublicTents.swift */; };
+		90367AE824CFE99D00788E81 /* BullitinBoardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90367AE724CFE99D00788E81 /* BullitinBoardView.swift */; };
+		90367AEA24CFEF1500788E81 /* OnboardingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90367AE924CFEF1500788E81 /* OnboardingManager.swift */; };
 		9045E4D823D961AA00CE5618 /* TentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D723D961AA00CE5618 /* TentData.swift */; };
 		9045E4DA23D9735B00CE5618 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9045E4D923D9735B00CE5618 /* MapView.swift */; };
 		9053E36524134BF4008BE1C9 /* ImageUploadQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9053E36424134BF4008BE1C9 /* ImageUploadQueue.swift */; };
@@ -46,6 +48,7 @@
 		907CE19F23DE956D00FF2E14 /* CanvasView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CE19E23DE956D00FF2E14 /* CanvasView.swift */; };
 		907CE1A123DE99A900FF2E14 /* Canvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907CE1A023DE99A900FF2E14 /* Canvas.swift */; };
 		90A4CC4123DAF42700F049F1 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A4CC4023DAF42700F049F1 /* AlertService.swift */; };
+		90B3941224D00AE100EEB8BC /* CreateTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B3941124D00AE100EEB8BC /* CreateTutorial.swift */; };
 		90B6936624CA6A9500ECC857 /* CustomScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6936524CA6A9500ECC857 /* CustomScrollView.swift */; };
 		90B6936824CAA60600ECC857 /* ImageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6936724CAA60600ECC857 /* ImageList.swift */; };
 		90B6936B24CE7A4000ECC857 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B6936A24CE7A4000ECC857 /* ProfileView.swift */; };
@@ -201,6 +204,13 @@
 			remoteGlobalIDString = D0A70003FD5E49B30CA83DAAFE03116B;
 			remoteInfo = Introspect;
 		};
+		90367AE524CFE14D00788E81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C5FC4EC27B0970F708A6473BCFDA3C50;
+			remoteInfo = BulletinBoard;
+		};
 		9053E38924134BF5008BE1C9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C0F61A023543DE100A56D14 /* Pods.xcodeproj */;
@@ -289,6 +299,8 @@
 		902D79CB23E4AB66004CAE00 /* PublicTentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTentView.swift; sourceTree = "<group>"; };
 		902D79E923E4ABA2004CAE00 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		902D79EB23E4AC8A004CAE00 /* PublicTents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublicTents.swift; sourceTree = "<group>"; };
+		90367AE724CFE99D00788E81 /* BullitinBoardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BullitinBoardView.swift; sourceTree = "<group>"; };
+		90367AE924CFEF1500788E81 /* OnboardingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingManager.swift; sourceTree = "<group>"; };
 		9045E4D723D961AA00CE5618 /* TentData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TentData.swift; sourceTree = "<group>"; };
 		9045E4D923D9735B00CE5618 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = ../../../UIMockUps/UIMockUps/MapView.swift; sourceTree = "<group>"; };
 		9053E36424134BF4008BE1C9 /* ImageUploadQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadQueue.swift; sourceTree = "<group>"; };
@@ -301,6 +313,7 @@
 		907CE19E23DE956D00FF2E14 /* CanvasView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CanvasView.swift; sourceTree = "<group>"; };
 		907CE1A023DE99A900FF2E14 /* Canvas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Canvas.swift; sourceTree = "<group>"; };
 		90A4CC4023DAF42700F049F1 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
+		90B3941124D00AE100EEB8BC /* CreateTutorial.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTutorial.swift; sourceTree = "<group>"; };
 		90B6936524CA6A9500ECC857 /* CustomScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScrollView.swift; sourceTree = "<group>"; };
 		90B6936724CAA60600ECC857 /* ImageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageList.swift; sourceTree = "<group>"; };
 		90B6936A24CE7A4000ECC857 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
@@ -355,6 +368,7 @@
 				9053E38A24134BF5008BE1C9 /* Alamofire.framework */,
 				9053E38C24134BF5008BE1C9 /* AppAuth.framework */,
 				4C0F61B423543DE100A56D14 /* openssl_grpc.framework */,
+				90367AE624CFE14D00788E81 /* BLTNBoard.framework */,
 				906BEE4023E14CA2008CB805 /* CameraKit_iOS.framework */,
 				4C0F61B623543DE100A56D14 /* FirebaseAuth.framework */,
 				4C0F61B823543DE100A56D14 /* FirebaseCore.framework */,
@@ -418,6 +432,8 @@
 			children = (
 				4C28D26B2377E89D00C1B8BF /* LocationService.swift */,
 				4CFA83112373DA63005348A3 /* TentManager.swift */,
+				90367AE924CFEF1500788E81 /* OnboardingManager.swift */,
+				90B3941124D00AE100EEB8BC /* CreateTutorial.swift */,
 				90EA973323D98CF600FFBEF4 /* LoadingViewService.swift */,
 				90A4CC4023DAF42700F049F1 /* AlertService.swift */,
 				4C0F619E2353EF1D00A56D14 /* UploadManager.swift */,
@@ -508,6 +524,7 @@
 			isa = PBXGroup;
 			children = (
 				90B6936524CA6A9500ECC857 /* CustomScrollView.swift */,
+				90367AE724CFE99D00788E81 /* BullitinBoardView.swift */,
 			);
 			path = UIViews;
 			sourceTree = "<group>";
@@ -731,6 +748,13 @@
 			remoteRef = 901B865C23C801760095C0F8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		90367AE624CFE14D00788E81 /* BLTNBoard.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = BLTNBoard.framework;
+			remoteRef = 90367AE524CFE14D00788E81 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		9053E38A24134BF5008BE1C9 /* Alamofire.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -876,6 +900,8 @@
 				4C06CCB2237FAC6E00201425 /* TentLocation.swift in Sources */,
 				90C47F3323DC244B00B0A23D /* TentGallery.swift in Sources */,
 				4C28D26C2377E89D00C1B8BF /* LocationService.swift in Sources */,
+				90367AE824CFE99D00788E81 /* BullitinBoardView.swift in Sources */,
+				90B3941224D00AE100EEB8BC /* CreateTutorial.swift in Sources */,
 				907A4A1423DD72000090AD6A /* ColumnStack.swift in Sources */,
 				90B6936824CAA60600ECC857 /* ImageList.swift in Sources */,
 				4CC0870D2352D5070086A5B0 /* AppDelegate.swift in Sources */,
@@ -909,6 +935,7 @@
 				4C92D77A2355860A00646CFB /* GalleryView.swift in Sources */,
 				90EA973423D98CF600FFBEF4 /* LoadingViewService.swift in Sources */,
 				4CFA82FF2373CF5A005348A3 /* JoinView.swift in Sources */,
+				90367AEA24CFEF1500788E81 /* OnboardingManager.swift in Sources */,
 				90B6936B24CE7A4000ECC857 /* ProfileView.swift in Sources */,
 				4CFA83122373DA63005348A3 /* TentManager.swift in Sources */,
 			);

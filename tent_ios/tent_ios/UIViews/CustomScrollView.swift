@@ -9,6 +9,7 @@
 import Foundation
 import SwiftUI
 import UIKit
+import BLTNBoard
 
 struct CustomScrollView<Content: View>: UIViewRepresentable{
 
@@ -41,6 +42,9 @@ struct CustomScrollView<Content: View>: UIViewRepresentable{
         view.addSubview(self.hostingController.view)
         view.contentSize = CGSize(width: 100, height: numberOfItems * 325)
         view.delegate = context.coordinator
+        
+
+        
         
         return view
     }

@@ -28,6 +28,7 @@ struct CreationView: View {
     @State var keyboardOffset: CGFloat = 0
     var tentTypes = ["Google Photos","Private","Public"]
     
+    var createTutorial = UserDefaults.standard.bool(forKey: "CreateTutorial") ? nil : CreateTutorial()
     
     var backTap: () -> ()
     
@@ -163,6 +164,9 @@ struct CreationView: View {
             
         }
         .frame(width:UIScreen.main.bounds.size.width,height:UIScreen.main.bounds.size.height)
+        .onAppear(){
+            self.createTutorial?.showItem()
+        }
         
     }
     

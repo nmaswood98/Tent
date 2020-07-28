@@ -41,7 +41,7 @@ class TentProfile: ObservableObject {
         
     }
     
-    func logIn(){
+    func logIn(completion: @escaping (Bool) -> Void){
         
         if(self.isLoggedIn){
             tentManager.resetGPTentHistory()
@@ -51,14 +51,14 @@ class TentProfile: ObservableObject {
         if(GPhotos.isAuthorized){
             GPhotos.switchAccount(with: [.readAndAppend,.sharing]){
                 status, error in
-                print(status)
                 self.isLoggedIn = GPhotos.isAuthorized
+                completion(status)
             }
         }else{
             GPhotos.authorize(with: [.readAndAppend,.sharing]){
                 status, error in
-                print(status)
                 self.isLoggedIn = GPhotos.isAuthorized
+                completion(status)
             }
         }
 

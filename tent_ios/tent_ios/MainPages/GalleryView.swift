@@ -9,6 +9,7 @@
 
 import SwiftUI
 import KingfisherSwiftUI
+import BLTNBoard
 
 struct GalleryView: View {
     @EnvironmentObject var tentGallery: TentGallery
@@ -55,10 +56,7 @@ struct GalleryView: View {
             .buttonStyle(PlainButtonStyle())
             .padding(.trailing, 10)
     )
-        .onAppear(){
-            
-           
-        }
+
     }
     
 }

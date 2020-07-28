@@ -23,7 +23,9 @@ struct ProfileView: View {
                 .padding(.bottom, 100)
             
             Button(action:{
-                self.tentProfile.logIn()
+                self.tentProfile.logIn(){status in
+                    
+                }
             }){
                 Text(tentProfile.isLoggedIn ? "Switch Account" : "Log In")
                     .foregroundColor(Color.green)
