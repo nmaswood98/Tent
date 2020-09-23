@@ -1,6 +1,9 @@
 # Tent
 An app that allows users to share drawings and images captured within the "tent" which is just a location with a radius. 
 
+![Tent Image 1](https://i.imgur.com/qDgCSsN.png)
+
+
 ## Trello Board
 
 https://trello.com/b/oF4K9xJO/tent
