@@ -3,6 +3,7 @@ An app that allows users to share drawings and images captured within the "tent"
 
 ![Tent Image 1](https://i.imgur.com/qDgCSsN.png)
 
+![Tent Image 2](https://i.imgur.com/NDBvuIs.png)
 
 ## Trello Board
 
