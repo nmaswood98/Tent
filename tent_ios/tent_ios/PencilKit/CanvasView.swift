@@ -16,6 +16,7 @@ struct CanvasView: UIViewRepresentable {
         let canvasView = PKCanvasView();
         canvasView.backgroundColor = UIColor.white
         canvasView.tool = PKInkingTool(.pen, color: UIColor.blue)
+        canvasView.allowsFingerDrawing = true
         canvas.canvasView = canvasView
         
         if let window = UIApplication.shared.windows.last, let toolPicker = PKToolPicker.shared(for: window) {

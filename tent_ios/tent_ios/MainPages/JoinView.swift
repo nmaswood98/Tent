@@ -113,6 +113,7 @@ struct JoinView: View {
                 self.radius = 0
             }
         }
+        .navigationBarHidden(true)
     }
 }
 

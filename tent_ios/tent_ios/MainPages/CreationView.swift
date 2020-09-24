@@ -167,6 +167,7 @@ struct CreationView: View {
         .onAppear(){
             self.createTutorial?.showItem()
         }
+        .navigationBarHidden(true)
         
     }
     

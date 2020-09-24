@@ -46,6 +46,7 @@ struct ContentView: View {
                             .onAppear{
                                 print("HIIIIIIII")
                         }
+                            .navigationBarHidden(true)
                     }
 
                     CameraSnapView(shouldFlash: self.$shouldFlash)
