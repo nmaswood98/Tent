@@ -73,19 +73,5 @@ The owner completely owns the tent. If the owner leaves the tent the tent closes
 If a tent closes all users have the opportunity to save the tent. 
 
 
-## Minimum Viable Product Requirements
-
-Private Timed Owned Tent with 2 mile radius and variable time max 24 hours. 
-
-Private Timed Shared Tent with 2 mile radius and variable time for 24 hours.
-
-All general tent functionatilty completed. i.e Creating, leaving, entering, closing. 
-
-Handle no connection to firebase or no connection to internet. Only allow image saving to camera roll if this is the case. 
-
-Allow ability to auto save a tent while inside of a tent. 
-
-Blocking devices. 
-
 
 
